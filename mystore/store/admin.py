@@ -1,9 +1,11 @@
+
+
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry,DELETION
 from django.utils.html import escape
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from .models import Item
+from .models import Item, Sale
 from .form import ItemAdminForm
 
 
@@ -112,3 +114,28 @@ class ItemAdmin(admin.ModelAdmin):
        return obj.quantity - obj.sold
      else:
        return obj.quantity
+       
+
+@admin.register(Sale)
+class SaleAdmin(admin.ModelAdmin):
+  """
+    Register the sale model into the admin.
+    Add some customisation.
+    
+  """
+  
+  date_hierarchy = 'date'
+  
+  list_display = ('serial_no', 'name', 'category_subcategory', 'price', 'sold', 'size', 'color', 'date' )
+  
+  list_filter = ('date',)
+ 
+  search_fields = ('name', 'category', 'sub_catg', 'description')
+  
+  def category_subcategory(self, obj):
+     "return the category and sub_category as a string"
+     verbose_name= ' category & subcategory '
+     return " %s | %s " % (obj.category, obj.sub_catg)
+     
+  category_subcategory.short_description = 'category | subcategory'
+  

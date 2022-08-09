@@ -45,8 +45,8 @@ class Sale(models.Model):
   sold = models.IntegerField()
   price = models.CharField(max_length=50, verbose_name='price($)')
   date = models.DateField(auto_now_add=True)
-   
-   
+
+
    
    
  
