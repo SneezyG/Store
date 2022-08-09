@@ -11,7 +11,7 @@ class Item(models.Model):
    """
    store data of a single item.
    only sold, sub-catg and mugshot fields are nullable.
-   have a left method that return the amount left for an item
+   have a left method that return the amount left for an item.
 
    """
     
@@ -32,7 +32,7 @@ class Item(models.Model):
 class Sale(models.Model):
   """
    store data of a sale.
-   everyfield is required except date which is auto-generated
+   every field is required except date which is auto-generated.
 
   """
  

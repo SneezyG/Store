@@ -6,8 +6,8 @@ from django.utils.safestring import mark_safe
 from .models import Item
 from .form import ItemAdminForm
 
-# Register your models here.
 
+# admin interface customization
 admin.site.empty_value_display = '(None)'
 admin.site.list_per_page = 50
 admin.site.site_header = 'MY STORE'
@@ -18,6 +18,12 @@ admin.site.site_title = "Store Admin"
 
 @admin.register(LogEntry)
 class LogEntryAdmin(admin.ModelAdmin):
+    
+    """
+    Register the django log table into the admin.
+    Add some customization and also define user access permission.
+    """
+    
     date_hierarchy = 'action_time'
 
     list_filter = [
@@ -68,6 +74,12 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
+  """
+    Register the item model into the admin.
+    Add some customization.
+    Define stock method that return the amount left for an item object
+  """
+  
   form = ItemAdminForm
   fieldsets = (
     (None, {
@@ -91,10 +103,11 @@ class ItemAdmin(admin.ModelAdmin):
      "return the category and sub_category as a string"
      verbose_name= ' category & subcategory '
      return " %s | %s " % (obj.category, obj.sub_category)
+     
   category_subcategory.short_description = 'category | subcategory'
      
   def stock(self, obj):
-     "return amount left for an item"
+     "return amount left for an item object"
      if obj.sold:
        return obj.quantity - obj.sold
      else:

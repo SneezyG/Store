@@ -7,7 +7,7 @@ from django.db import connection
 # return the index page
 def index(request):
    try:
-      # select company recently uploaded .
+      # select company recently uploaded logo.
       with connection.cursor() as cursor:
         cursor.execute("SELECT logo FROM admin_interface_theme")
         path = cursor.fetchone()
