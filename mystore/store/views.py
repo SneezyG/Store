@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.db import connection
 
-# Create your views here.
 
 
+# return the index page
 def index(request):
    try:
-     
+      # select company recently uploaded .
       with connection.cursor() as cursor:
         cursor.execute("SELECT logo FROM admin_interface_theme")
         path = cursor.fetchone()
@@ -20,7 +20,7 @@ def index(request):
   
    return render(request, 'index.html', {"logo": path})
 
-
+# return the panel page
 def panel(request):
   return render(request, 'panel.html')
 

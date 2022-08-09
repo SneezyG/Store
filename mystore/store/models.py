@@ -14,25 +14,13 @@ class Item(models.Model):
    have a left method that return the amount left for an item
 
    """
-   sizeType = (
-       ('S', 'Small'),
-       ('L', 'Large'),
-       ('Xl', 'XLarge'),
-       ('XXl', 'XXLarge'),
-       ('XXXl', 'XXXLarge')
-     )
-     
-   catgType = (
-     )
-     
-   colorType = (
-     )
-     
+    
    serial_no = models.CharField(max_length=30, unique=True)
    name = models.CharField(max_length=40)
-   category = models.CharField(max_length=50, choices=catgType)
-   color = models.CharField(max_length=20, choices=colorType)
-   size = models.CharField(max_length=5, choices=sizeType, verbose_name='size(ft)')
+   category = models.CharField(max_length=7)
+   sub_catg = models.CharField(max_length=7)
+   color = models.CharField(max_length=20)
+   size = models.CharField(max_length=7)
    description = models.TextField()
    quantity = models.IntegerField()
    price = models.CharField(max_length=50, verbose_name='price($)')
@@ -42,7 +30,21 @@ class Item(models.Model):
    
    
 class Sale(models.Model):
-  pass
+  """
+   store data of a sale.
+   everyfield is required except date which is auto-generated
+
+  """
+ 
+  serial_no = models.CharField(max_length=30, unique=True)
+  name = models.CharField(max_length=40)
+  category = models.CharField(max_length=50)
+  sub_catg = models.CharField(max_length=7)
+  color = models.CharField(max_length=20)
+  size = models.CharField(max_length=5)
+  sold = models.IntegerField()
+  price = models.CharField(max_length=50, verbose_name='price($)')
+  date = models.DateField(auto_now_add=True)
    
    
    
