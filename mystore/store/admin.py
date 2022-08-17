@@ -6,7 +6,7 @@ from django.utils.html import escape
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from .models import Item, Sale
-from .form import ItemAdminForm
+from .form import ItemAdminForm, SaleAdminForm
 
 
 # admin interface customization
@@ -91,7 +91,7 @@ class ItemAdmin(admin.ModelAdmin):
     
     ('Details', {
       'classes': ('extrapretty'),
-      'fields': ('mugshot', 'category', 'sub_category', 'description', 'price', 'quantity', 'sold')
+      'fields': ('mugshot', 'category', 'sub_catg', 'description', 'price', 'quantity', 'sold')
     }),
     )
     
@@ -123,7 +123,9 @@ class SaleAdmin(admin.ModelAdmin):
     Add some customisation.
     
   """
-  
+  form = SaleAdminForm
+  exclude = ('serial_no',)
+
   date_hierarchy = 'date'
   
   list_display = ('serial_no', 'name', 'category_subcategory', 'price', 'sold', 'size', 'color', 'date' )

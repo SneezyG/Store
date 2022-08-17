@@ -6,6 +6,11 @@ from django.db import connection
 
 # return the index page
 def index(request):
+  
+   """
+   Query the recent company logo and return an HTML page with animated company logo
+   """
+  
    try:
       # select company recently uploaded logo.
       with connection.cursor() as cursor:
@@ -22,5 +27,10 @@ def index(request):
 
 # return the panel page
 def panel(request):
+  
+  """
+  Check if user is logged in, then check the user permissions and return a panel page build with the amount of authority the user have.
+  """
+  
   return render(request, 'panel.html')
 
