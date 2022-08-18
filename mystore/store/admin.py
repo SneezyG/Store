@@ -116,6 +116,8 @@ class ItemAdmin(admin.ModelAdmin):
        return obj.quantity
        
 
+
+
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
   """

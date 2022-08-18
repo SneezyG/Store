@@ -8,7 +8,7 @@ from django.db import connection
 def index(request):
   
    """
-   Query the recent company logo and return an HTML page with animated company logo
+   Query the recent company logo and return an HTML page with animated company logo a link to the admin interface
    """
   
    try:
@@ -29,7 +29,7 @@ def index(request):
 def panel(request):
   
   """
-  Check if user is logged in, then check the user permissions and return a panel page build with the amount of authority the user have.
+  Check if user is logged in, then check the user permissions and return a panel page build according to the amount of authority the user have.
   """
   
   return render(request, 'panel.html')
