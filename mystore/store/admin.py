@@ -5,7 +5,7 @@ from django.contrib.admin.models import LogEntry,DELETION
 from django.utils.html import escape
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from .models import Item, Sale
+from .models import Item, Sale, Transaction
 from .form import ItemAdminForm, SaleAdminForm
 
 
@@ -44,7 +44,6 @@ class LogEntryAdmin(admin.ModelAdmin):
         'action_time',
         'user',
         'content_type',
-        'object_link',
         'action_flag',
     ]
     
@@ -60,18 +59,7 @@ class LogEntryAdmin(admin.ModelAdmin):
     def has_view_permission(self, request, obj=None):
         return request.user.is_superuser
 
-    def object_link(self, obj):
-        if obj.action_flag == DELETION:
-            link = escape(obj.object_repr)
-        else:
-            ct = obj.content_type
-            link = '<a href="%s">%s</a>' % (
-                reverse('admin:%s_%s_change' % (ct.app_label, ct.model), args=[obj.object_id]),
-                escape(obj.object_repr),
-            )
-        return mark_safe(link)
-    object_link.admin_order_field = "object_repr"
-    object_link.short_description = "object"
+    
 
 
 @admin.register(Item)
@@ -130,7 +118,7 @@ class SaleAdmin(admin.ModelAdmin):
 
   date_hierarchy = 'date'
   
-  list_display = ('serial_no', 'name', 'category_subcategory', 'price', 'sold', 'size', 'color', 'date' )
+  list_display = ('serial_no', 'name', 'category_subcategory', 'transaction', 'price', 'sold', 'size', 'color', 'date' )
   
   list_filter = ('date',)
  
@@ -142,4 +130,21 @@ class SaleAdmin(admin.ModelAdmin):
      return " %s | %s " % (obj.category, obj.sub_catg)
      
   category_subcategory.short_description = 'category | subcategory'
+ 
+ 
   
+@admin.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
+  
+  """
+    Register the Transaction model into the admin.
+    Add some customisation.
+  """
+  
+  date_hierarchy = 'date'
+
+  list_display = ('buyer', "attendant", "date")
+  
+  list_filter = ('date',)
+ 
+  search_fields = ('buyer', 'seller')

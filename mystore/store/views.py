@@ -25,6 +25,8 @@ def index(request):
   
    return render(request, 'index.html', {"logo": path})
 
+
+
 # return the panel page
 def panel(request):
   

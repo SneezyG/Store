@@ -54,7 +54,7 @@ class Sale(models.Model):
   
   """
    store data of a sale.
-   
+
    every field is required except date which is auto-generated.
 
   """
@@ -67,6 +67,7 @@ class Sale(models.Model):
   size = models.CharField(max_length=5)
   sold = models.IntegerField()
   price = models.CharField(max_length=50, verbose_name='price($)')
+  transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
   date = models.DateTimeField(auto_now_add=True)
   
   
@@ -87,9 +88,22 @@ class Sale(models.Model):
   
       
    
+class Transaction(models.Model):
+  
+  """
+  store data of a Transaction which technically involve a group of sales
+  """
 
-
-   
-   
+  serial_no = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="an auto generated uuid4 string for transaction ID")
+  
+  buyer = models.CharField(max_length=30)
+  attendant = models.CharField(max_length=30)
+  date = models.DateField(auto_now_add=True)
+  
+  def __str__(self):
+    "Returns the transaction tag"
+    tag = '(buyer: %s), (attendant: %s)' % (self.buyer, self.attendant)
+    return tag
+  
  
  
