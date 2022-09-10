@@ -1,9 +1,172 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+     
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      ::-webkit-scrollbar {
+           display: none;
+      }
+      
+      header {
+        width: 80px;
+        border: 1px solid red;
+        margin: auto;
+        margin-top: 20px;
+        display: flex;
+        border-radius: 10px;
+        padding: 3px 5px 3px 30px;
+      }
+      
+      h5 { 
+        margin: 5px
+      }
+      
+      #pin {
+        width: 10px;
+        height: 15px;
+        margin: 3px 0 0 0;
+      }
+      
+      main {
+        width: 70%;
+        height: 99%;
+        position: absolute;
+        border: 3px dashed red;
+        overflow: scroll;
+      }
+      
+      main::-webkit-scrollbar {
+           display: none;
+      }
+      
+      section {
+        width: 30%;
+        height: 99%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: 3px dashed red;
+        border-left: none;
+        overflow: scroll;
+      }
+      
+      img {
+        width: 50px;
+        margin: 30px;
+        border-radius: 10px;
+      }
+      
+      #mainleft {
+        width: 95%;
+        height: 300px;
+        margin: 5px;
+        border: 2px dashed red;
+      }
+      
+
+      #nav {
+        float: left;
+        width: 40%;
+        height: 250px;
+        margin: 20px 5px 5px 5px;
+        border: 2px dashed red;
+      }
+      
+      #nav > ul {
+         margin-top: 50px;
+         width: 100%;
+         list-style: none;
+      }
+      
+      #nav li {
+        position: relative;
+        right: 30px;
+        font-size: 10px;
+        color: white;
+        width: 70%;
+        margin-bottom: 15px;
+        padding: 5px;
+        background-color: red;
+        text-align: center;
+      }
+      
+      
+      #mainleft > form {
+        display: flex;
+        flex-direction: column;
+        background-color: red;
+        padding: 0 10px 10px 10px;
+        align-items: center;
+      }
+      
+      #mainleft input {
+        width: 80%;
+        
+      }
+      
+      #mainleft  h6 {
+        background-color: white;
+        text-align: center;
+        margin-top: 5px;
+      }
+      
+      #mainleft span {
+       margin-top: 5px;
+      }
+      
+      
+      
+      
+      
+     
+      
+      
+    </style>
+  </head>
+  
 <body>
+  
 
-<h1> This is an awesome panel </h1>
 
+  <main> 
+    <header>
+     <img id='pin' src="pin.png"/>
+      <h5> Admin </h5>
+    </header>
+    
+  <img src="mystore~2.jpg"/>
+  
+  <div id="mainleft">
+    <div id="nav"> 
+     <ul>
+       <li>Item Lookup</li>
+       <li>Update Catalog</li>
+       <li>Sale Analysis</li>
+     </ul>
+    </div>
+    
+    <form id="utility">
+    <h6> look up product with </h6>
+    <input> </input>
+    <span><button>look up</button></span>
+    </form>
+
+
+  </div>
+  
+  </main>
+  
+  <section> </section>
+    
+    
+    
+    <script>
+    </script>
 
 </body>
 </html>

@@ -64,6 +64,7 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
+  
   """
     Register the item model into the admin.
     Add some customization.
@@ -108,11 +109,13 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
+  
   """
     Register the sale model into the admin.
     Add some customisation.
     
   """
+  
   form = SaleAdminForm
   exclude = ('serial_no',)
 
@@ -122,7 +125,7 @@ class SaleAdmin(admin.ModelAdmin):
   
   list_filter = ('date',)
  
-  search_fields = ('name', 'category', 'sub_catg', 'description')
+  search_fields = ('name', 'description', 'transaction__serial_no')
   
   def category_subcategory(self, obj):
      "return the category and sub_category as a string"
