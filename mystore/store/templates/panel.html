@@ -7,10 +7,13 @@
       body {
         margin: 0;
         padding: 0;
+        background-color: #F5F5F5;
       }
-      ::-webkit-scrollbar {
+      
+      body::-webkit-scrollbar {
            display: none;
       }
+      
       
       header {
         width: 80px;
@@ -37,44 +40,88 @@
         height: 99%;
         position: absolute;
         border: 3px dashed red;
+        border-right: none;
         overflow: scroll;
       }
+      
       
       main::-webkit-scrollbar {
            display: none;
       }
       
+      #contain {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        height: 80%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        
+      }
+      
+      
       section {
         width: 30%;
         height: 99%;
         position: absolute;
+        padding-left: 80px;
         right: 0;
         top: 0;
         border: 3px dashed red;
         border-left: none;
-        overflow: scroll;
+        transition: 0.4s;
+        background-color: #D3D3D3;
+        box-shadow:  -1px 0 1px rgba(0,0,0,0.11), 
+               -2px 0 2px rgba(0,0,0,0.11), 
+               -4px 0 4px rgba(0,0,0,0.11), 
+               -8px 0 8px rgba(0,0,0,0.11), 
+               -16px 0 16px rgba(0,0,0,0.11);
+               -20px 0 30px rgba(0,0,0,0.11);
+        
       }
       
+      .drawer {
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        position: absolute;
+        left: 0;
+      }
+      
+      #stack {
+        top: 30%;
+      }
+      
+      #hide {
+        top: 60%;
+      }
+    
+
       img {
         width: 50px;
-        margin: 30px;
+        margin: 30px 30px 0 30px;
         border-radius: 10px;
       }
       
       #mainleft {
         width: 95%;
-        height: 300px;
-        margin: 5px;
-        border: 2px dashed red;
+        height: 400px;
+        margin: 0 5px 5px 5px;
+        border: ;
+        position: relative;
+        bottom: 30px;
+        transition: 0.2s;
       }
       
 
       #nav {
         float: left;
         width: 40%;
-        height: 250px;
-        margin: 20px 5px 5px 5px;
-        border: 2px dashed red;
+        height: 220px;
+        margin: 40px 5px 5px 5px;
+        border-right: 3px dashed red;
+        transition: 0.3s
       }
       
       #nav > ul {
@@ -99,17 +146,19 @@
       #mainleft > form {
         display: flex;
         flex-direction: column;
-        background-color: red;
+        background-color: ;
         padding: 0 10px 10px 10px;
         align-items: center;
+        margin-top: 20px;
       }
       
       #mainleft input {
         width: 80%;
+        margin-top: 20px;
         
       }
       
-      #mainleft  h6 {
+      #mainleft  h5 {
         background-color: white;
         text-align: center;
         margin-top: 5px;
@@ -120,6 +169,114 @@
       }
       
       
+      #utility > img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+      }
+      
+      #cam {
+        font-size: 13px;
+      }
+      
+      #hint > p{
+        font-size: 13px;
+      }
+      
+      
+      #backdrop {
+        position: absolute;
+        background-color: lightblue;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        visibility: hidden;
+        transition: 0.2s;
+      }
+      
+      details {
+        border: 1px solid red;
+        border-radius: 5px;
+        width: 120px;
+        overflow: auto;
+      }
+      
+      summary {
+        border-bottom: 1px solid red;
+        padding: 5px 10px 5px 10px;
+        overflow: auto;
+      }
+      
+      article ul {
+        margin: 0;
+        padding: 0;
+      }
+      
+      article {
+        margin: 10px;
+      }
+      
+      article li {
+        list-style: none;
+        font-size: 15px;
+        margin: 5px 0 5px 0;
+      }
+      
+      article > img {
+        width: 50px;
+        height: 45px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      
+      #preview {
+        display: none;
+      }
+      
+       #preview li {
+        display: inline-block;
+        list-style: none;
+        margin-right: 20px;
+        font-size: 20px;
+      }
+      
+      #preview Span {
+        font-size: 25px;
+        font-weight: bold;
+      }
+    
+      
+      #preview button {
+        background-color: red;
+        color: white;
+        font-size: 15px;
+        border: none;
+        padding: 8px;
+      }
+      
+      #first {
+        font-size: 25px;
+        font-weight: bold;
+      }
+      
+      
+      
+   @media only screen and (min-width: 768px) {
+      
+     
+   }
+   
+   @media only screen and (min-width: 1100px) { 
+       
+       section {
+         transition: 0.6s;
+       }
+       
+       section > img {
+         transition: 0.6s;
+       }
+  
+   }
       
       
       
@@ -151,21 +308,274 @@
     </div>
     
     <form id="utility">
-    <h6> look up product with </h6>
-    <input> </input>
+      
+    <h5> look up product with </h5>
+    <input placeholder="Enter barcode" autofocus>
     <span><button>look up</button></span>
+    
+    <img src="mystore~2.jpg" /> 
+    <span id="cam"> use a cam scanner </span>
+    
+    <dl id="hint">
+      <dt> <h4>Hint :</h4> </dt>
+      <p>A physical barcode scanner is an alternative way to keyboard for entering barcode prior to product look up.
+      </p>
+      </dl>
+      
+   
     </form>
-
-
+    
   </div>
-  
   </main>
   
-  <section> </section>
+  <div id="backdrop" onclick="Close()"> </div>
+  
+  <section> 
+  <img class="drawer" id="stack" src="stack.png" />
+  <img class="drawer" id="hide" src="drawer.png" /> 
+  
+    <p id="first">PREVIEW</p>
+    <ul id="preview">
+      <li>Total goods: <span>60</span></li>
+      <li>Total price: <span>$12,000</span></li>
+       <li><button>process transaction</button></li>
+    </ul>
+    
+  
+  
+  <div id="contain">
+  <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+   <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+    <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+   <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+     <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+    <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+   <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+    <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+   <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+    <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+   <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+     <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+    <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  
+   <article>
+   <img src="mystore~2.jpg" /> 
+   <details>
+     <summary>Custard 5g </summary>
+      <ul>
+        <li><span> Price: </span> $500 </li>
+        <li><span> Amount: </span> 30</li>
+        <li><span> Color: </span> pale blue </li>
+     </ul>
+     </details>
+  </article>
+  </div>
+  </section>
+ 
+    
     
     
     
     <script>
+    
+    const section = document.querySelector('section');
+    const drawer = document.querySelector('#hide');
+    const backdrop = document.querySelector('#backdrop');
+    const stack = document.querySelector('#stack');
+    const nav = document.querySelector('#nav');
+    const mainleft = document.querySelector('#mainleft');
+    const hint = document.querySelector("#hint")
+    const preview = document.querySelector("#preview");
+    
+    /*
+    for (let elem of preview) {
+      if (elem.id != "first") {
+        elem.style.display = "none";
+      }
+    }
+    */
+    drawer.addEventListener('click', Draw, {once:true});
+    stack.addEventListener('click', shift, {once:true});
+   
+   
+    function Draw() {
+      section.style.width = "80%";
+      backdrop.style.visibility = "visible";
+      preview.style.display = "block";
+      drawer.addEventListener('click', Close, {once:true});
+    }
+    
+    function Close() {
+      section.style.width = "30%";
+      backdrop.style.visibility = "hidden";
+      preview.style.display = "none";
+      drawer.addEventListener('click', Draw, {once:true});
+    }
+    
+    function shift() {
+      hint.style.visibility = "hidden"
+      section.style.width = "55%";
+      backdrop.style.visibility = "visible";
+      nav.style.display = "none";
+      preview.style.display = "none";
+      mainleft.style.width = "60%";
+      stack.addEventListener('click', still, {once:true});
+    }
+    
+    function still() {
+      section.style.width = "30%";
+      nav.style.display = "block";
+      mainleft.style.width = "95%";
+      backdrop.style.visibility = "hidden";
+      preview.style.display = "none";
+      stack.addEventListener('click', shift, {once:true});
+      setTimeout(() => {hint.style.visibility = "visible";}, 500)
+    }
+    
+    
+    
     </script>
 
 </body>
