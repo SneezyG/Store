@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #F5F5F5;
+      }
+      
+   body::-webkit-scrollbar {
+           display: none;
+      }
+      
+      
+      main {
+        border: 3px dashed red;
+        position: absolute;
+        height: 99%;
+        width: 99.5%;
+        margin: auto;
+        overflow: hidden;
+      }
+      
+      main > img {
+        margin: 30px;
+        width: 30px;
+        position: fixed;
+      }
+      
+      #header {
+        position: fixed;
+        width: 100%;
+        top: 20px;
+      }
+      
+      #header header {
+        border: 1px solid red;
+        border-radius: 10px;
+        width: 40%;
+        margin: auto;
+        padding: 7px;
+        text-align: center;
+        font-weight: bold; 
+      }
+      
+      #right {
+        width: 25%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: -20px;
+      }
+      
+      #left {
+        width: 77%;
+        position: absolute;
+        height: 100%;
+      }
+      
+      #nav {
+        width: 15%;
+        height: 180px;
+        position: fixed;
+        margin-top: 50px;
+      }
+      
+      #nav > ul {
+         width: 70%;
+         border-right: 3px dashed red;
+         list-style: none;
+         height: 200px;
+         padding-top: 60px;
+      }
+      
+      #nav li {
+        position: relative;
+        right: 30px;
+        font-size: 10px;
+        color: white;
+        width: 90%;
+        margin-bottom: 15px;
+        padding: 5px;
+        background-color: red;
+        text-align: center;
+      }
+      
+      #content {
+        margin-top: 80px;
+        width: 100%;
+        height: 80%;
+        position: absolute;
+        overflow: hidden;
+      }
+      
+      #chart {
+        width: 70%;
+        position: absolute;
+        right: 50px;
+        top: 30px;
+      }
+      
+      details {
+        margin: auto;
+        border: 1px solid red;
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+      
+      summary {
+        padding: 10px;
+        border-bottom: 1px solid red;
+        border-radius: 10px;
+        padding-left: 30px;
+        font-size: 18px;
+      }
+      
+      summary > span {
+        margin-left: 30px;
+      }
+      
+      #graph {
+        height: 400px;
+      }
+      
+      article {
+        background-color: #D3D3D3;
+        width: 80%;
+        margin: auto;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+      
+      article > p {
+        text-align: center;
+      }
+      article > h6 {
+        text-align: center;
+        font-size: 18px;
+        margin: 5px;
+      }
+      
+      section > p {
+        text-align: center;
+      }
+      
+      header > span {
+        font-weight: normal;
+        margin-left: 10px;
+      }
+      
+      
+      
+    </style>
+  </head>
+  
+  
+<body>
+ 
+   <main>
+     <img src="mystore~2.jpg"/>
+     
+     <div id="header">
+     <header>  SALE REPORT <span> in last
+
+     </span>
+     </header>
+     </div>
+     
+    <div id="content"> 
+    
+    <section id="left">  
+     
+    <div id="nav">
+    <ul>
+       <li>Item Lookup</li>
+       <li>Update Catalog</li>
+       <li>Sale Analysis</li>
+     </ul>
+    </div>
+    
+     <div id="chart">
+      <details open>
+       <summary>Sale chart
+       <span><b>2500 </b> items sold in last 30days </span>
+       </summary>
+       <div id="graph">
+       </div>
+      </details>
+      
+      <details>
+       <summary>Income chart
+       <span><b>$20000 </b> made in the last 30days </span>
+       </summary>
+       <div id="graph">
+       </div>       
+      </details>
+      
+     </div>
+     </section>
+     
+     <section id="right"> 
+     <p> <b>Note:</b> growth are calculated on two months interval only.</p>
+     <article id="first">
+       <h6>Sale growth</h6>
+       <p><img/> 5%</p>
+     </article>
+     <article>
+       <h6>Income growth</h6>
+       <p><img/> 5%</p>
+     </article>
+       
+     <article>
+       <h6>Most sold item</h6>
+       <p>Cocacola</p>
+     </article>
+     <article>
+       <h6>Most sold category</h6>
+       <p>Beverage</p>
+     </article>
+     <article>
+       <h6>Day with the most sold</h6>
+       <p>Friday</p>
+     </article>
+     
+     </section>
+     
+     </div>
+     
+    </main>
+
+
+</body>
+</html>

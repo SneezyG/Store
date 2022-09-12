@@ -24,6 +24,42 @@
         width: 50px;
       }
       
+      #contain {
+        width: 100%;
+        position: absolute;
+      }
+      
+      #nav {
+        width: 20%;
+        height: 180px;
+        border-right: 3px dashed red;
+        padding-top: 50px;
+      }
+      
+      #nav > ul {
+         width: 100%;
+         list-style: none;
+      }
+      
+      #nav li {
+        position: relative;
+        right: 30px;
+        font-size: 10px;
+        color: white;
+        width: 70%;
+        margin-bottom: 15px;
+        padding: 5px;
+        background-color: red;
+        text-align: center;
+      }
+      
+      #upload {
+        width: 80%;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      
       details {
         margin: auto;
         border: 1px solid red;
@@ -102,6 +138,18 @@
   
   <main>
   <img src="mystore~2.jpg"/>
+  
+  <div id="contain">
+  
+  <div id="nav">
+    <ul>
+       <li>Item Lookup</li>
+       <li>Update Catalog</li>
+       <li>Sale Analysis</li>
+     </ul>
+    </div>
+    
+  <div id="upload">
   <details>
     <summary>Guild</summary>
     <ul>
@@ -126,6 +174,10 @@
      
      <p><button>Process</button></p>
     </section>
+    
+    </div>
+    
+    </div>
     
 
   </main>
