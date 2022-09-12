@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+     body {
+        margin: 0;
+        padding: 0;
+        background-color: #F5F5F5;
+      }
+      
+      main {
+        border: 3px dashed red;
+        position: absolute;
+        height: 99%;
+        width: 99.5%;
+        margin: auto;
+        overflow-x: auto;
+        
+      }
+      
+      main > img {
+        margin: 30px;
+        width: 50px;
+      }
+      
+      details {
+        margin: auto;
+        border: 1px solid red;
+        width: 80%;
+        border-radius: 10px;
+      }
+      
+      details li {
+        font-size: 15px;
+        margin-bottom: 10px;
+        list-style: square;
+      }
+      
+      summary {
+        padding: 5px;
+        border-bottom: 1px solid red;
+        border-radius: 10px;
+      }
+      
+      section {
+        margin-top: 30px;
+      }
+      
+      section > h4 {
+        text-align: center;
+      }
+      
+      section  button {
+         padding: 10px;
+         width: 20%;
+         font-size: 18px;
+         font-weight: bold;
+         color: white;
+         background-color: #00A693;
+      }
+      section > p {
+        text-align: center;
+        margin-top: 40px;
+      }
+      
+      article {
+        border: 2px dashed red;
+        width: 60%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      article > img {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+      }
+      
+      article > h3 {
+        font-weight: normal;
+        margin-bottom: 1px;
+      }
+      
+      article > p {
+        text-align: center;
+        margin-top: 0;
+      }
+      
+      #warn {
+        color: blue;
+      }
+      
+      
+      
+    </style>
+    </head>
+    
+<body>
+  
+  <main>
+  <img src="mystore~2.jpg"/>
+  <details>
+    <summary>Guild</summary>
+    <ul>
+      <li> You can only upload and process one file at a time.</li>
+      <li>Only excel and csv file format can be process.</li>
+      <li>Your data describing your items can contain a barcode, name, category, sub-category, color, size, description, quantity, price and sold column. And all the column name must be spelled as they appear here.</li>
+      <li>Your data describing your items must contain a barcode, name, category, quantity and price column.</li>
+     </ul>
+     
+    </details>
+    
+    
+    <section>
+      <h4>UPLOAD FILE</h4>
+      
+      <article>
+      <img src="mystore~2.jpg"/>
+      <h3> Drag & Drop </h3>
+      <p>your files here or browse to upload</p>
+      <p id="warn">Only one file can be upload and process at a time</p>
+      </article>
+     
+     <p><button>Process</button></p>
+    </section>
+    
+
+  </main>
+  
+  
+
+
+
+
+</body>
+</html>
