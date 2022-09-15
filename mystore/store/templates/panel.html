@@ -8,6 +8,10 @@
         margin: 0;
         padding: 0;
         background-color: #F5F5F5;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
       }
       
       body::-webkit-scrollbar {
@@ -16,7 +20,7 @@
       
       
       header {
-        width: 80px;
+        width: 100px;
         border: 1px solid red;
         margin: auto;
         margin-top: 20px;
@@ -25,23 +29,23 @@
         padding: 3px 5px 3px 30px;
       }
       
-      h5 { 
-        margin: 5px
+      h4 { 
+        margin: 5px;
+        font-weight: normal;
       }
       
       #pin {
-        width: 10px;
-        height: 15px;
+        width: 15px;
+        height: 20px;
         margin: 3px 0 0 0;
       }
       
       main {
-        width: 70%;
+        width: 65%;
         height: 99%;
-        position: absolute;
-        border: 3px dashed red;
         border-right: none;
-        overflow: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
       }
       
       
@@ -53,24 +57,24 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        align-content: flex-start;
-        height: 80%;
+        justify-content: center;
+        height: 70%;
         overflow-y: scroll;
         overflow-x: hidden;
+        margin-top: 30px;
         
       }
       
       
       section {
         width: 30%;
-        height: 99%;
+        height: 100%;
         position: absolute;
         padding-left: 80px;
         right: 0;
         top: 0;
-        border: 3px dashed red;
         border-left: none;
-        transition: 0.4s;
+        transition: 0.6s;
         background-color: #D3D3D3;
         box-shadow:  -1px 0 1px rgba(0,0,0,0.11), 
                -2px 0 2px rgba(0,0,0,0.11), 
@@ -87,6 +91,7 @@
         margin: 0;
         position: absolute;
         left: 0;
+        cursor: pointer;
       }
       
       #stack {
@@ -98,7 +103,7 @@
       }
     
 
-      img {
+     main > img {
         width: 50px;
         margin: 30px 30px 0 30px;
         border-radius: 10px;
@@ -108,7 +113,6 @@
         width: 95%;
         height: 400px;
         margin: 0 5px 5px 5px;
-        border: ;
         position: relative;
         bottom: 30px;
         transition: 0.2s;
@@ -117,27 +121,28 @@
 
       #nav {
         float: left;
-        width: 40%;
-        height: 220px;
+        width: 30%;
+        height: 280px;
         margin: 40px 5px 5px 5px;
         border-right: 3px dashed red;
         transition: 0.3s
       }
       
       #nav > ul {
-         margin-top: 50px;
-         width: 100%;
+         margin-top: 40px;
+         width: 90%;
          list-style: none;
       }
       
       #nav li {
         position: relative;
         right: 30px;
-        font-size: 10px;
+        font-size: 16px;
+        cursor: pointer;
         color: white;
         width: 70%;
         margin-bottom: 15px;
-        padding: 5px;
+        padding: 10px;
         background-color: red;
         text-align: center;
       }
@@ -154,42 +159,56 @@
       
       #mainleft input {
         width: 80%;
-        margin-top: 20px;
+        margin-top: 25px;
+        font-size: 15px;
+        padding: 5px;
         
       }
       
-      #mainleft  h5 {
-        background-color: white;
-        text-align: center;
+      #mainleft  h4 {
         margin-top: 5px;
       }
       
       #mainleft span {
-       margin-top: 5px;
+       margin-top: 7px;
+      }
+
+      #mainleft button {
+        font-size: 15px;
+        padding: 3px 10px 3px 10px;
+        cursor: pointer;
       }
       
       
       #utility > img {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 0;
+        width: 100px;
+        height: 90px;
+        margin: 60px 0 0 0;
+        cursor: pointer;
       }
       
       #cam {
-        font-size: 13px;
+        font-size: 16px;
+        cursor: pointer;
       }
       
       #hint > p{
         font-size: 13px;
+        width: 80%;
+      }
+
+      #hint {
+        margin-top: 70px;
       }
       
       
       #backdrop {
         position: absolute;
+        top: 0;
         background-color: lightblue;
         width: 100%;
         height: 100%;
-        opacity: 0.2;
+        opacity: 0.4;
         visibility: hidden;
         transition: 0.2s;
       }
@@ -205,6 +224,7 @@
         border-bottom: 1px solid red;
         padding: 5px 10px 5px 10px;
         overflow: auto;
+        cursor: pointer;
       }
       
       article ul {
@@ -213,7 +233,7 @@
       }
       
       article {
-        margin: 10px;
+        margin: 10px 40px 40px 0;
       }
       
       article li {
@@ -224,58 +244,110 @@
       
       article > img {
         width: 50px;
-        height: 45px;
-        margin-top: 20px;
+        height: 50px;
+        margin-top: 5px;
         margin-bottom: 5px;
+        cursor: pointer;
       }
       
       #preview {
         display: none;
+        width: 500px;
       }
       
        #preview li {
         display: inline-block;
         list-style: none;
         margin-right: 20px;
-        font-size: 20px;
+        font-size: 16px;
       }
       
       #preview Span {
-        font-size: 25px;
+        font-size: 17px;
         font-weight: bold;
       }
     
       
       #preview button {
-        background-color: red;
+        background-color: green;
         color: white;
         font-size: 15px;
         border: none;
-        padding: 8px;
+        padding: 10px;
+        cursor: pointer;
       }
       
       #first {
-        font-size: 25px;
-        font-weight: bold;
+        font-size: 16px;
+        margin-left: -40px;
+      }
+
+
+       article > span {
+        display: block;
+        margin: 0;
+        position: relative;
+        top: 10px;
+        right: 10px;
+        opacity: 0.5;
+        font-size: 15px;
+        text-align: right;
+        cursor: pointer;
       }
       
+  
       
-      
-   @media only screen and (min-width: 768px) {
-      
-     
-   }
+    
    
-   @media only screen and (min-width: 1100px) { 
+   @media only screen and (max-width: 800px) { 
        
        section {
-         transition: 0.6s;
+         transition: 0.4s;
+       }
+
+       #preview { 
+         width: 400px;
+       }
+
+       #preview button {
+         margin-top: 10px;
+       }
+
+       section {
+         width: 0;
+         padding-left: 60px;
+
+       }
+
+       #hide {
+         left: 5px;
+         top: 50%;
+       }
+
+       #stack {
+         display: none;
+       }
+
+       main {
+         width: 90%;
+       }
+
+       #nav li {
+         font-size: 16px;
+         padding: 7px;
+       }
+
+       main > img {
+        width: 40px;
+        margin: 20px 30px 0 30px;
+       }
+
+       #preview {
+         position: relative;
+         right: 30px;
        }
        
-       section > img {
-         transition: 0.6s;
-       }
-  
+       
    }
       
       
@@ -293,7 +365,7 @@
   <main> 
     <header>
      <img id='pin' src="pin.png"/>
-      <h5> Admin </h5>
+      <h4> Admin </h4>
     </header>
     
   <img src="mystore~2.jpg"/>
@@ -309,7 +381,7 @@
     
     <form id="utility">
       
-    <h5> look up product with </h5>
+    <h4> look up product with </h4>
     <input placeholder="Enter barcode" autofocus>
     <span><button>look up</button></span>
     
@@ -334,7 +406,7 @@
   <img class="drawer" id="stack" src="stack.png" />
   <img class="drawer" id="hide" src="drawer.png" /> 
   
-    <p id="first">PREVIEW</p>
+    <p id="first">PREVIEWS</p>
     <ul id="preview">
       <li>Total goods: <span>60</span></li>
       <li>Total price: <span>$12,000</span></li>
@@ -343,175 +415,189 @@
     
   
   
-  <div id="contain">
-  <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-   <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-    <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-   <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-     <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-    <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-   <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-    <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-   <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-    <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-   <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-     <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-    <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  
-   <article>
-   <img src="mystore~2.jpg" /> 
-   <details>
-     <summary>Custard 5g </summary>
-      <ul>
-        <li><span> Price: </span> $500 </li>
-        <li><span> Amount: </span> 30</li>
-        <li><span> Color: </span> pale blue </li>
-     </ul>
-     </details>
-  </article>
-  </div>
+    <div id="contain">
+      <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+       <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+        <article>
+         <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+       <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+      <article>
+          <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+        <article>
+         <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+       <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+        <article>
+         <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+       <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+        <article>
+         <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+       <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+         <article>
+          <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+        <article>
+         <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      
+       <article>
+        <span>X</span>
+       <img src="mystore~2.jpg" /> 
+       <details>
+         <summary>Custard 5g </summary>
+          <ul>
+            <li><span> Price: </span> $500 </li>
+            <li><span> Amount: </span> 30</li>
+            <li><span> Color: </span> pale blue </li>
+         </ul>
+         </details>
+      </article>
+      </div>
   </section>
  
     
@@ -528,36 +614,37 @@
     const mainleft = document.querySelector('#mainleft');
     const hint = document.querySelector("#hint")
     const preview = document.querySelector("#preview");
+    const remove = document.querySelectorAll('article > span');
     
-    /*
-    for (let elem of preview) {
-      if (elem.id != "first") {
-        elem.style.display = "none";
-      }
-    }
-    */
     drawer.addEventListener('click', Draw, {once:true});
     stack.addEventListener('click', shift, {once:true});
-   
+    window.onresize = reRender;
+
+    for (let elem of remove) {
+      elem.addEventListener('click', () => elem.parentElement.remove(), 
+      {once:true});
+    }
+    
    
     function Draw() {
-      section.style.width = "80%";
+      section.style.width = "70%";
       backdrop.style.visibility = "visible";
       preview.style.display = "block";
       drawer.addEventListener('click', Close, {once:true});
     }
     
     function Close() {
-      section.style.width = "30%";
+      screen = window.innerWidth;
+      section.style.width =  screen <= 800 ? "0" : "30%";
       backdrop.style.visibility = "hidden";
       preview.style.display = "none";
+      mainleft.style.width = "95%";
+      nav.style.display = "block";
       drawer.addEventListener('click', Draw, {once:true});
     }
     
     function shift() {
-      hint.style.visibility = "hidden"
       section.style.width = "55%";
-      backdrop.style.visibility = "visible";
       nav.style.display = "none";
       preview.style.display = "none";
       mainleft.style.width = "60%";
@@ -568,10 +655,15 @@
       section.style.width = "30%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
-      backdrop.style.visibility = "hidden";
       preview.style.display = "none";
       stack.addEventListener('click', shift, {once:true});
-      setTimeout(() => {hint.style.visibility = "visible";}, 500)
+      
+    }
+
+
+    function reRender() {
+      //screen = window.innerWidth;
+      //location.reload();
     }
     
     
