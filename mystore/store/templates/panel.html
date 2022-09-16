@@ -74,6 +74,7 @@
         right: 0;
         top: 0;
         border-left: none;
+        overflow: hidden;
         transition: 0.6s;
         background-color: #D3D3D3;
         box-shadow:  -1px 0 1px rgba(0,0,0,0.11), 
@@ -251,7 +252,7 @@
       }
       
       #preview {
-        display: none;
+        visibility: none;
         width: 500px;
       }
       
@@ -321,7 +322,7 @@
 
        #hide {
          left: 5px;
-         top: 50%;
+         top: 40%;
        }
 
        #stack {
@@ -629,7 +630,7 @@
     function Draw() {
       section.style.width = "70%";
       backdrop.style.visibility = "visible";
-      preview.style.display = "block";
+      preview.style.visibility = "visible";
       drawer.addEventListener('click', Close, {once:true});
     }
     
@@ -637,7 +638,7 @@
       screen = window.innerWidth;
       section.style.width =  screen <= 800 ? "0" : "30%";
       backdrop.style.visibility = "hidden";
-      preview.style.display = "none";
+      preview.style.visibility = "hidden";
       mainleft.style.width = "95%";
       nav.style.display = "block";
       drawer.addEventListener('click', Draw, {once:true});
@@ -646,7 +647,8 @@
     function shift() {
       section.style.width = "55%";
       nav.style.display = "none";
-      preview.style.display = "none";
+      backdrop.style.visibility = "hidden";
+      preview.style.visibility = "hidden";
       mainleft.style.width = "60%";
       stack.addEventListener('click', still, {once:true});
     }
@@ -655,15 +657,17 @@
       section.style.width = "30%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
-      preview.style.display = "none";
+      preview.style.visibility = "hidden";
       stack.addEventListener('click', shift, {once:true});
       
     }
 
 
     function reRender() {
-      //screen = window.innerWidth;
-      //location.reload();
+      screen = window.innerWidth;
+      section.style.width =  screen <= 800 ? "0" : "30%";
+      backdrop.style.visibility = "hidden";
+      preview.style.visibility = "hidden";
     }
     
     
