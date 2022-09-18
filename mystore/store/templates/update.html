@@ -3,6 +3,22 @@
    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+    
+     @keyframes uploadAnime {
+       0%   {
+         opacity: 1;
+         top: 0;
+       }
+       50%  {
+         opacity: 0.5;
+         top: 50px;
+       }
+       100% {
+         opacity: 1;
+         top: 0;
+       }
+   }
+    
      body {
         margin: 0;
         padding: 0;
@@ -10,7 +26,6 @@
       }
       
       main {
-        border: 3px dashed red;
         position: absolute;
         height: 99%;
         width: 99.5%;
@@ -86,6 +101,7 @@
       
       section > h4 {
         text-align: center;
+        margin-bottom: 10px;
       }
       
       section  button {
@@ -102,26 +118,38 @@
       }
       
       article {
-        border: 2px dashed red;
+        border: 2px dashed #91A3B0;
+        background-color: #E5E4E2;
+        border-radius: 5px;
         width: 60%;
         margin: auto;
+        height: 180px;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
       
       article > img {
-        width: 40px;
-        height: 40px;
-        margin: 5px;
+        width: 50px;
+        margin: auto;
+        margin: 10px 5px 5px 5px;
+        position: relative;
+        animation: uploadAnime;
+        animation-duration: 1s;
+        animation-play-state: paused;
       }
       
-      article > h3 {
+      article > span {
+        text-align: center;
+        transition: 0.5s;
+      }
+      
+      article  h3 {
         font-weight: normal;
         margin-bottom: 1px;
       }
       
-      article > p {
+      article  p {
         text-align: center;
         margin-top: 0;
       }
@@ -130,6 +158,33 @@
         color: blue;
       }
       
+      #error {
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-size: 13px;
+        visibility: hidden;
+      }
+      
+     .visually-hidden {
+        position: absolute !important;
+        background-color: red;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    input.visually-hidden:is(:focus, :focus-within) + label {
+       outline: thin dotted;
+    }
+    
+    #browse {
+      color: blue;
+      text-decoration: underline;
+      pointer-events: cursor;
+    }
+
       
       
     </style>
@@ -155,7 +210,7 @@
     <summary>Guild</summary>
     <ul>
       <li> You can only upload and process one file at a time.</li>
-      <li>Only excel and csv file format can be process.</li>
+      <li>Only .xlsx and .csv file format can be process.</li>
       <li>Your data describing your items can contain a barcode, name, category, sub-category, color, size, description, quantity, price and sold column. And all the column name must be spelled as they appear here.</li>
       <li>Your data describing your items must contain a barcode, name, category, quantity and price column.</li>
      </ul>
@@ -165,15 +220,27 @@
     
     <section>
       <h4>UPLOAD FILE</h4>
-      
+      <p id="error"> error: invalid file type or file is too big  </p>
       <article>
-      <img src="mystore~2.jpg"/>
+      <img src="upload.png"/>
+      <span>
       <h3> Drag & Drop </h3>
-      <p>your files here or browse to upload</p>
+      
+      <p>
+      your files here or 
+     <input
+     type="file"
+     id="fileElem"
+     accept=".csv, .xlsx"
+     class="visually-hidden" />
+    <label id="browse" for="fileElem">browse</label>
+      to upload
+      </p>
       <p id="warn">Only one file can be upload and process at a time</p>
+      </span>
       </article>
      
-     <p><button>Process</button></p>
+     <p><button id="process">Process</button></p>
     </section>
     
     </div>
@@ -184,6 +251,46 @@
   </main>
   
   
+<script>
+
+  const button = document.querySelector('#process');
+  const article = document.querySelector('article');
+  const error = document.querySelector('#error');
+  const fileElem = document.querySelector('#fileElem');
+  
+  button.addEventListener('click', process);
+  
+  
+  const fileType = ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv"]
+  
+  
+  function process() {
+    let fileList = fileElem.files;
+    let file = fileList[0];
+    if (!fileType.includes(file.type)) {
+       error.style.visibility = "visible";
+    } else console.log(file.name);
+  }
+  
+  
+  function upload() {
+     let childNodes = article.children;
+     let img = childNodes[0];
+     let span = childNodes[1];
+     span.style.display = "none";
+     img.style.animationPlayState = "running";
+     
+     img.addEventListener("animationend", (e) => {
+       let elem = e.target;
+       span.style.display = "inline";
+       elem.style.animation = "none";
+       elem.offsetWidth;
+       elem.style.animation = null;
+       
+     }, {once:true});
+  }
+    
+</script>
 
 
 
