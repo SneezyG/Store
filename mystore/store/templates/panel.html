@@ -252,7 +252,7 @@
       }
       
       #preview {
-        visibility: none;
+        visibility: hidden;
         width: 500px;
       }
       
@@ -308,6 +308,8 @@
 
        #preview { 
          width: 400px;
+         position: relative;
+         right: 30px;
        }
 
        #preview button {
@@ -343,11 +345,6 @@
         margin: 20px 30px 0 30px;
        }
 
-       #preview {
-         position: relative;
-         right: 30px;
-       }
-       
        
    }
       
@@ -657,6 +654,7 @@
       section.style.width = "30%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
+      backdrop.style.visibility = "hidden";
       preview.style.visibility = "hidden";
       stack.addEventListener('click', shift, {once:true});
       

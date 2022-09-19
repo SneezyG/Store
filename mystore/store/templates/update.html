@@ -4,21 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     
-     @keyframes uploadAnime {
-       0%   {
-         opacity: 1;
-         top: 0;
-       }
-       50%  {
-         opacity: 0.5;
-         top: 50px;
-       }
-       100% {
-         opacity: 1;
-         top: 0;
-       }
-   }
-    
+
      body {
         margin: 0;
         padding: 0;
@@ -111,6 +97,7 @@
          font-weight: bold;
          color: white;
          background-color: #00A693;
+         cursor: pointer;
       }
       section > p {
         text-align: center;
@@ -123,7 +110,7 @@
         border-radius: 5px;
         width: 60%;
         margin: auto;
-        height: 180px;
+        height: 240px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -132,11 +119,14 @@
       article > img {
         width: 50px;
         margin: auto;
-        margin: 10px 5px 5px 5px;
+        margin: 5px;
         position: relative;
-        animation: uploadAnime;
-        animation-duration: 1s;
-        animation-play-state: paused;
+        transition: 1s;
+      }
+      
+      #filename {
+        color: green;
+        visibility: hidden;
       }
       
       article > span {
@@ -182,8 +172,33 @@
     #browse {
       color: blue;
       text-decoration: underline;
-      pointer-events: cursor;
+      cursor: pointer;
     }
+    
+    
+@media only screen and (max-width: 800px) { 
+  
+      article {
+        width: 75%;
+      }
+      
+      summary {
+        font-size: 16px;
+      }
+      
+      section > h4 {
+        font-size: 15px;
+      }
+      
+      article  h3 {
+        font-size: 16px;
+      }
+      
+      article p {
+        font-size: 14px;
+      }
+  
+}
 
       
       
@@ -222,6 +237,7 @@
       <h4>UPLOAD FILE</h4>
       <p id="error"> error: invalid file type or file is too big  </p>
       <article>
+      <span id="filename">constant.csv</span>
       <img src="upload.png"/>
       <span>
       <h3> Drag & Drop </h3>
@@ -236,7 +252,7 @@
     <label id="browse" for="fileElem">browse</label>
       to upload
       </p>
-      <p id="warn">Only one file can be upload and process at a time</p>
+      <p id="warn">Only one file can be process at a time and max file size is 3mb</p>
       </span>
       </article>
      
@@ -246,49 +262,145 @@
     </div>
     
     </div>
-    
-
+  
   </main>
   
+
   
 <script>
 
   const button = document.querySelector('#process');
-  const article = document.querySelector('article');
+  const dropbox = document.querySelector('article');
   const error = document.querySelector('#error');
   const fileElem = document.querySelector('#fileElem');
+  const browse = document.querySelector('#browse');
+  const filename = document.querySelector('#filename');
   
+
+  
+
+  fileElem.addEventListener('change', checkmate);
+ 
   button.addEventListener('click', process);
+  dropbox.addEventListener("dragenter", dragenter, false);
+  dropbox.addEventListener("dragleave", dragleave, false);
+  dropbox.addEventListener("dragover", dragover, false);
+  dropbox.addEventListener("drop", drop, false);
+  browse.addEventListener('click', () => {
+    filename.style.visibility = "hidden";
+    error.style.visibility = "hidden";
+  });
+ 
   
   
-  const fileType = ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv"]
+  
+  const fileType = ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv"];
+  const maxSize = 3 * 1048576;
   
   
+ 
   function process() {
     let fileList = fileElem.files;
+    
+    if (fileList.length > 1) {
+      error.innerHTML = "error: too many files";
+      error.style.visibility = "visible";
+      return;
+    }
+    
     let file = fileList[0];
-    if (!fileType.includes(file.type)) {
-       error.style.visibility = "visible";
-    } else console.log(file.name);
+    if (file) {
+      if (!fileType.includes(file.type)) {
+        error.innerHTML = "error: unsupported file format";
+        error.style.visibility = "visible";
+      } 
+      else if (file.size >= maxSize) {
+        error.innerHTML = "error: file is too large, max is 3mb";
+        error.style.visibility = "visible";
+      }
+      else {
+         alert("processing file");
+      }
+    } 
+    
+    else {
+      error.innerHTML = "error: no file was selected ";
+      error.style.visibility = "visible";
+    }
+}
+  
+ 
+  
+  function dragenter(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    error.style.visibility = "hidden";
+    filename.style.visibility = "hidden";
+    
+    let childNodes = dropbox.children;
+    let img = childNodes[1];
+    let span = childNodes[2];
+    img.style.opacity = 0.6;
+    span.style.opacity = 0.6;
+    img.style.marginTop = "20px";
   }
   
   
-  function upload() {
-     let childNodes = article.children;
-     let img = childNodes[0];
-     let span = childNodes[1];
-     span.style.display = "none";
-     img.style.animationPlayState = "running";
-     
-     img.addEventListener("animationend", (e) => {
-       let elem = e.target;
-       span.style.display = "inline";
-       elem.style.animation = "none";
-       elem.offsetWidth;
-       elem.style.animation = null;
-       
-     }, {once:true});
+  function dragleave(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    let childNodes = dropbox.children;
+    let img = childNodes[1];
+    let span = childNodes[2];
+    img.style.opacity = 1;
+    span.style.opacity = 1;
+    img.style.marginTop = 0;
   }
+  
+  
+  
+  function drop(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    let childNodes = dropbox.children;
+    let img = childNodes[1];
+    let span = childNodes[2];
+    img.style.marginTop = 0;
+    img.style.opacity = 1;
+    span.style.opacity = 1;
+    
+    const dt = e.dataTransfer;
+    fileElem.files = dt.files;
+    checkmate();
+  }
+
+
+  function dragover(e) {
+    e.stopPropagation();
+    e.preventDefault(); 
+    /*
+    let childNodes = dropbox.children;
+    let img = childNodes[1];
+    img.style.marginTop = "20px";
+    dropbox.style.opacity = 0.5; 
+    */
+  }
+
+
+  function checkmate() {
+    let fileList = fileElem.files;
+    if (fileList.length > 1) {
+      error.innerHTML = "error: too many files";
+      error.style.visibility = "visible";
+      return;
+   }
+   let file = fileList[0];
+   filename.innerHTML = file.name;
+   filename.style.visibility = "visible";
+  }
+  
     
 </script>
 
