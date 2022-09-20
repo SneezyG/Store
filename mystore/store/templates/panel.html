@@ -75,7 +75,7 @@
         top: 0;
         border-left: none;
         overflow: hidden;
-        transition: 0.6s;
+        transition: 0.4s;
         background-color: #D3D3D3;
         box-shadow:  -1px 0 1px rgba(0,0,0,0.11), 
                -2px 0 2px rgba(0,0,0,0.11), 
@@ -270,12 +270,20 @@
     
       
       #preview button {
-        background-color: green;
         color: white;
-        font-size: 15px;
+        font-size: 13px;
         border: none;
         padding: 10px;
         cursor: pointer;
+        width: 80px;
+      }
+
+      #process {
+        background-color: green;
+      }
+
+      #cancel {
+        background-color: red;
       }
       
       #first {
@@ -302,12 +310,9 @@
    
    @media only screen and (max-width: 800px) { 
        
-       section {
-         transition: 0.4s;
-       }
 
        #preview { 
-         width: 400px;
+         width: 300px;
          position: relative;
          right: 30px;
        }
@@ -408,7 +413,8 @@
     <ul id="preview">
       <li>Total goods: <span>60</span></li>
       <li>Total price: <span>$12,000</span></li>
-       <li><button>process transaction</button></li>
+       <li><button id="process">process</button></li>
+       <li><button id="cancel">cancel</button></li>
     </ul>
     
   
@@ -613,6 +619,7 @@
     const hint = document.querySelector("#hint")
     const preview = document.querySelector("#preview");
     const remove = document.querySelectorAll('article > span');
+    const contain = document.querySelector('#contain');
     
     drawer.addEventListener('click', Draw, {once:true});
     stack.addEventListener('click', shift, {once:true});
@@ -629,6 +636,12 @@
       backdrop.style.visibility = "visible";
       preview.style.visibility = "visible";
       drawer.addEventListener('click', Close, {once:true});
+      contain.style.visibility = "hidden";
+
+      setTimeout(() => {
+      contain.style.visibility = "visible";
+      }, 400)
+
     }
     
     function Close() {
@@ -639,6 +652,12 @@
       mainleft.style.width = "95%";
       nav.style.display = "block";
       drawer.addEventListener('click', Draw, {once:true});
+      contain.style.visibility = "hidden";
+
+      setTimeout(() => {
+      contain.style.visibility = "visible";
+      }, 400)
+
     }
     
     function shift() {
@@ -648,6 +667,12 @@
       preview.style.visibility = "hidden";
       mainleft.style.width = "60%";
       stack.addEventListener('click', still, {once:true});
+      contain.style.visibility = "hidden";
+
+      setTimeout(() => {
+      contain.style.visibility = "visible";
+      }, 400)
+
     }
     
     function still() {
@@ -657,6 +682,11 @@
       backdrop.style.visibility = "hidden";
       preview.style.visibility = "hidden";
       stack.addEventListener('click', shift, {once:true});
+      contain.style.visibility = "hidden";
+
+      setTimeout(() => {
+      contain.style.visibility = "visible";
+      }, 400)
       
     }
 
@@ -664,8 +694,16 @@
     function reRender() {
       screen = window.innerWidth;
       section.style.width =  screen <= 800 ? "0" : "30%";
+      nav.style.display = "block";
+      mainleft.style.width = "95%";
       backdrop.style.visibility = "hidden";
       preview.style.visibility = "hidden";
+      contain.style.visibility = "hidden";
+
+      setTimeout(() => {
+        contain.style.visibility = "visible";
+      }, 400)
+
     }
     
     
