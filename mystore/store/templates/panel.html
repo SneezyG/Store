@@ -29,14 +29,14 @@
      </ul>
     </div>
     
-    <form id="utility">
+    <div id="utility">
       
     <h4> look up product with </h4>
     
      <img src="mystore~2.jpg" /> 
      
-    <input placeholder="Enter barcode" autofocus>
-    <span><button>look up</button></span>
+    <input id="input" placeholder="Enter barcode" autofocus>
+    <span><button id="look">look up</button></span>
   
     <dl id="hint">
       <dt> <h4>Hint :</h4> </dt>
@@ -45,7 +45,7 @@
       </dl>
       
    
-    </form>
+    </div>
     
   </div>
   </main>
@@ -250,6 +250,38 @@
       </article>
       </div>
   </section>
+  
+  
+  
+  <dialog id="item" >
+  
+  <img src="mystore~2.jpg" /> 
+  
+  <div>
+  <form method="dialog">
+  <button id="add">Add item</button> 
+  </form>
+ 
+  <div id="info">
+  <p>Name: <span class="data">st-ives</span></p>
+  <p>
+    <span class="first"> Price: <span class="data"><b>$200</b></span></span>
+    <span>Available: <span class="data"><b>20</b></span></span>
+  </p>
+  <p>Quantity:
+  <span><input id="quantity" type="number" value=1 autofocus></span>
+  </p>
+  <p>
+    <span class="first">Size: <span class="data">none</span></span>
+    <span>Colour: <span class="data">white</span></span>
+  </p>
+  <p>Category: <span class="data">beauty</span></p>
+  <p>Sub_catg: <span class="data">skin care</span></p>
+  <p>Description: <span class="data">st-ives nourishing body cream<span></p>
+  </div>
+  </div>
+  
+  </dialog>
   
  
   

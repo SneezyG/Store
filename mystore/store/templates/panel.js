@@ -1,7 +1,7 @@
 
 
-
-const section = document.querySelector('section');
+  // get the necessary dom elements.
+    const section = document.querySelector('section');
     const drawer = document.querySelector('#hide');
     const backdrop = document.querySelector('#backdrop');
     const stack = document.querySelector('#stack');
@@ -11,9 +11,19 @@ const section = document.querySelector('section');
     const preview = document.querySelector("#preview");
     const remove = document.querySelectorAll('article > span');
     const contain = document.querySelector('#contain');
+    const input = document.querySelector('#input');
+    const look = document.querySelector('#look');
+    const item = document.querySelector('#item');
+    const add = document.querySelector('#add');
     
+    
+
+  
+  //attached event listenner to dom elements to kick start some dom manipulation.
     drawer.addEventListener('click', Draw, {once:true});
     stack.addEventListener('click', shift, {once:true});
+    look.addEventListener('click', lookup);
+    add.addEventListener('click', addItem)
     window.onresize = reRender;
 
     for (let elem of remove) {
@@ -96,4 +106,94 @@ const section = document.querySelector('section');
       }, 400)
 
     }
+    
+    
+    
+//new
+function lookup() {
+  // alert('looking');
+  item.showModal()
+}
+
+function addItem() {
+  console.log("working");
+  const quantity = document.querySelector('#quantity');
+  alert(quantity.value)
+}
+
+
+
+
+const data = {
+  'glycerin': {
+    'available': 'yes',
+    'name': 'eden',
+    'category': 'beauty',
+    'sub_catg': 'skin care',
+    'colour': 'colourless',
+    'size': '200ltrs',
+    'description': 'skin beautifing liquid',
+    'quantity': 1,
+    'price': 200,
+    'mugshot': 'glycerin.jpg'
+  },
+  
+  'mifi': {
+    'available': 'no',
+    'name': 'airtel mifi',
+    'category': 'gadget',
+    'sub_catg': 'router',
+    'colour': 'red',
+    'size': 'none',
+    'description': 'airtel 4g mifi router',
+    'quantity': 1,
+    'price': 1000,
+    'mugshot': 'mifi.jpg'
+  },
+  
+  'jumpo': {
+    'available': 'yes',
+    'name': 'jumpo-ori',
+    'category': 'beauty',
+    'sub_catg': 'skin care',
+    'colour': 'black',
+    'size': 'big',
+    'description': 'jumpo-ori black soap',
+    'quantity': 1,
+    'price': 100,
+    'mugshot': 'jumpo_ori.jpg'
+  },
+  
+  'saint': {
+    'available': 'yes',
+    'name': 'st-ives',
+    'category': 'beauty',
+    'sub_catg': 'skin care',
+    'colour': 'white',
+    'size': 'big',
+    'description': 'st-ives nourishing body cream',
+    'quantity': 1,
+    'price': 500,
+    'mugshot': 'st_ives.jpg'
+  },
+  
+  'treat': {
+    'available': 'yes',
+    'name': 'body treat',
+    'category': 'beauty',
+    'sub_catg': 'skin care',
+    'colour': 'white',
+    'size': 'small',
+    'description': 'bodytreat exfoliating body cream',
+    'quantity': 1,
+    'price': 500,
+    'mugshot': 'st_ives.jpg'
+  }
+  
+};
+
+
+
+
+
     

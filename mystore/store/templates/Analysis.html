@@ -16,7 +16,7 @@
      
       body > img {
         margin: 30px;
-        width: 30px;
+        width: 40px;
         position: fixed;
       }
       
@@ -31,32 +31,37 @@
       #header header {
         border: 1px solid red;
         border-radius: 10px;
-        width: 30%;
+        font-size: 14px;
+        width: 35%;
         margin: auto;
         padding: 7px;
         height: 20px;
       }
       
       #header details {
-        width: 70%;
+        width: 80%;
         margin: auto;
         padding-top: 3px;
       }
       
       #header summary {
         text-align: center;
+        cursor: pointer;
       }
       
       #header ul {
         background-color: #D3D3D3;
         list-style: none;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border-radius: 5px;
+        width: 60%;
+        margin: auto;
+        margin-top: 10px;
+        padding: 0;
       }
       
       #header li {
-        margin: 7px 7px 10px 7px;
+        padding: 7px 7px 10px 20px;
+        cursor: pointer;
+        border: 1px solid whitesmoke;
       }
       
       #right {
@@ -64,15 +69,20 @@
         position: absolute;
         right: 5px;
         top: -10px;
+        overflow: scroll;
+      }
+
+      #right::-webkit-scrollbar {
+           display: none;
       }
       
       #left {
         width: 83%;
-        position: relative;
+        position: absolute;
         padding: 0;
       }
-     
-     
+
+    
       #nav {
          width: 17%;
          position: fixed;
@@ -81,13 +91,13 @@
          height: 140px;
          padding: 0;
          margin: 0;
-         padding-top: 60px;
+         padding: 60px 0 30px 0;
          margin-top: 60px;
       }
       
       #nav li {
         position: relative;
-        font-size: 10px;
+        font-size: 14px;
         color: white;
         width: 60%;
         padding: 5px;
@@ -95,15 +105,16 @@
         margin-bottom: 15px;
         background-color: red;
         text-align: center;
+        cursor: pointer;
       }
       
       #content {
-        margin-top: 80px;
+        margin-top: 100px;
         width: 100%;
         position: relative;
         overflow-x: hidden;
         overflow-y: scroll;
-        height: 90%;
+        height: 85%;
       }
       
       #content::-webkit-scrollbar {
@@ -127,14 +138,16 @@
       
       #chart summary {
         padding: 10px;
+        margin-bottom: 1px;
         border-bottom: 1px solid red;
         border-radius: 10px;
         padding-left: 30px;
-        font-size: 18px;
+        font-size: 15px;
+        cursor: pointer;
       }
       
       summary > span {
-        margin-right: 20px;
+        margin-right: 40px;
         float: right;
       }
       
@@ -147,21 +160,24 @@
         width: 70%;
         margin: auto;
         padding: 5px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         border-radius: 10px;
       }
       
       article > p {
         text-align: center;
+        margin: 12px;
+        font-size: 14px;
       }
       article > h6 {
         text-align: center;
-        font-size: 18px;
+        font-size: 14px;
         margin: 5px;
       }
       
       section > p {
         text-align: center;
+        font-size: 14px;
       }
       
       
@@ -172,6 +188,14 @@
        width: 45%;
        font-size: 13px;
        padding: 5px;
+     }
+
+     #header ul {
+       width: 70%;
+     }
+
+     #content {
+       margin-top: 80px;
      }
      
      #header details {
@@ -197,6 +221,7 @@
      
      article > h6 {
        font-size: 12px;
+       margin: 7px;
      }
      
      article > p {
@@ -214,11 +239,12 @@
      
      #nav li {
        width: 70%;
+       font-size: 12px;
      }
      
      #chart summary {
-       font-size: 15px;
-       padding: 7px;
+       font-size: 13px;
+       padding: 5px;
        padding-left: 30px;
      }
      
