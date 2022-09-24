@@ -8,16 +8,12 @@
         padding: 0;
         background-color: #F5F5F5;
         position: absolute;
-        height: 100%;
         width: 100%;
         overflow: hidden;
+        height: 100%;
       }
       
-   body::-webkit-scrollbar {
-           display: none;
-      }
      
-      
       body > img {
         margin: 30px;
         width: 30px;
@@ -47,6 +43,10 @@
         padding-top: 3px;
       }
       
+      #header summary {
+        text-align: center;
+      }
+      
       #header ul {
         background-color: #D3D3D3;
         list-style: none;
@@ -60,60 +60,60 @@
       }
       
       #right {
-        width: 25%;
-        height: 100%;
+        width: 15%;
         position: absolute;
         right: 5px;
         top: -10px;
       }
       
       #left {
-        width: 77%;
-        position: absolute;
-        height: 100%;
-        overflow: scroll;
+        width: 83%;
+        position: relative;
+        padding: 0;
       }
-      
+     
+     
       #nav {
-        width: 15%;
-        height: 180px;
-        position: fixed;
-        margin-top: 50px;
-        
-      }
-      
-      #nav > ul {
-         width: 70%;
+         width: 17%;
+         position: fixed;
          border-right: 3px dashed red;
          list-style: none;
-         height: 200px;
+         height: 140px;
+         padding: 0;
+         margin: 0;
          padding-top: 60px;
+         margin-top: 60px;
       }
       
       #nav li {
         position: relative;
-        right: 30px;
         font-size: 10px;
         color: white;
-        width: 90%;
-        margin-bottom: 15px;
+        width: 60%;
         padding: 5px;
+        margin: auto;
+        margin-bottom: 15px;
         background-color: red;
         text-align: center;
       }
       
       #content {
-        margin-top: 100px;
+        margin-top: 80px;
         width: 100%;
-        height: 80%;
-        position: absolute;
-        overflow: hidden;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 90%;
+      }
+      
+      #content::-webkit-scrollbar {
+           display: none;
       }
       
       #chart {
-        width: 70%;
+        width: 75%;
         position: absolute;
-        right: 50px;
+        right: 5px;
         top: 30px;
       }
       
@@ -134,7 +134,8 @@
       }
       
       summary > span {
-        margin-left: 30px;
+        margin-right: 20px;
+        float: right;
       }
       
       #graph {
@@ -143,7 +144,7 @@
       
       article {
         background-color: #D3D3D3;
-        width: 50%;
+        width: 70%;
         margin: auto;
         padding: 5px;
         margin-bottom: 10px;
@@ -168,8 +169,13 @@
 @media only screen and (max-width: 800px) { 
   
      #header header {
-       width: 55%;
+       width: 45%;
        font-size: 13px;
+       padding: 5px;
+     }
+     
+     #header details {
+       width: 90%;
      }
      
      section > p {
@@ -177,8 +183,11 @@
      }
      
      #right {
-       width: 15%;
        padding: 5px;
+     }
+     
+     #left {
+       width: 80%;
      }
      
      article {
@@ -194,20 +203,27 @@
        font-size: 11px;
      }
      
-     #left {
-       width: 85%;
-     }
      
      #chart {
-       right: 17px;
+      width: 70%;
+     }
+     
+     #nav {
+       width: 20%;
      }
      
      #nav li {
-       width: 100%;
+       width: 70%;
      }
      
      #chart summary {
        font-size: 15px;
+       padding: 7px;
+       padding-left: 30px;
+     }
+     
+     summary > span {
+       display: none;
      }
      
      
@@ -243,13 +259,13 @@
     
     <section id="left">  
      
-    <div id="nav">
-    <ul>
+    
+    <ul id="nav">
        <li>Item Lookup</li>
        <li>Update Catalog</li>
        <li>Sale Analysis</li>
      </ul>
-    </div>
+    
     
      <div id="chart">
       <details open>
