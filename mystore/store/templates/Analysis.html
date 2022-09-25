@@ -7,25 +7,27 @@
         margin: 0;
         padding: 0;
         background-color: #F5F5F5;
-        position: absolute;
-        width: 100%;
-        overflow: hidden;
-        height: 100%;
+        position: relative;
       }
-      
+    /*  
+    #right::-webkit-scrollbar {
+           display: none;
+      }
+    */ 
      
       body > img {
-        margin: 30px;
+        margin: 60px 30px 30px 30px;
         width: 40px;
         position: fixed;
+         z-index: 2;
       }
       
       #header {
         position: fixed;
         width: 100%;
-        top: 20px;
-        padding: 5px;
+        padding: 20px 5px 20px 5px;
         z-index: 1;
+        background-color: #F5F5F5;
       }
       
       #header header {
@@ -66,20 +68,18 @@
       
       #right {
         width: 15%;
-        position: absolute;
+        position: fixed;
+        position: fixed;
         right: 5px;
-        top: -10px;
-        overflow: scroll;
-      }
-
-      #right::-webkit-scrollbar {
-           display: none;
+        top: 40px;
+        z-index: 2;
       }
       
       #left {
         width: 83%;
         position: absolute;
         padding: 0;
+        top: 50px;
       }
 
     
@@ -108,24 +108,12 @@
         cursor: pointer;
       }
       
-      #content {
-        margin-top: 100px;
-        width: 100%;
-        position: relative;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        height: 85%;
-      }
-      
-      #content::-webkit-scrollbar {
-           display: none;
-      }
-      
+
       #chart {
         width: 75%;
         position: absolute;
         right: 5px;
-        top: 30px;
+        top: 40px;
       }
       
       #chart details {
@@ -188,6 +176,11 @@
        width: 45%;
        font-size: 13px;
        padding: 5px;
+     }
+     
+     body > img {
+       margin-left: 20px;
+       width: 30px
      }
 
      #header ul {
@@ -281,7 +274,7 @@
        </header>
      </div>
      
-    <div id="content"> 
+   
     
     <section id="left">  
      
@@ -338,7 +331,7 @@
      </article>
      
      </section>
-     </div>
+     
     
 
 </body>
