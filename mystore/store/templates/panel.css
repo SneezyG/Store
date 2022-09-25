@@ -1,6 +1,19 @@
 
 
-body {
+    @keyframes removeAnime {
+      0%   {
+        opacity: 1;
+      }
+      50%  {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+
+     body {
         margin: 0;
         padding: 0;
         background-color: #F5F5F5;
@@ -207,7 +220,7 @@ body {
       details {
         border: 1px solid red;
         border-radius: 5px;
-        width: 120px;
+        width: 140px;
         overflow: auto;
       }
       
@@ -220,17 +233,22 @@ body {
       
       article ul {
         margin: 0;
-        padding: 0;
+        padding: 10px;
       }
       
       article {
         margin: 10px 40px 40px 0;
+        animation: removeAnime;
+        animation-play-state: paused;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
       }
       
       article li {
         list-style: none;
         font-size: 15px;
-        margin: 5px 0 5px 0;
+        margin: 8px 0 8px 0;
+        padding-left: 8px;
       }
       
       article > img {
@@ -295,11 +313,32 @@ body {
       }
       
    #item {
-     position: absolute;
      width: 350px;
      height: 250px;
-     background-color: white;
-     bottom: 30%;
+   }
+   
+   #not_found {
+     width: 200px;
+     height: 120px;
+   }
+   
+   #not_found  p {
+     text-align: center;
+   }
+   
+   #not_found > form {
+     margin-top: 50px;
+   }
+   
+   #not_found button {
+     font-size: 15px;
+     padding: 5px;
+   }
+   
+   dialog {
+     position: absolute;
+     bottom: 100px;
+     background-color: #F5F5F5;
    }
    
    dialog::backdrop {
@@ -319,6 +358,8 @@ body {
      position: fixed;
      padding: 5px;
      background-color: green;
+     width: 80px;
+     font-size: 15px;
    }
    
    #item > div {
@@ -354,6 +395,7 @@ body {
      font-size: 15px;
      font-weight: bold;
      padding: 5px;
+     background-color: #F5F5F5;
    }
       
     

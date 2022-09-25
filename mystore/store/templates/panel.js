@@ -15,9 +15,37 @@
     const look = document.querySelector('#look');
     const item = document.querySelector('#item');
     const add = document.querySelector('#add');
+    const not_found = document.querySelector('#not_found');
     
     
-
+   // get item-dialog template elements.
+   const name = document.querySelector('#name');
+   const price = document.querySelector('#price');
+   const available = document.querySelector('#available');
+   const quantity = document.querySelector('#quantity');
+   const size = document.querySelector('#size');
+   const colour = document.querySelector('#colour');
+   const category = document.querySelector('#category');
+   const sub_catg = document.querySelector('#sub_catg');
+   const description = document.querySelector('#description');
+   const mugshot = document.querySelector('#mugshot');
+   
+   // create a list out of item-dialog template elements.
+   const item_info = {
+     'name': name, 
+     'price': price, 
+     'available': available, 
+     'size': size, 
+     'colour': colour,
+     'quantity': quantity,
+     'category': category, 
+     'sub_catg': sub_catg, 
+     'description': description,
+     'mugshot': mugshot,
+   };
+   
+  
+  
   
   //attached event listenner to dom elements to kick start some dom manipulation.
     drawer.addEventListener('click', Draw, {once:true});
@@ -25,10 +53,19 @@
     look.addEventListener('click', lookup);
     add.addEventListener('click', addItem)
     window.onresize = reRender;
+    
 
     for (let elem of remove) {
-      elem.addEventListener('click', () => elem.parentElement.remove(), 
-      {once:true});
+      elem.addEventListener('click', drop, {once:true});
+    }
+    
+    
+    
+    function drop(e) {
+      let elem = e.target;
+      let parent = elem.parentElement;
+      parent.style.animationPlayState = "running";
+      parent.addEventListener('animationend', () => parent.remove(), {once:true});
     }
     
    
@@ -110,18 +147,76 @@
     
     
 //new
+
 function lookup() {
-  // alert('looking');
+  let id = input.value;
+  let info = data[id.trim()];
+  if (!info) {
+    not_found.showModal()
+    return;
+  }
+  let keys = Object.keys(item_info);
+  
+  for (let key of keys) {
+    let elem = item_info[key];
+    if (elem.tagName == "IMG") {
+      elem.src = info[key];
+    } else {
+     elem.innerHTML = info[key];
+    }
+  }
   item.showModal()
 }
 
+
 function addItem() {
-  console.log("working");
-  const quantity = document.querySelector('#quantity');
-  alert(quantity.value)
+  let mugshot = item_info['mugshot'].src;
+  let name = item_info['name'].innerHTML;
+  let price = item_info['price'].innerHTML;
+  let quantity = item_info['quantity'].value;
+  let colour = item_info['colour'].innerHTML;
+  let size = item_info['size'].innerHTML;
+  
+
+  // creating items container.
+  let article = document.createElement('article');
+  let details = document.createElement('details');
+  let ul = document.createElement('ul');
+  
+  let summary = document.createElement('summary');
+  summary.innerHTML = name;
+  details.append(summary);
+  
+  let span = document.createElement('span');
+  span.innerHTML = "X";
+  article.append(span);
+  
+  let img = document.createElement('img');
+  img.src = mugshot;
+  article.append(img);
+  
+  let nodes = {
+    'price': price, 
+    'quantity': quantity, 
+    'colour': colour, 
+    'size': size,
+  }
+  
+  let node_key = Object.keys(nodes);
+  for (let key of node_key) {
+    let li = document.createElement('li');
+    li.innerHTML = key + ": " + nodes[key]
+    ul.append(li);
+  }
+  
+  details.append(ul);
+  article.append(details);
+  
+  span.addEventListener('click', drop, {once:true});
+  contain.prepend(article);
+  
+  
 }
-
-
 
 
 const data = {
@@ -191,6 +286,11 @@ const data = {
   }
   
 };
+
+
+
+
+
 
 
 
