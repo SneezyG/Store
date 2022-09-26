@@ -269,14 +269,13 @@
   
   
   <dialog id="item" >
-  
+
+  <form method="dialog">
+    <button id="exit" value="cancel">X</button>
+  </form>
+   
   <img id="mugshot" alt="mugshot" /> 
   
-  <div>
-  <form method="dialog">
-  <button id="add">Add item</button> 
-  </form>
- 
   <div id="info">
   <p>Name: <span class="data" id="name">st-ives</span></p>
   <p>
@@ -294,15 +293,18 @@
   <p>Sub_catg: <span class="data" id="sub_catg">skin care</span></p>
   <p>Description: <span class="data" id="description">st-ives nourishing body cream<span></p>
   </div>
-  </div>
   
+  <form method="dialog">
+    <button id="add" value="cancel">Add item</button>
+  </form>
+
   </dialog>
   
   
   <dialog id="not_found">
   <p> Item not found ! </p>
   <form method="dialog">
-  <p> <button>cancel</button> </p>
+  <p> <button value="cancel">cancel</button> </p>
   </form>
   </dialog>
   

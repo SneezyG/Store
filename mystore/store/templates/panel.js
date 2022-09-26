@@ -215,7 +215,7 @@ function addItem() {
   span.addEventListener('click', drop, {once:true});
   contain.prepend(article);
   
-  
+  item.Modal()
 }
 
 
