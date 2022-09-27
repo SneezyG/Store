@@ -258,7 +258,7 @@
      <div id="header">
        <header>
      <details>
-         <summary><b>SALE REPORT</b> in last 30days </summary>       
+         <summary id="summary"><b>SALE REPORT</b> in last 30days </summary>       
        <ul>
          <li>in last 1 week</li>
          <li>in last 2 weeks</li>
@@ -328,6 +328,15 @@
      </section>
      
     
+<script>
+
+  const menu = document.querySelector('header > details');
+  const summary = document.querySelector('#summary');
+  document.addEventListener('click', (e) => {
+    if (e.target != summary) menu.open=false;
+  });
+  
+</script>
 
 </body>
 </html>
