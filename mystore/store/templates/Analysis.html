@@ -332,7 +332,9 @@
 
   const menu = document.querySelector('header > details');
   const summary = document.querySelector('#summary');
+  
   document.addEventListener('click', (e) => {
+    // hide the menu when u click any part of the document.
     if (e.target != summary) menu.open=false;
   });
   

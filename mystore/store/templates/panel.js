@@ -17,8 +17,9 @@
     const add = document.querySelector('#add');
     const not_found = document.querySelector('#not_found');
     
+   
     
-   // get item-dialog template elements.
+   // get item-dialog elements.
    const name = document.querySelector('#name');
    const price = document.querySelector('#price');
    const available = document.querySelector('#available');
@@ -30,7 +31,9 @@
    const description = document.querySelector('#description');
    const mugshot = document.querySelector('#mugshot');
    
-   // create a list out of item-dialog template elements.
+   
+   
+   // create a list out of item-dialog elements.
    const item_info = {
      'name': name, 
      'price': price, 
@@ -47,13 +50,14 @@
   
   
   
-  //attached event listenner to dom elements to kick start some dom manipulation.
+  /*
+  attached event listenner to dom elements to kick start some dom manipulation and application processes.
+  */
     drawer.addEventListener('click', Draw, {once:true});
     stack.addEventListener('click', shift, {once:true});
     look.addEventListener('click', lookup);
     add.addEventListener('click', addItem)
     window.onresize = reRender;
-    
 
     for (let elem of remove) {
       elem.addEventListener('click', drop, {once:true});
@@ -62,6 +66,7 @@
     
     
     function drop(e) {
+      // remove an item article.
       let elem = e.target;
       let parent = elem.parentElement;
       parent.style.animationPlayState = "running";
@@ -69,7 +74,9 @@
     }
     
    
+   
     function Draw() {
+      // draw out the hidden side section.
       section.style.width = "70%";
       backdrop.style.visibility = "visible";
       preview.style.visibility = "visible";
@@ -82,7 +89,10 @@
 
     }
     
+    
+    
     function Close() {
+      // close back the hidden side section
       screen = window.innerWidth;
       section.style.width =  screen <= 800 ? "0" : "30%";
       backdrop.style.visibility = "hidden";
@@ -98,7 +108,10 @@
 
     }
     
+    
+    
     function shift() {
+      // shift the interface to a focus mode.
       section.style.width = "55%";
       nav.style.display = "none";
       backdrop.style.visibility = "hidden";
@@ -113,7 +126,10 @@
 
     }
     
+    
+    
     function still() {
+      // remove focus mode.
       section.style.width = "30%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
@@ -129,7 +145,9 @@
     }
 
 
+
     function reRender() {
+      // reRender some dom content on resize event.
       screen = window.innerWidth;
       section.style.width =  screen <= 800 ? "0" : "30%";
       nav.style.display = "block";
@@ -149,6 +167,7 @@
 //new
 
 function lookup() {
+  // look up item, display error/details dialog.
   let id = input.value;
   let info = data[id.trim()];
   if (!info) {
@@ -170,6 +189,7 @@ function lookup() {
 
 
 function addItem() {
+  // add item to transaction desk.
   let mugshot = item_info['mugshot'].src;
   let name = item_info['name'].innerHTML;
   let price = item_info['price'].innerHTML;

@@ -1,6 +1,7 @@
 
 
     @keyframes removeAnime {
+    /* animation when added items are removed */
       0%   {
         opacity: 1;
       }
