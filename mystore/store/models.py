@@ -25,7 +25,8 @@ class Item(models.Model):
    size = models.CharField(max_length=7)
    description = models.TextField()
    quantity = models.IntegerField()
-   price = models.CharField(max_length=50, verbose_name='price($)')
+   cost_price = models.CharField(max_length=50, verbose_name='cost price($)')
+   selling_price = models.CharField(max_length=50, verbose_name='selling price($)')
    sold = models.IntegerField(null=True, blank=True)
    mugshot = models.ImageField(upload_to=path, null=True, blank=True)
    
