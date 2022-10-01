@@ -160,6 +160,7 @@
         text-align: center;
         font-size: 14px;
         margin: 5px;
+        opacity: 0.8;
       }
       
       section > p {
@@ -338,10 +339,12 @@
 
   const menu = document.querySelector('header > details');
   const summary = document.querySelector('#summary');
+  const bold = document.querySelector('#summary > b');
   
   document.addEventListener('click', (e) => {
     // hide the menu when u click any part of the document.
-    if (e.target != summary) menu.open=false;
+    let elem = e.target;
+    if (elem != summary && elem != bold) menu.open=false;
   });
   
 </script>
