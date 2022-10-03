@@ -79,7 +79,7 @@
       // draw out the hidden side section.
       section.style.width = "70%";
       backdrop.style.visibility = "visible";
-      preview.style.visibility = "visible";
+      preview.style.display = "block";
       drawer.addEventListener('click', Close, {once:true});
       contain.style.visibility = "hidden";
 
@@ -96,7 +96,7 @@
       screen = window.innerWidth;
       section.style.width =  screen <= 800 ? "0" : "30%";
       backdrop.style.visibility = "hidden";
-      preview.style.visibility = "hidden";
+      preview.style.display = "none";
       mainleft.style.width = "95%";
       nav.style.display = "block";
       drawer.addEventListener('click', Draw, {once:true});
@@ -115,7 +115,7 @@
       section.style.width = "55%";
       nav.style.display = "none";
       backdrop.style.visibility = "hidden";
-      preview.style.visibility = "hidden";
+      preview.style.display = "none";
       mainleft.style.width = "60%";
       stack.addEventListener('click', still, {once:true});
       contain.style.visibility = "hidden";
@@ -134,7 +134,7 @@
       nav.style.display = "block";
       mainleft.style.width = "95%";
       backdrop.style.visibility = "hidden";
-      preview.style.visibility = "hidden";
+      preview.style.display = "none";
       stack.addEventListener('click', shift, {once:true});
       contain.style.visibility = "hidden";
 
@@ -153,7 +153,7 @@
       nav.style.display = "block";
       mainleft.style.width = "95%";
       backdrop.style.visibility = "hidden";
-      preview.style.visibility = "hidden";
+      preview.style.display = "none";
       contain.style.visibility = "hidden";
 
       setTimeout(() => {

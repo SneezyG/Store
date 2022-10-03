@@ -12,7 +12,10 @@
         opacity: 0;
       }
     }
-
+     
+    ::-webkit-scrollbar {
+      width: 11px;
+    }
 
      body {
         margin: 0;
@@ -25,13 +28,14 @@
       }
       
       header {
-        width: 100px;
-        border: 1px solid red;
+        width: 150px;
+        border: 2px solid rgb(179, 90, 7);
         margin: auto;
         margin-top: 20px;
         display: flex;
         border-radius: 10px;
-        padding: 3px 5px 3px 30px;
+        padding: 3px 5px 3px 5px;
+        justify-content: center;
       }
       
       h4 { 
@@ -63,7 +67,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        height: 70%;
+        height: 80%;
         overflow-y: scroll;
         overflow-x: hidden;
         margin-top: 30px;
@@ -114,11 +118,15 @@
         opacity: 0.5;
         width: 20px;
       }
-    
+      
+    #logo {
+      width: 50px;
+      height: 50px;
+      margin: 30px 30px 0 30px;
+    }
 
-     main > img {
-        width: 50px;
-        margin: 30px 30px 0 30px;
+     #logo > img {
+        width: 100%;
         border-radius: 10px;
       }
       
@@ -137,8 +145,8 @@
         width: 30%;
         height: 280px;
         margin: 40px 5px 5px 5px;
-        border-right: 3px dashed red;
-        transition: 0.3s
+        border-right: 3px dashed rgb(204, 101, 4);
+        transition: 0.3s;
       }
       
       #nav > ul {
@@ -149,14 +157,14 @@
       
       #nav li {
         position: relative;
-        right: 30px;
+        right: 20px;
         font-size: 16px;
         cursor: pointer;
         color: white;
         width: 70%;
         margin-bottom: 15px;
         padding: 10px;
-        background-color: orange;
+        background-color: rgb(219, 87, 25);
         text-align: center;
       }
       
@@ -172,6 +180,8 @@
       #utility > h4 {
         position: relative;
         right: 10px;
+        font-weight: bold;
+        color: rgb(179, 90, 7);
       }
       
       
@@ -180,7 +190,9 @@
         margin-top: 25px;
         font-size: 15px;
         padding: 5px;
-        
+        border-radius: 5px;
+        outline-color: rgb(172, 166, 151);
+        border: 1px solid rgb(172, 166, 151);
       }
       
       #mainleft  h4 {
@@ -231,14 +243,14 @@
       }
       
       details {
-        border: 1px solid red;
+        border: 1.8px solid rgb(179, 90, 7);
         border-radius: 5px;
         width: 140px;
         overflow: auto;
       }
       
       summary {
-        border-bottom: 1px solid red;
+        border-bottom: 1px solid rgb(179, 90, 7);
         padding: 5px 10px 5px 10px;
         overflow: auto;
         cursor: pointer;
@@ -283,8 +295,9 @@
       }
       
       #preview {
-        visibility: hidden;
+        display: none;
         width: 500px;
+        transition: 2s;
       }
       
        #preview li {
@@ -297,6 +310,7 @@
       #preview Span {
         font-size: 17px;
         font-weight: bold;
+        opacity: 0.7;
       }
     
       
@@ -304,7 +318,7 @@
         color: white;
         font-size: 13px;
         border: none;
-        padding: 10px;
+        padding: 8px 10px 10px 10px;
         cursor: pointer;
         width: 80px;
         border-radius: 5px;
@@ -319,8 +333,11 @@
       }
       
       #first {
-        font-size: 16px;
-        margin-left: -40px;
+        font-size: 17px;
+        position: relative;
+        right: 40px;
+        color: rgb(219, 87, 25);
+        font-weight: 800;
       }
       
       
@@ -328,7 +345,7 @@
         position: absolute;
         bottom: 50px;
         background-color: #F5F5F5;
-        border: 2px solid red;
+        border: 2px solid rgb(180, 93, 11);
       }
       
       dialog::backdrop {
@@ -461,14 +478,17 @@
        }
 
        #nav li {
-         font-size: 16px;
-         padding: 7px;
+         right: 30px;
+         font-size: 14px;
+         padding: 8px;
        }
 
-       main > img {
+       #logo {
         width: 40px;
+        height: 40px;
         margin: 20px 30px 0 30px;
-       }
+      }
+
 
        #mainleft button {
          cursor: auto;
