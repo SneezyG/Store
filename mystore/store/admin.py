@@ -84,7 +84,7 @@ class ItemAdmin(admin.ModelAdmin):
     }),
     )
     
-  list_display = ('serial_no', 'name', 'category_subcategory', 'price', 'stock', 'sold', 'description')
+  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'description')
   
 
   search_fields = ('name', 'category', 'sub_category', 'description')

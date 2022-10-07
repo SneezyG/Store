@@ -30,6 +30,7 @@ SECRET_KEY = os.getenv('secret')
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_REDIRECT_URL= "/panel"
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
