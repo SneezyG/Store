@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    
+
+     body {
+        margin: 0;
+        padding: 0;
+        background-color: #F5F5F5;
+        position: relative;
+        user-select: none;
+      }
+      
+      
+      body > img {
+        margin: 30px;
+        width: 50px;
+        position: fixed;
+      }
+      
+      #contain {
+        width: 100%;
+        position: relative;
+        top: 130px;
+
+      }
+      
+      #nav {
+        width: 25%;
+        height: 180px;
+        border-right: 3px dashed rgb(180, 93, 11);
+        padding-top: 50px;
+        padding-bottom: 20px;
+        position: fixed;
+      }
+      
+      #nav > ul {
+         width: 100%;
+         list-style: none;
+         padding: 0;
+      }
+      
+      #nav li {
+        position: relative;
+        left: 40px;
+        font-size: 15px;
+        color: white;
+        width: 70%;
+        margin-bottom: 15px;
+        padding: 8px 7px 8px 7px;
+        background-color: rgb(219, 87, 25);
+        text-align: center;
+        cursor: pointer;
+      }
+      
+      #upload {
+        width: 75%;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      
+     details {
+        margin: auto;
+        border: 1px solid rgb(180, 93, 11);
+        width: 80%;
+        border-radius: 10px;
+      }
+      
+      details li {
+        font-size: 15px;
+        margin-bottom: 10px;
+        list-style: square;
+      }
+      
+      summary {
+        padding: 5px;
+        border-bottom: 1px solid rgb(180, 93, 11);
+        border-radius: 10px;
+        padding-left: 30px;
+        margin-bottom: 1px;
+        cursor: pointer;
+      }
+     
+      section {
+        margin-top: 30px;
+      }
+      
+      section > h4 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      section  button {
+         padding: 10px;
+         width: 150px;
+         font-size: 16px;
+         font-weight: bold;
+         color: white;
+         background-color: #00A693;
+         cursor: pointer;
+      }
+      section > p {
+        text-align: center;
+        margin-top: 40px;
+      }
+      
+      #info {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+        color: red;
+        font-size: 13px;
+        visibility: ;
+      }
+      
+      article {
+        border: 2px dashed #91A3B0;
+        background-color: #E5E4E2;
+        border-radius: 5px;
+        width: 60%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+     
+   
+      article > input {
+        width: 70%;
+        padding: 7px;
+        font-size: 15px;
+        border: 1px solid #91A3B0;
+        border-radius: 5px;
+      }
+      
+      #id {
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+      
+      #code {
+        margin-bottom: 30px;
+      }
+      
+      article span {
+        font-weight: bold;
+        opacity: 0.7;
+        font-size: 18px;
+      }
+      
+      p:last-child {
+        font-size: 14px;
+      }
+      
+      
+      
+
+    
+    
+@media only screen and (max-width: 800px) { 
+  
+      article {
+        width: 75%;
+      }
+
+      #nav li {
+        font-size: 12px;
+        left: 10px
+      }
+      
+      section > h4 {
+        font-size: 15px;
+      }
+      
+      summary {
+        font-size: 14px;
+      }
+      
+}
+
+      
+      
+    </style>
+    </head>
+    
+<body>
+  
+  
+  <img src="mystore~2.jpg"/>
+  
+  <div id="contain">
+  
+  <div id="nav">
+    <ul>
+       <li>Item Lookup</li>
+       <li>Update Catalog</li>
+       <li>Sale Analysis</li>
+     </ul>
+    </div>
+    
+  <div id="upload">
+    
+    <details>
+    <summary>Note</summary>
+    <ul>
+      <li>Returned sales will reflect in the sales report(i.e total sales is sales - returned sales).</li>
+    </ul>
+     
+    </details>
+    
+    <section>
+      <h4>ITEM RETURNS</h4>
+      <p id="info"> error: something went wrong, check your input and try again</p>
+      
+      <article>
+      <p>Total no of returned sales: <span>200</span></p>
+      <input id="id" placeholder="Transaction ID" autofocus>
+      <input id="code" placeholder="Item Barcode" autofocus>
+      <p><span>Note: </span>Transaction Id is the same as receipt serial no</p>
+      </article>
+     
+     <p><button id="process">Process</button></p>
+    </section>
+    
+    </div>
+    
+    </div>
+  
+  
+  
+
+  
+<script>
+
+</script>
+
+
+
+
+</body>
+</html>
