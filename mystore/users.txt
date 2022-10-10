@@ -1,10 +1,9 @@
 User and their password for this database application
-admin: che153980
+admin/supervisor: che153980
 First name= Ahmad
 Last name= Gbolahan
+This user is a superuser
 Email = ahmadgbolly97@gmail.com
 
-
-supervisorA: shjs2737&#
 
 attendantA: wyeha272#£

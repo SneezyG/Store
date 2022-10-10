@@ -1,12 +1,9 @@
 
 
 from django.contrib import admin
-from django.contrib.admin.models import LogEntry,DELETION
-from django.utils.html import escape
-from django.urls import reverse
-from django.utils.safestring import mark_safe
+from django.contrib.admin.models import LogEntry
 from .models import Item, Sale, Transaction
-from .form import ItemAdminForm, SaleAdminForm
+from .form import ItemAdminForm
 
 
 # admin interface customization
@@ -54,7 +51,7 @@ class LogEntryAdmin(admin.ModelAdmin):
         return False
 
     def has_delete_permission(self, request, obj=None):
-        return request.user.is_superuser
+        return False
 
     def has_view_permission(self, request, obj=None):
         return request.user.is_superuser
@@ -75,19 +72,19 @@ class ItemAdmin(admin.ModelAdmin):
   fieldsets = (
     (None, {
       'classes': ('extrapretty'),
-      'fields': ('serial_no', 'name')
+      'fields': ('serial_no', 'name', 'cost_price', 'selling_price')
     }),
     
     ('Details', {
       'classes': ('extrapretty'),
-      'fields': ('mugshot', 'category', 'sub_catg', 'description', 'price', 'quantity', 'sold')
+      'fields': ('mugshot', 'category', 'sub_catg', 'description', 'size', 'color', 'quantity', 'sold', 'returned')
     }),
     )
     
-  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'description')
+  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'returned', 'date', 'description')
   
 
-  search_fields = ('name', 'category', 'sub_category', 'description')
+  search_fields = ('serial_no',)
   
       
   def category_subcategory(self, obj):
@@ -115,17 +112,14 @@ class SaleAdmin(admin.ModelAdmin):
     Add some customisation.
     
   """
-  
-  form = SaleAdminForm
-  exclude = ('serial_no',)
 
   date_hierarchy = 'date'
   
-  list_display = ('serial_no', 'name', 'category_subcategory', 'transaction', 'price', 'sold', 'size', 'color', 'date' )
+  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'cost_price', 'selling_price', 'date' )
   
   list_filter = ('date',)
  
-  search_fields = ('name', 'description', 'transaction__serial_no')
+  search_fields = ('transaction__serial_no',)
   
   def category_subcategory(self, obj):
      "return the category and sub_category as a string"
@@ -133,6 +127,24 @@ class SaleAdmin(admin.ModelAdmin):
      return " %s | %s " % (obj.category, obj.sub_catg)
      
   category_subcategory.short_description = 'category | subcategory'
+
+
+
+  def has_add_permission(self, request):
+        return False
+
+  def has_change_permission(self, request, obj=None):
+        return False
+
+  def has_delete_permission(self, request, obj=None):
+        return False
+
+  def has_view_permission(self, request, obj=None):
+        return request.user.is_superuser
+        
+        
+        
+        
  
  
   
@@ -146,8 +158,22 @@ class TransactionAdmin(admin.ModelAdmin):
   
   date_hierarchy = 'date'
 
-  list_display = ('buyer', "attendant", "date")
+  list_display = ('serial_no', 'buyer', 'attendant', 'date')
   
   list_filter = ('date',)
  
-  search_fields = ('buyer', 'seller')
+  search_fields = ('serial_no',)
+  
+  
+  
+  def has_add_permission(self, request):
+        return False
+
+  def has_change_permission(self, request, obj=None):
+        return False
+
+  def has_delete_permission(self, request, obj=None):
+        return False
+
+  def has_view_permission(self, request, obj=None):
+        return request.user.is_superuser

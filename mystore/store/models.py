@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 import uuid
 
 
@@ -12,23 +13,22 @@ class Item(models.Model):
   
    """
    store data of a single item.
-   
-   only sold, sub-catg and mugshot fields are nullable.
-
    """
     
-   serial_no = models.CharField(max_length=30, unique=True)
+   serial_no = models.CharField(max_length=30, unique=True, verbose_name='barcode')
    name = models.CharField(max_length=40)
    category = models.CharField(max_length=7)
-   sub_catg = models.CharField(max_length=7)
-   color = models.CharField(max_length=20)
-   size = models.CharField(max_length=7)
-   description = models.TextField()
+   sub_catg = models.CharField(max_length=7, null=True, blank=True)
+   color = models.CharField(max_length=20, null=True, blank=True)
+   size = models.CharField(max_length=7, null=True, blank=True)
+   description = models.TextField(null=True, blank=True)
    quantity = models.IntegerField()
    cost_price = models.CharField(max_length=50, verbose_name='cost price($)')
    selling_price = models.CharField(max_length=50, verbose_name='selling price($)')
    sold = models.IntegerField(null=True, blank=True)
+   returned = models.IntegerField(null=True, blank=True)
    mugshot = models.ImageField(upload_to=path, null=True, blank=True)
+   date = models.DateTimeField(auto_now=True)
    
    def __str__(self):
     "Returns the item tag name"
@@ -42,10 +42,13 @@ class Item(models.Model):
       sold = self.sold
       if not sold:
         super().save(*args, **kwargs) 
+        return
       if quantity >= sold:
         super().save(*args, **kwargs) 
+        return
         
-      return "sold can't be greater than quantity"
+      text = "sold can't be greater than quantity"
+      raise ValidationError(text)
         
       
    
@@ -56,38 +59,29 @@ class Sale(models.Model):
   """
    store data of a sale.
 
-   every field is required except date which is auto-generated.
+   Every field is required except date which is auto-generated.
 
   """
  
-  serial_no = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="an auto generated uuid4 string for sales ID")
+  serial_no = models.CharField(max_length=30, verbose_name='barcode')
   name = models.CharField(max_length=40)
   category = models.CharField(max_length=50)
-  sub_catg = models.CharField(max_length=7, verbose_name="sub_category")
-  color = models.CharField(max_length=20)
-  size = models.CharField(max_length=5)
+  sub_catg = models.CharField(max_length=50)
   sold = models.IntegerField()
-  price = models.CharField(max_length=50, verbose_name='price($)')
+  cost_price = models.CharField(max_length=50)
+  selling_price = models.CharField(max_length=50)
   transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
   date = models.DateTimeField(auto_now_add=True)
   
   
   def __str__(self):
     "Returns the sale tag"
-    total = self.sold * float(self.price)
-    tag = '%s (total: %s)' % (self.serial_no, total)
+    tag = '%s(sold: %s)' % (self.name, self.sold)
     return tag
 
-  # over ride the save method
-  def save(self, *args, **kwargs):
-     price = self.price
-     try:
-        x = int(price)
-        super().save(*args, **kwargs) 
-     except:
-        return "price field can only be integer or decimal"
   
       
+ 
    
 class Transaction(models.Model):
   
@@ -103,7 +97,7 @@ class Transaction(models.Model):
   
   def __str__(self):
     "Returns the transaction tag"
-    tag = '(buyer: %s), (attendant: %s)' % (self.buyer, self.attendant)
+    tag = '%s(date: %s)' % (self.buyer, self.date)
     return tag
   
  
