@@ -3,14 +3,13 @@
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry
 from .models import Item, Sale, Transaction
-from .form import ItemAdminForm
 
 
 # admin interface customization
 admin.site.empty_value_display = '(None)'
 admin.site.list_per_page = 50
 admin.site.site_header = 'MY STORE'
-admin.site.index_title = " My Store Management"
+admin.site.index_title = "My Store Management"
 admin.site.site_title = "Store Admin"
 
 
@@ -67,8 +66,7 @@ class ItemAdmin(admin.ModelAdmin):
     Add some customization.
     Define stock method that return the amount left for an item object
   """
-  
-  form = ItemAdminForm
+
   fieldsets = (
     (None, {
       'classes': ('extrapretty'),
@@ -77,7 +75,7 @@ class ItemAdmin(admin.ModelAdmin):
     
     ('Details', {
       'classes': ('extrapretty'),
-      'fields': ('mugshot', 'category', 'sub_catg', 'description', 'size', 'color', 'quantity', 'sold', 'returned')
+      'fields': ('mugshot', 'category', 'sub_catg', 'description', 'size', 'color', 'quantity')
     }),
     )
     
@@ -90,16 +88,21 @@ class ItemAdmin(admin.ModelAdmin):
   def category_subcategory(self, obj):
      "return the category and sub_category as a string"
      verbose_name= ' category & subcategory '
-     return " %s | %s " % (obj.category, obj.sub_category)
+     return " %s | %s " % (obj.category, obj.sub_catg)
      
   category_subcategory.short_description = 'category | subcategory'
      
   def stock(self, obj):
      "return amount left for an item object"
+     stock = obj.quantity
+     
+     if obj.returned:
+       stock = stock - obj.returned
+       
      if obj.sold:
-       return obj.quantity - obj.sold
-     else:
-       return obj.quantity
+       stock = stock - obj.sold
+     
+     return stock
        
 
 
