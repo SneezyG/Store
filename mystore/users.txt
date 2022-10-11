@@ -1,5 +1,7 @@
 User and their password for this database application
-admin/supervisor: che153980
+
+
+supervisor: che153980
 First name= Ahmad
 Last name= Gbolahan
 This user is a superuser
