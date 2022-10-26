@@ -15,6 +15,7 @@
     const look = document.querySelector('#look');
     const item = document.querySelector('#item');
     const add = document.querySelector('#add');
+    const exit = document.querySelector('#exit');
     const not_found = document.querySelector('#not_found');
     
    
@@ -25,29 +26,22 @@
    const available = document.querySelector('#available');
    const quantity = document.querySelector('#quantity');
    const size = document.querySelector('#size');
-   const colour = document.querySelector('#colour');
    const category = document.querySelector('#category');
-   const sub_catg = document.querySelector('#sub_catg');
-   const description = document.querySelector('#description');
    const mugshot = document.querySelector('#mugshot');
    
    
    
-   // create a list out of item-dialog elements.
+   // create an Object of item-dialog elements.
    const item_info = {
      'name': name, 
      'price': price, 
      'available': available, 
-     'size': size, 
-     'colour': colour,
+     'size': size,
      'quantity': quantity,
      'category': category, 
-     'sub_catg': sub_catg, 
-     'description': description,
      'mugshot': mugshot,
    };
    
-  
   
   
   /*
@@ -57,6 +51,9 @@
     stack.addEventListener('click', shift, {once:true});
     look.addEventListener('click', lookup);
     add.addEventListener('click', addItem)
+    exit.addEventListener('click', () => {
+      item_info['mugshot'].src = "";
+    });
     window.onresize = reRender;
 
     for (let elem of remove) {
@@ -81,10 +78,12 @@
       backdrop.style.visibility = "visible";
       preview.style.display = "block";
       drawer.addEventListener('click', Close, {once:true});
+      stack.style.pointerEvents = "none";
       contain.style.visibility = "hidden";
 
       setTimeout(() => {
       contain.style.visibility = "visible";
+      contain.style.height = "60%"; 
       }, 400)
 
     }
@@ -93,31 +92,32 @@
     
     function Close() {
       // close back the hidden side section
-      screen = window.innerWidth;
-      section.style.width =  screen <= 800 ? "0" : "30%";
+      let screen = window.innerWidth;
+      section.style.width =  screen <= 800 ? "11%" : "36%";
       backdrop.style.visibility = "hidden";
       preview.style.display = "none";
-      mainleft.style.width = "95%";
-      nav.style.display = "block";
       drawer.addEventListener('click', Draw, {once:true});
+      stack.style.pointerEvents = "auto";
       contain.style.visibility = "hidden";
-
-      setTimeout(() => {
-      contain.style.visibility = "visible";
+      
+     { screen > 800 && setTimeout(() => {
+       contain.style.visibility = "visible";
+       contain.style.height = "80%";
       }, 400)
-
-    }
+     }
+    
+  }
     
     
     
     function shift() {
       // shift the interface to a focus mode.
-      section.style.width = "55%";
+      section.style.width = "57%";
       nav.style.display = "none";
-      backdrop.style.visibility = "hidden";
-      preview.style.display = "none";
+      hint.style.visibility = "hidden";
       mainleft.style.width = "60%";
       stack.addEventListener('click', still, {once:true});
+      drawer.style.pointerEvents = "none";
       contain.style.visibility = "hidden";
 
       setTimeout(() => {
@@ -130,17 +130,19 @@
     
     function still() {
       // remove focus mode.
-      section.style.width = "30%";
-      nav.style.display = "block";
+      section.style.width = "36%";
       mainleft.style.width = "95%";
-      backdrop.style.visibility = "hidden";
-      preview.style.display = "none";
+      nav.style.display = "block";
+      nav.style.visibility = "hidden";
       stack.addEventListener('click', shift, {once:true});
+      drawer.style.pointerEvents = "auto";
       contain.style.visibility = "hidden";
 
       setTimeout(() => {
       contain.style.visibility = "visible";
-      }, 400)
+      hint.style.visibility = "visible";
+      nav.style.visibility = "visible";
+      }, 300)
       
     }
 
@@ -148,17 +150,20 @@
 
     function reRender() {
       // reRender some dom content on resize event.
-      screen = window.innerWidth;
-      section.style.width =  screen <= 800 ? "0" : "30%";
+      let screen = window.innerWidth;
+      section.style.width =  screen <= 800 ? "11%" : "36%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
       backdrop.style.visibility = "hidden";
       preview.style.display = "none";
       contain.style.visibility = "hidden";
+      stack.style.pointerEvents = "auto";
+      drawer.style.pointerEvents = "auto";
 
-      setTimeout(() => {
+      { screen > 800 && setTimeout(() => {
         contain.style.visibility = "visible";
       }, 400)
+      }
 
     }
     
@@ -194,7 +199,6 @@ function addItem() {
   let name = item_info['name'].innerHTML;
   let price = item_info['price'].innerHTML;
   let quantity = item_info['quantity'].value;
-  let colour = item_info['colour'].innerHTML;
   let size = item_info['size'].innerHTML;
   
 
@@ -218,7 +222,6 @@ function addItem() {
   let nodes = {
     'price': price, 
     'quantity': quantity, 
-    'colour': colour, 
     'size': size,
   }
   
@@ -235,7 +238,7 @@ function addItem() {
   span.addEventListener('click', drop, {once:true});
   contain.prepend(article);
   
-  item.Modal()
+  item_info['mugshot'].src = "";
 }
 
 
@@ -255,8 +258,8 @@ const data = {
   
   'mifi': {
     'available': 'no',
-    'name': 'airtel mifi',
-    'category': 'gadget',
+    'name': 'airtel mifigdhhdhsjdbdbd',
+    'category': 'gadgethdhdjdkkddkmdk',
     'sub_catg': 'router',
     'colour': 'red',
     'size': 'none',

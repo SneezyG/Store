@@ -161,7 +161,7 @@
       #error {
         margin: 0;
         padding: 0;
-        color: rgb(180, 93, 11);
+        color: red;
         font-size: 13px;
         visibility: hidden;
       }
@@ -280,7 +280,13 @@
     
     </div>
   
-  
+  <!-- construct the dialog that display file processing progress -->
+  <dialog id="not_found" open>
+  <p> Item not found ! </p>
+  <form method="dialog">
+  <p> <button value="cancel">cancel</button> </p>
+  </form>
+  </dialog>
   
 
   
