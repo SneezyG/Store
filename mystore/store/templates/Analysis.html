@@ -54,18 +54,21 @@
       }
       
       #header ul {
-        background-color: #D3D3D3;
         list-style: none;
-        width: 60%;
+        width: 50%;
         margin: auto;
-        margin-top: 5px;
+        margin-top: 12px;
         padding: 0;
       }
       
       #header li {
-        padding: 10px 0 10px 0;
+        background-color: #D3D3D3;
+        padding: 12px 0 12px 0;
+        margin-bottom: 3px;
         cursor: pointer;
-        border: 1px solid whitesmoke;
+        /*border: 1px solid whitesmoke;*/
+        border-radius: 10px;
+        visibility: hidden;
       }
       
       #right {
@@ -136,9 +139,9 @@
         cursor: pointer;
       }
       
-      summary > sub {
+      #chart sub {
         position: relative;
-        left: 120px;
+        left: 70px;
         top: 5px;
       }
       
@@ -164,7 +167,7 @@
       
       article > h6 {
         text-align: center;
-        font-size: 14px;
+        font-size: 15px;
         margin: 5px;
         opacity: 0.8;
       }
@@ -208,7 +211,12 @@
      }
 
      #header ul {
-       width: 70%;
+       width: 60%;
+       margin-top: 5px;
+     }
+     
+     #header li {
+       padding: 11px 0 11px 0;
      }
      
      #header summary {
@@ -265,10 +273,9 @@
        padding-left: 30px;
      }
      
-     summary > sub {
+     #chart sub {
        display: none;
      }
-     
      
   
 }
@@ -287,7 +294,7 @@
      <div id="header">
        <header>
      <details>
-         <summary id="summary"><b>SALE REPORT</b> in last 30days</summary>       
+       <summary id="summary"><b>SALE REPORT</b> <sub>in last 30 days</sub></summary>       
        <ul>
          <li>in last 1 week</li>
          <li>in last 2 weeks</li>
@@ -313,7 +320,7 @@
      <div id="chart">
       <details open>
        <summary><b>Sale chart</b>
-       <sub> a plot of items sold per day in the last 30 days </sub>
+       <sub> a plot of items sold per day in the last 30 days</sub>
        </summary>
        <div id="graph">
        </div>
@@ -334,27 +341,27 @@
 
      <article id="one" class="growth">
        <h6>Total Sale</h6>
-       <p>1200ffghhhhh0</p>
+       <p>1200ffghhhhh0yyyuuuyy</p>
      </article>
 
      <article id="two" class="growth">
        <h6> Gross Profit </h6>
-       <p> $20000gghhhjjjj</p>
+       <p> $20000gghhhjjjjhhdhjdj</p>
      </article>
        
      <article id="three">
        <h6>Most sold item</h6>
-       <p>Cocacolagg ghhh</p>
+       <p>Cocac olagg ghhhbdjdjd</p>
      </article>
 
      <article id="four">
        <h6>Most sold category</h6>
-       <p>Beverageffg ghhh</p>
+       <p>Beverageffg ghhhgdhdhdh</p>
      </article>
 
      <article id="five">
        <h6>Day with most sold</h6>
-       <p>Wednesdaygg ghh</p>
+       <p>Wednesdaygg ghhhdhdjdjd</p>
      </article>
      
      </section>
@@ -365,11 +372,30 @@
   const menu = document.querySelector('header > details');
   const summary = document.querySelector('#summary');
   const bold = document.querySelector('#summary > b');
+  const sub = document.querySelector('#summary > sub');
+  const reports = document.querySelectorAll('#header li');
   
   document.addEventListener('click', (e) => {
     // hide the menu when u click any part of the document.
     let elem = e.target;
-    if (elem != summary && elem != bold) menu.open=false;
+    if (elem != summary && elem != bold && elem != sub) {
+      menu.open=false;
+      for (let elem of reports) {
+        elem.style.visibility = "hidden";
+      }
+    }else {
+      time = 0;
+      for (let elem of reports) {
+        if (menu.open == true) {
+          elem.style.visibility = "hidden";
+        } else {
+        setTimeout(() => {
+          elem.style.visibility = "visible";
+        }, time);
+        time += 50;
+      }
+      }
+    }
   });
   
 </script>
