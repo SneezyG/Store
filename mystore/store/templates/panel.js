@@ -78,12 +78,10 @@
       backdrop.style.visibility = "visible";
       preview.style.display = "block";
       drawer.addEventListener('click', Close, {once:true});
-      stack.style.pointerEvents = "none";
       contain.style.visibility = "hidden";
 
       setTimeout(() => {
       contain.style.visibility = "visible";
-      contain.style.height = "60%"; 
       }, 400)
 
     }
@@ -92,17 +90,14 @@
     
     function Close() {
       // close back the hidden side section
-      let screen = window.innerWidth;
-      section.style.width =  screen <= 800 ? "11%" : "36%";
+      section.style.width = "11%";
       backdrop.style.visibility = "hidden";
       preview.style.display = "none";
       drawer.addEventListener('click', Draw, {once:true});
-      stack.style.pointerEvents = "auto";
       contain.style.visibility = "hidden";
       
      { screen > 800 && setTimeout(() => {
        contain.style.visibility = "visible";
-       contain.style.height = "80%";
       }, 400)
      }
     
@@ -117,8 +112,9 @@
       hint.style.visibility = "hidden";
       mainleft.style.width = "60%";
       stack.addEventListener('click', still, {once:true});
-      drawer.style.pointerEvents = "none";
+      preview.style.display = "block";
       contain.style.visibility = "hidden";
+      contain.style.marginTop = "160px";
 
       setTimeout(() => {
       contain.style.visibility = "visible";
@@ -135,8 +131,9 @@
       nav.style.display = "block";
       nav.style.visibility = "hidden";
       stack.addEventListener('click', shift, {once:true});
-      drawer.style.pointerEvents = "auto";
+      preview.style.display = "none";
       contain.style.visibility = "hidden";
+      contain.style.marginTop = "70px";
 
       setTimeout(() => {
       contain.style.visibility = "visible";
@@ -157,8 +154,17 @@
       backdrop.style.visibility = "hidden";
       preview.style.display = "none";
       contain.style.visibility = "hidden";
-      stack.style.pointerEvents = "auto";
-      drawer.style.pointerEvents = "auto";
+      contain.style.marginTop = "none";
+      contain.offsetWidth;
+      contain.style.margin = null;
+      
+      //remove drawers event listenner.
+      drawer.removeEventListener('click', Close, {once:true});
+      stack.removeEventListener('click', still, {once:true});
+      
+      //add drawer event listenner.
+      drawer.addEventListener('click', Draw, {once:true});
+      stack.addEventListener('click', shift, {once:true});
 
       { screen > 800 && setTimeout(() => {
         contain.style.visibility = "visible";

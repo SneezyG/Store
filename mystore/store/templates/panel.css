@@ -66,12 +66,12 @@
       
       section {
         width: 36%;
-        padding-top: 10px;
         height: 100%;
         position: absolute;
         right: 0;
         top: 0;
-        overflow: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
         transition: 0.4s;
         background-color: #D3D3D3;
         box-shadow:  -1px 0 1px rgba(0,0,0,0.11), 
@@ -87,14 +87,18 @@
            display: none;
       }
       
+      #sectionHeader {
+        position: fixed;
+        z-index: 1;
+        background-color: #D3D3D3;
+      }
+      
       #contain {
         max-width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        height: 80%;
-        overflow-y: scroll;
-        margin-top: 10px;
+        margin-top: 70px;
         padding-left: 30px;
       }
       
@@ -102,19 +106,19 @@
       .drawer {
         width: 25px;
         margin: 0;
-        position: absolute;
-        left: 5px;
+        position: fixed;
         cursor: pointer;
       }
       
       #stack {
-        top: 30%;
+        top: 50%;
       }
       
       #hide {
         top: 60%;
         opacity: 0.5;
         width: 20px;
+        display: none
       }
       
 
@@ -484,10 +488,12 @@
         
        #contain {
          visibility: hidden;
+         margin-top: 160px;
        }
 
        #hide {
          top: 40%;
+         display: block;
        }
 
        #stack {
