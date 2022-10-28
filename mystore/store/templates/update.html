@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     
+     @keyframes spiner {
+      0% { opacity: 0.5 }
+      100% { opacity: 0 }
+     }
 
      body {
         margin: 0;
@@ -72,8 +76,10 @@
       details {
         margin: auto;
         border: 1px solid rgb(180, 93, 11);
-        width: 80%;
+        width: 70%;
         border-radius: 10px;
+        position: relative;
+        bottom: 60px;
       }
       
       details li {
@@ -91,13 +97,11 @@
         cursor: pointer;
       }
       
-      section {
-        margin-top: 30px;
-      }
-      
       section > h4 {
         text-align: center;
-        margin-bottom: 10px;
+        margin: 0;
+        position: relative;
+        bottom: 30px;
       }
       
       section  button {
@@ -111,7 +115,7 @@
       }
       section > p {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 30px;
       }
       
       article {
@@ -124,6 +128,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+        bottom: 10px;
       }
       
       article > img {
@@ -136,6 +142,10 @@
       
       #filename {
         color: green;
+        display: inline-block;
+        width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
         visibility: hidden;
       }
       
@@ -159,11 +169,13 @@
       }
       
       #error {
-        margin: 0;
-        padding: 0;
+        width: 80%;
+        padding: 0 10px 0 10px;
+        margin: 0 auto 20px auto;
         color: red;
         font-size: 13px;
         visibility: hidden;
+        overflow-wrap: break-word;
       }
       
      .visually-hidden {
@@ -185,6 +197,123 @@
       cursor: pointer;
     }
     
+      #success {
+     width: 300px;
+     height: 150px;
+     overflow: hidden;
+     padding-top: 50px;
+     position: fixed;
+     background-color: #F5F5F5;
+     border: 2px solid rgb(180, 93, 11);
+   }
+   
+   dialog::backdrop {
+        background: lightblue;
+        opacity: 0.7;
+   }
+      
+   
+   #success  p {
+     text-align: center;
+     color: green;
+   }
+   
+   #success > form {
+     margin-top: 50px;
+   }
+   
+   #success button {
+     font-size: 15px;
+     padding: 8px 15px 8px 15px;
+     background-color: #00A693;
+   }
+   
+
+#spiner {
+  position: fixed;
+  top: 20%;
+  transform: translateZ(0) scale(1);
+  height: 400px;
+  width: 400px;
+  border: none;
+  background: none;
+  text-align: center;
+}
+
+   
+#spiner div {
+  top: 100px;
+  left: 48%;
+  position: absolute;
+  animation: spiner linear 1s infinite;
+  background: rgb(180, 93, 11);
+  width: 23px;
+  height: 40px;
+  border-radius: 20px / 40px;
+  transform-origin: 10px 75px;
+}#spiner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.9166666666666666s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -0.8333333333333334s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.75s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.6666666666666666s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.5833333333333334s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.5s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.4166666666666667s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.3333333333333333s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.25s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.16666666666666666s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.08333333333333333s;
+  background: rgb(180, 93, 11);
+}#spiner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+  background: rgb(180, 93, 11);
+}
+
+
+#drop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: lightblue;
+  opacity: 0.7;
+  visibility: hidden;
+}
+      
+      
+    
     
 @media only screen and (max-width: 800px) { 
   
@@ -195,6 +324,10 @@
       #nav li {
         font-size: 12px;
         left: 10px
+      }
+      
+      details {
+        width: 80%;
       }
       
       summary {
@@ -252,7 +385,7 @@
     
     <section>
       <h4>UPLOAD FILE</h4>
-      <p id="error"> error: invalid file type or file is too big  </p>
+      <p id="error"> </p>
       <article>
       <span id="filename">constant.csv</span>
       <img src="upload.png"/>
@@ -280,13 +413,24 @@
     
     </div>
   
-  <!-- construct the dialog that display file processing progress -->
-  <dialog id="not_found" open>
-  <p> Item not found ! </p>
+  <!-- construct the dialog that displays success-->
+  <dialog id="success" autofocus>
+  <p>Process Successful !</p>
   <form method="dialog">
-  <p> <button value="cancel">cancel</button> </p>
+  <p> <button>Okay</button> </p>
   </form>
   </dialog>
+ 
+ 
+ <div id="drop"> </div>
+ 
+  <!-- construct the dialog that displays loader-->
+  <dialog id="spiner" autofocus>
+    <h3>Processing...</h3>
+   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  </dialog>
+
+  
   
 
   
@@ -299,6 +443,10 @@
   const fileElem = document.querySelector('#fileElem');
   const browse = document.querySelector('#browse');
   const filename = document.querySelector('#filename');
+  const body = document.querySelector('body');
+  const okay = document.querySelector("#success button");
+  const spiner = document.querySelector("#spiner");
+  const backdrop = document.querySelector("#drop");
   
 
   
@@ -314,6 +462,9 @@
   browse.addEventListener('click', () => {
     filename.style.visibility = "hidden";
     error.style.visibility = "hidden";
+  });
+  okay.addEventListener('click', () => {
+   body.style.overflow = "auto";
   });
  
   
@@ -347,9 +498,16 @@
         error.style.visibility = "visible";
       }
       else {
-         alert("processing file");
-      }
-    } 
+       spiner.show();
+       backdrop.style.visibility = "visible";
+       body.style.overflow = "hidden";
+       setTimeout(() => {
+       spiner.open = false;
+       backdrop.style.visibility = "hidden";
+       success.showModal();
+       }, 3000);
+    }
+  } 
     
     else {
       error.innerHTML = "error: no file was selected ";
