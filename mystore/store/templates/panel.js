@@ -78,7 +78,6 @@
       backdrop.style.visibility = "visible";
       preview.style.display = "block";
       drawer.addEventListener('click', Close, {once:true});
-      contain.style.visibility = "hidden";
 
       setTimeout(() => {
       contain.style.visibility = "visible";
@@ -95,11 +94,6 @@
       preview.style.display = "none";
       drawer.addEventListener('click', Draw, {once:true});
       contain.style.visibility = "hidden";
-      
-     { screen > 800 && setTimeout(() => {
-       contain.style.visibility = "visible";
-      }, 400)
-     }
     
   }
     
@@ -151,13 +145,17 @@
       section.style.width =  screen <= 800 ? "11%" : "36%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
+      hint.style.visibility = "visible";
       backdrop.style.visibility = "hidden";
       preview.style.display = "none";
-      contain.style.visibility = "hidden";
-      contain.style.marginTop = "none";
-      contain.offsetWidth;
-      contain.style.margin = null;
       
+      contain.style.marginTop = "none";
+      contain.style.visibility = "none";
+      contain.offsetWidth;
+      contain.style.marginTop = null;
+      contain.style.visibility = null;
+
+
       //remove drawers event listenner.
       drawer.removeEventListener('click', Close, {once:true});
       stack.removeEventListener('click', still, {once:true});
@@ -166,10 +164,6 @@
       drawer.addEventListener('click', Draw, {once:true});
       stack.addEventListener('click', shift, {once:true});
 
-      { screen > 800 && setTimeout(() => {
-        contain.style.visibility = "visible";
-      }, 400)
-      }
 
     }
     

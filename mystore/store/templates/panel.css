@@ -13,9 +13,6 @@
       }
     }
      
-    ::-webkit-scrollbar {
-      width: 11px;
-    }
 
      body {
         margin: 0;
@@ -82,24 +79,29 @@
                -20px 0 30px rgba(0,0,0,0.11);
         
       }
-      
+
+
       section::-webkit-scrollbar {
-           display: none;
+        display: none;
       }
+     
       
+    
       #sectionHeader {
         position: fixed;
         z-index: 1;
+        width: 70%;
         background-color: #D3D3D3;
       }
       
       #contain {
-        max-width: 100%;
+        max-width: 95%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 70px;
-        padding-left: 30px;
+        margin-left: 50px;
+        padding-bottom: 150px;
       }
       
       
@@ -186,7 +188,7 @@
       
       
       #mainleft input {
-        width: 300px;
+        width: 350px;
         margin-top: 25px;
         font-size: 15px;
         padding: 5px;
@@ -264,7 +266,7 @@
       }
       
       article {
-        margin: 10px 40px 40px 0;
+        margin: 10px 50px 40px 0;
         position: relative;
         animation: removeAnime;
         animation-play-state: paused;
@@ -301,7 +303,6 @@
       
       #preview {
         display: none;
-        width: 500px;
         transition: 2s;
         margin: 30px 0 0 20px;
       }
@@ -317,12 +318,16 @@
         font-weight: bold;
         opacity: 0.7;
         display: inline-block;
-        width: 300px;
-        white-space: nowrap;
-        overflow-x: scroll;
+        width: 50%;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
         position: relative;
         left: 10px;
-        top: 8px;
+        top: 6px;
+      }
+
+      #preview Span::-webkit-scrollbar {
+        display: none;
       }
     
       #first {
@@ -330,7 +335,6 @@
         color: rgb(219, 87, 25);
         font-weight: 800;
         padding-left: 5px;
-        width: 300px;
         margin: 0;
       }
       
@@ -369,8 +373,7 @@
         opacity: 0.7;
       }
       
-    
-   
+     
    #not_found {
      width: 400px;
      height: 200px;
@@ -455,35 +458,46 @@
      padding: 3px;
      background-color: #F5F5F5;
    }
+
+
+
+
+
+@media only screen and (max-width: 1000px) { 
+   
+  #mainleft input {
+    width: 300px;
+  }
+}
       
     
-   
+ 
+  
+
 @media only screen and (max-width: 800px) { 
       
        #preview { 
-         width: 300px;
          position: relative;
          right: 30px;
        }
        
-       #preview Span {
-         width: 150px;
-       }
-
+       
        #preview button {
          margin-top: 10px;
        }
 
        section {
          width: 11%;
-       }
+       } 
        
-       #utility {
+
+      #utility {
          left: 12px;
-       }
-       
+      }
+      
+
       #mainleft input {
-        width: 200px;
+        width: 250px;
       }
         
        #contain {
@@ -564,5 +578,5 @@
         width: 70px;
         cursor: auto;
       }
+
 }
-      
