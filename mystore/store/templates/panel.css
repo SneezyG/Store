@@ -468,6 +468,13 @@
   #mainleft input {
     width: 300px;
   }
+  
+  #nav li {
+   right: 30px;
+   font-size: 15px;
+   padding: 8px;
+  }
+  
 }
       
     
@@ -519,9 +526,7 @@
        }
 
        #nav li {
-         right: 30px;
          font-size: 14px;
-         padding: 8px;
        }
 
        #logo {
