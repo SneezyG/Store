@@ -1,6 +1,6 @@
 
-
   // get the necessary dom elements.
+    let oldScreen = window.innerWidth;
     const section = document.querySelector('section');
     const drawer = document.querySelector('#hide');
     const backdrop = document.querySelector('#backdrop');
@@ -60,7 +60,8 @@
       elem.addEventListener('click', drop, {once:true});
     }
     
-    
+
+
     
     function drop(e) {
       // remove an item article.
@@ -95,7 +96,7 @@
       drawer.addEventListener('click', Draw, {once:true});
       contain.style.visibility = "hidden";
     
-  }
+    }
     
     
     
@@ -140,9 +141,14 @@
 
 
     function reRender() {
-      // reRender some dom content on resize event.
-      let screen = window.innerWidth;
-      section.style.width =  screen <= 800 ? "11%" : "36%";
+      // reRender some dom content on window resize
+      let newScreen = window.innerWidth;
+      if (newScreen == oldScreen) {
+        return null;
+      }
+      
+      oldScreen = newScreen;
+      section.style.width =  newScreen <= 800 ? "11%" : "36%";
       nav.style.display = "block";
       mainleft.style.width = "95%";
       hint.style.visibility = "visible";
@@ -160,7 +166,7 @@
       drawer.removeEventListener('click', Close, {once:true});
       stack.removeEventListener('click', still, {once:true});
       
-      //add drawer event listenner.
+      //re-add drawer event listenner.
       drawer.addEventListener('click', Draw, {once:true});
       stack.addEventListener('click', shift, {once:true});
 
@@ -168,8 +174,7 @@
     }
     
     
-    
-//new
+ 
 
 function lookup() {
   // look up item, display error/details dialog.
