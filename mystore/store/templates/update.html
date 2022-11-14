@@ -21,11 +21,11 @@
       body > img {
         margin: 30px;
         width: 50px;
-        position: fixed;
+        position: absolute;
       }
       
       body > h4 {
-        position: fixed;
+        position: absolute;
         right: 5%;
         top: 10px;
       }
@@ -44,7 +44,7 @@
         border-right: 3px dashed rgb(180, 93, 11);
         padding-top: 50px;
         padding-bottom: 20px;
-        position: fixed;
+        position: absolute;
       }
       
       #nav > ul {
@@ -145,6 +145,7 @@
         color: green;
         display: inline-block;
         width: 60%;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         visibility: hidden;
@@ -443,7 +444,6 @@
   const dropbox = document.querySelector('article');
   const error = document.querySelector('#error');
   const fileElem = document.querySelector('#fileElem');
-  const browse = document.querySelector('#browse');
   const filename = document.querySelector('#filename');
   const body = document.querySelector('body');
   const okay = document.querySelector("#success button");
@@ -461,10 +461,7 @@
   dropbox.addEventListener("dragleave", dragleave, false);
   dropbox.addEventListener("dragover", dragover, false);
   dropbox.addEventListener("drop", drop, false);
-  browse.addEventListener('click', () => {
-    filename.style.visibility = "hidden";
-    error.style.visibility = "hidden";
-  });
+
   okay.addEventListener('click', () => {
    body.style.overflow = "auto";
   });
@@ -577,15 +574,21 @@
 
   function checkmate() {
     // validate the number of files on drop event on dropbox(article elements).
+    filename.style.visibility = "hidden";
+    error.style.visibility = "hidden";
     let fileList = fileElem.files;
-    if (fileList.length > 1) {
+    
+   if (fileList.length > 1) {
       error.innerHTML = "error: too many files";
       error.style.visibility = "visible";
       return;
    }
    let file = fileList[0];
-   filename.innerHTML = file.name;
-   filename.style.visibility = "visible";
+   
+   if (file) {
+     filename.innerHTML = file.name;
+     filename.style.visibility = "visible";
+   }
   }
   
     

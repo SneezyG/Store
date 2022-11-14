@@ -188,6 +188,7 @@ function lookup() {
   
   for (let key of keys) {
     let elem = item_info[key];
+    console.log(key);
     if (elem.tagName == "IMG") {
       elem.src = info[key];
     } else {
