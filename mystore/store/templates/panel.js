@@ -44,14 +44,14 @@
 
    cancel.addEventListener('click', () => {
      // clear item desk
-     sessionStorage.state = JSON.stringify(structuredClone(state));
+     sessionStorage.state = JSON.stringify(state);
      useState();
      console.log("clearing desk");
    });
    
    process.addEventListener('click', () => {
      /* process sale and clear item desk if transaction is successful */
-     sessionStorage.state = JSON.stringify(structuredClone(state));
+     sessionStorage.state = JSON.stringify(state);
      useState();
      console.log("transaction successful")
    });
