@@ -9,7 +9,6 @@
     const mainleft = document.querySelector('#mainleft');
     const hint = document.querySelector("#hint")
     const preview = document.querySelector("#preview");
-    const remove = document.querySelectorAll('article > span');
     const contain = document.querySelector('#contain');
     const input = document.querySelector('#input');
     const look = document.querySelector('#look');
@@ -17,7 +16,177 @@
     const add = document.querySelector('#add');
     const exit = document.querySelector('#exit');
     const not_found = document.querySelector('#not_found');
+    const basket = document.querySelector("#basket");
+    const Tgoods = document.querySelector("#Tgoods");
+    const Tprice = document.querySelector("#Tprice");
+    const process = document.querySelector("#process");
+    const cancel = document.querySelector("#cancel")
     
+  
+  
+  
+ // app base state template.
+ let state = [];
+   
+    
+    
+    /*
+  attached event listenner to dom elements to kick start some dom manipulation and application processes.
+  */
+    drawer.addEventListener('click', Draw, {once:true});
+    stack.addEventListener('click', shift, {once:true});
+    look.addEventListener('click', lookup);
+    add.addEventListener('click', addItem)
+    exit.addEventListener('click', () => {
+      item_info['mugshot'].src = "";
+    });
+    window.onresize = reRender;
+
+   cancel.addEventListener('click', () => {
+     // clear item desk
+     sessionStorage.state = JSON.stringify(structuredClone(state));
+     useState();
+     console.log("clearing desk");
+   });
+   
+   process.addEventListener('click', () => {
+     /* process sale and clear item desk if transaction is successful */
+     sessionStorage.state = JSON.stringify(structuredClone(state));
+     useState();
+     console.log("transaction successful")
+   });
+    
+
+ 
+ 
+  if(typeof(Storage) !== "undefined") {
+    if (!sessionStorage.state) {
+      //reset state if state does not exist.
+      sessionStorage.state = JSON.stringify(state);
+    }
+     
+     // call use useState.
+     useState()
+    
+  } else {
+    console.log("Sorry! No Web Storage support..");
+  }
+  
+  
+  
+function useState() {
+  // use state to render some elem
+  let state = JSON.parse(sessionStorage.state);
+  
+  let total_goods = 0;
+  let total_price = 0;
+  
+  //console.log(state.items);
+  contain.replaceChildren();
+     
+  if (state.length >= 1) {
+   basket.style.display = 'none';
+   
+   for (let item of state) {
+    // creating items container.
+    total_goods += Number(item.quantity);
+    total_price += Number(item.price) * Number(item.quantity);
+    
+    let article = document.createElement('article');
+    let details = document.createElement('details');
+    let ul = document.createElement('ul');
+  
+    let summary = document.createElement('summary');
+    summary.innerHTML = item.name;
+    details.append(summary);
+  
+    let span = document.createElement('span');
+    span.innerHTML = "X";
+    span.dataset.id = item.id;
+    article.append(span);
+  
+    let img = document.createElement('img');
+    img.src = item.mugshot;
+    article.append(img);
+  
+    let nodes = {
+      'price': item.price, 
+      'quantity': item.quantity, 
+      'size': item.size,
+    }
+  
+    let node_key = Object.keys(nodes);
+    for (let key of node_key) {
+      let li = document.createElement('li');
+      li.innerHTML = key + ": " + nodes[key]
+      ul.append(li);
+    }
+  
+    details.append(ul);
+    article.append(details);
+    contain.append(article);
+    
+    span.addEventListener('click', drop, {once:true});
+    
+    }
+    
+   }
+    else {
+       basket.style.display = 'block';
+    }
+    
+    Tgoods.innerHTML = total_goods;
+    Tprice.innerHTML = "$" + total_price;
+    
+  }
+  
+  
+  
+  function pushState(item) {
+    // set state by pushing new item to the state
+    let state = JSON.parse(sessionStorage.state);
+    
+    let index = 0;
+    for (let obj of state) {
+      if (item.id == obj.id) {
+        state.splice(index, 1);
+        item.quantity = Number(item.quantity) + Number(obj.quantity);
+        break;
+      }
+      index ++;
+    }
+    
+    state.unshift(item);
+    
+    sessionStorage.state = JSON.stringify(state);
+    useState();
+  }
+  
+  
+  
+  function popState(id) {
+    // set state by popping item from the state
+    let state = JSON.parse(sessionStorage.state);
+    let index = 0;
+    for (let item of state) {
+       if (item.id == id) {
+         state.splice(index, 1);
+         break;
+       }
+       index ++;
+    }
+    
+    
+    sessionStorage.state = JSON.stringify(state);
+    useState();
+  }
+  
+   
+   
+   
+   
+   
+   
    
     
    // get item-dialog elements.
@@ -43,24 +212,7 @@
    };
    
   
-  
-  /*
-  attached event listenner to dom elements to kick start some dom manipulation and application processes.
-  */
-    drawer.addEventListener('click', Draw, {once:true});
-    stack.addEventListener('click', shift, {once:true});
-    look.addEventListener('click', lookup);
-    add.addEventListener('click', addItem)
-    exit.addEventListener('click', () => {
-      item_info['mugshot'].src = "";
-    });
-    window.onresize = reRender;
-
-    for (let elem of remove) {
-      elem.addEventListener('click', drop, {once:true});
-    }
-    
-
+ 
 
     
     function drop(e) {
@@ -68,7 +220,11 @@
       let elem = e.target;
       let parent = elem.parentElement;
       parent.style.animationPlayState = "running";
-      parent.addEventListener('animationend', () => parent.remove(), {once:true});
+      parent.addEventListener('animationend', () => {
+          parent.remove();
+          // call popState to update state.
+          popState(elem.dataset.id)
+        }, {once:true});
     }
     
    
@@ -82,6 +238,7 @@
 
       setTimeout(() => {
       contain.style.visibility = "visible";
+      basket.style.visibility = "visible";
       }, 400)
 
     }
@@ -95,6 +252,7 @@
       preview.style.display = "none";
       drawer.addEventListener('click', Draw, {once:true});
       contain.style.visibility = "hidden";
+      basket.style.visibility = "hidden";
     
     }
     
@@ -143,6 +301,8 @@
     function reRender() {
       // reRender some dom content on window resize
       let newScreen = window.innerWidth;
+      
+      // only rerender whnw there is a change in window width.
       if (newScreen == oldScreen) {
         return null;
       }
@@ -157,9 +317,12 @@
       
       contain.style.marginTop = "none";
       contain.style.visibility = "none";
+      basket.style.visibility = "none";
       contain.offsetWidth;
+      basket.offsetWidth;
       contain.style.marginTop = null;
       contain.style.visibility = null;
+      basket.style.visibility = null;
 
 
       //remove drawers event listenner.
@@ -178,8 +341,8 @@
 
 function lookup() {
   // look up item, display error/details dialog.
-  let id = input.value;
-  let info = data[id.trim()];
+  let id = input.value.trim();
+  let info = data[id];
   if (!info) {
     not_found.showModal()
     return;
@@ -188,9 +351,9 @@ function lookup() {
   
   for (let key of keys) {
     let elem = item_info[key];
-    console.log(key);
     if (elem.tagName == "IMG") {
       elem.src = info[key];
+      elem.dataset.id = id;
     } else {
      elem.innerHTML = info[key];
     }
@@ -201,114 +364,75 @@ function lookup() {
 
 function addItem() {
   // add item to transaction desk.
+  let id = item_info['mugshot'].dataset.id;
   let mugshot = item_info['mugshot'].src;
   let name = item_info['name'].innerHTML;
   let price = item_info['price'].innerHTML;
   let quantity = item_info['quantity'].value;
   let size = item_info['size'].innerHTML;
+  let category = item_info['category'].innerHTML;
+  let available = item_info['available'].innerHTML;
   
-
-  // creating items container.
-  let article = document.createElement('article');
-  let details = document.createElement('details');
-  let ul = document.createElement('ul');
+  let item = {id, mugshot, name, price, quantity, size, category, available}
   
-  let summary = document.createElement('summary');
-  summary.innerHTML = name;
-  details.append(summary);
-  
-  let span = document.createElement('span');
-  span.innerHTML = "X";
-  article.append(span);
-  
-  let img = document.createElement('img');
-  img.src = mugshot;
-  article.append(img);
-  
-  let nodes = {
-    'price': price, 
-    'quantity': quantity, 
-    'size': size,
-  }
-  
-  let node_key = Object.keys(nodes);
-  for (let key of node_key) {
-    let li = document.createElement('li');
-    li.innerHTML = key + ": " + nodes[key]
-    ul.append(li);
-  }
-  
-  details.append(ul);
-  article.append(details);
-  
-  span.addEventListener('click', drop, {once:true});
-  contain.prepend(article);
+  // call pushState to update state.
+  pushState(item);
   
   item_info['mugshot'].src = "";
 }
 
 
+
+
+
+// simulation of data from the server.
 const data = {
-  'glycerin': {
+  
+  '111': {
     'available': 'yes',
     'name': 'eden',
     'category': 'beauty',
-    'sub_catg': 'skin care',
-    'colour': 'colourless',
     'size': '200ltrs',
-    'description': 'skin beautifing liquid',
     'quantity': 1,
     'price': 200,
     'mugshot': 'glycerin.jpg'
   },
   
-  'mifi': {
+  '112': {
     'available': 'no',
-    'name': 'airtel mifigdhhdhsjdbdbd',
-    'category': 'gadgethdhdjdkkddkmdk',
-    'sub_catg': 'router',
-    'colour': 'red',
+    'name': 'airtel',
+    'category': 'gadget',
     'size': 'none',
-    'description': 'airtel 4g mifi router',
     'quantity': 1,
     'price': 1000,
     'mugshot': 'mifi.jpg'
   },
   
-  'jumpo': {
+  '113': {
     'available': 'yes',
     'name': 'jumpo-ori',
     'category': 'beauty',
-    'sub_catg': 'skin care',
-    'colour': 'black',
     'size': 'big',
-    'description': 'jumpo-ori black soap',
     'quantity': 1,
     'price': 100,
     'mugshot': 'jumpo_ori.jpg'
   },
   
-  'saint': {
+  '114': {
     'available': 'yes',
     'name': 'st-ives',
     'category': 'beauty',
-    'sub_catg': 'skin care',
-    'colour': 'white',
     'size': 'big',
-    'description': 'st-ives nourishing body cream',
     'quantity': 1,
     'price': 500,
     'mugshot': 'st_ives.jpg'
   },
   
-  'treat': {
+  '115': {
     'available': 'yes',
     'name': 'body treat',
     'category': 'beauty',
-    'sub_catg': 'skin care',
-    'colour': 'white',
-    'size': 'small',
-    'description': 'bodytreat exfoliating body cream',
+    'size': 'none',
     'quantity': 1,
     'price': 500,
     'mugshot': 'st_ives.jpg'

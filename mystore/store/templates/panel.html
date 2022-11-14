@@ -60,25 +60,26 @@
   <img class="drawer" id="stack" src="stack.png" />
   <img class="drawer" id="hide" src="drawer.png" /> 
     
+  <p id="basket"> 0 item added</p>
     <div id="sectionHeader">
     <p id="first"> PREVIEW 
-       <button id="process">process</button>
-       <button id="cancel">cancel</button>
+       <button id="process" class="checkout">process</button>
+       <button id="cancel" class="checkout">cancel</button>
     </p>
     <ul id="preview">
-      <li>Total goods: <span>600000000000000000000000</span></li>
-      <li>Total price: <span>$120,0000000000000000000</span></li>
+      <li>Total goods: <span id="Tgoods"></span></li>
+      <li>Total price: <span id="Tprice"></span></li>
     </ul>
-    <br/>
     <hr/>
     </div>
     
   
   
     <div id="contain">
+    <!--
       <article>
         <span>X</span>
-       <img src="mystore~2.jpg" /> 
+       <img data-id="" src="mystore~2.jpg" /> 
        <details>
          <summary>custardddddddddddddd</summary>
           <ul>
@@ -88,176 +89,7 @@
          </ul>
          </details>
       </article>
-      
-       <article>
-        <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>            
-         </ul>
-         </details>
-      </article>
-      
-        <article>
-         <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-       <article>
-        <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-      <article>
-          <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-        <article>
-         <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-       <article>
-        <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li> Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-        <article>
-         <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li> Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-       <article>
-        <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li> Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-        <article>
-         <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-       <article>
-        <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-         <article>
-          <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li></li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-        <article>
-         <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li> Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
-      
-       <article>
-        <span>X</span>
-       <img src="mystore~2.jpg" /> 
-       <details>
-         <summary>custard </summary>
-          <ul>
-            <li>Price: $500 </li>
-            <li>Quantity: 30</li>
-            <li>Size: 5g </li>
-         </ul>
-         </details>
-      </article>
+      -->
       </div>
   </section>
   
@@ -269,7 +101,7 @@
     <button id="exit" value="cancel">X</button>
   </form>
    
-  <img id="mugshot" alt="mugshot" /> 
+  <img data-id="" id="mugshot" alt="mugshot" /> 
   
   <div id="info">
   <p>Name: <span class="data" id="name">st-ives</span></p>
