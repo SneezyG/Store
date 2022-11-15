@@ -89,8 +89,8 @@ function useState() {
    
    for (let item of state) {
     // creating items container.
-    total_goods += Number(item.quantity);
-    total_price += Number(item.price) * Number(item.quantity);
+    total_goods += item.quantity;
+    total_price += Number(item.price) * item.quantity;
     
     let article = document.createElement('article');
     let details = document.createElement('details');
@@ -150,7 +150,7 @@ function useState() {
     for (let obj of state) {
       if (item.id == obj.id) {
         state.splice(index, 1);
-        item.quantity = Number(item.quantity) + Number(obj.quantity);
+        item.quantity = item.quantity + obj.quantity;
         break;
       }
       index ++;
@@ -197,6 +197,29 @@ function useState() {
    const size = document.querySelector('#size');
    const category = document.querySelector('#category');
    const mugshot = document.querySelector('#mugshot');
+   
+   
+   // add an event listenner to validate quantity input.
+   quantity.addEventListener('input', (e) => {
+     const pattern =  /[^0-9]/;
+     
+     let value = e.target.value;
+     if (value.length == 0 || value == 0) {
+       add.style.pointerEvents = "none";
+       add.style.opacity = 0.6;
+       return null;
+     }
+     
+     let find = pattern.test(value);
+     if (find) {
+       add.style.pointerEvents = "none";
+       add.style.opacity = 0.6;
+     }
+     else {
+       add.style.pointerEvents = "auto";
+       add.style.opacity = 1;
+     }
+   })
    
    
    
@@ -358,7 +381,10 @@ function lookup() {
      elem.innerHTML = info[key];
     }
   }
-  item.showModal()
+  item.showModal();
+  quantity.value = 1;
+  add.style.pointerEvents = "auto";
+  add.style.opacity = 1;
 }
 
 
@@ -368,7 +394,7 @@ function addItem() {
   let mugshot = item_info['mugshot'].src;
   let name = item_info['name'].innerHTML;
   let price = item_info['price'].innerHTML;
-  let quantity = item_info['quantity'].value;
+  let quantity = Number(item_info['quantity'].value);
   let size = item_info['size'].innerHTML;
   let category = item_info['category'].innerHTML;
   let available = item_info['available'].innerHTML;
