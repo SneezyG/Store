@@ -351,9 +351,20 @@
   
 }
 
-      
-      
     </style>
+    
+  <style id="fullScreen">
+     
+     body { 
+       padding-top: 40px;
+     }
+     
+     body > h4 {
+       top: 40px;
+     }
+     
+ </style>
+ 
     </head>
     
 <body>
@@ -439,6 +450,10 @@
   
 <script>
 
+  const style = document.querySelector("#fullScreen");
+  //console.log(style);
+  style.disabled = true;
+
   // get the necessary dom elements.
   const button = document.querySelector('#process');
   const dropbox = document.querySelector('article');
@@ -465,6 +480,18 @@
   okay.addEventListener('click', () => {
    body.style.overflow = "auto";
   });
+  
+  window.onresize = () => {
+      style.disabled = true;
+      let innerHeight = window.innerHeight;
+      let screenHeight = screen.height;
+      
+      // enable fullScreen style on full screen mode
+      if (innerHeight == screenHeight) {
+        fullScreen.disabled = false;
+      }
+  }
+  
  
   
   

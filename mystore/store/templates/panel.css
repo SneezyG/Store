@@ -92,6 +92,7 @@
         z-index: 1;
         width: 70%;
         background-color: #D3D3D3;
+        padding-top: 10px;
       }
       
       #contain {
@@ -99,7 +100,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 70px;
+        margin-top: 80px;
         margin-left: 50px;
         padding-bottom: 150px;
       }
@@ -192,14 +193,15 @@
         right: 10px;
         font-weight: bold;
         color: rgb(179, 90, 7);
+        margin-bottom: 20px;
       }
       
       
       #mainleft input {
-        width: 350px;
+        width: 85%;
         margin-top: 25px;
         font-size: 15px;
-        padding: 5px;
+        padding: 7px 7px 7px 20px;
         border-radius: 5px;
         outline-color: rgb(172, 166, 151);
         border: 1px solid rgb(172, 166, 151);
@@ -474,7 +476,7 @@
 @media only screen and (max-width: 1000px) { 
    
   #mainleft input {
-    width: 300px;
+    width: ;
   }
   
   #nav li {
@@ -512,7 +514,7 @@
       
 
       #mainleft input {
-        width: 240px;
+        width: ;
       }
         
        #contain {

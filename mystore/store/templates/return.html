@@ -332,9 +332,16 @@
       
 }
 
-      
-      
     </style>
+    
+ <style id="fullScreen">
+     
+     body {
+       padding-top: 40px;
+     }
+     
+ </style>
+ 
     </head>
     
 <body>
@@ -407,6 +414,11 @@
 <script>
 
 
+  const style = document.querySelector("#fullScreen");
+  //console.log(style);
+  style.disabled = true;
+
+
  const process = document.querySelector('#process');
  const error = document.querySelector('#info');
  const id = document.querySelector("#id");
@@ -426,6 +438,19 @@
  okay.addEventListener('click', () => {
    body.style.overflow = "auto";
  });
+ 
+ window.onresize = () => {
+      style.disabled = true;
+      let innerHeight = window.innerHeight;
+      let screenHeight = screen.height;
+      
+      // enable fullScreen style on full screen mode
+      if (innerHeight == screenHeight) {
+        fullScreen.disabled = false;
+      }
+  }
+  
+ 
  for (let elem of inputs) {
    elem.addEventListener('focus', () => {
      error.innerHTML = "";

@@ -2,9 +2,7 @@
 <html>
   <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    
-    
+   <style>
     
     @keyframes chatimgAnime {
      from {
@@ -105,7 +103,6 @@
          position: absolute;
          border-right: 3px dashed rgb(204, 101, 4);
          list-style: none;
-         padding: 0;
          margin: 0;
          padding: 60px 0 30px 0;
          margin-top: 60px;
@@ -130,6 +127,7 @@
         position: absolute;
         right: 1px;
         top: 40px;
+        padding-bottom: 70px;
       }
       
       #chart details {
@@ -303,14 +301,35 @@
      #chart span {
        display: none;
      }
-     
-  
+    
 }
        
-    
-     
-      
     </style>
+    
+  <style id="fullScreen">
+     
+     header { 
+       padding-top: 30px;
+     }
+     
+     #chart {
+       margin-top: 40px;
+     }
+     
+     #nav {
+       margin-top: 100px;
+     }
+     
+     #right {
+       margin-top: 40px;
+     }
+     
+     body > img {
+       margin-top: 90px;
+     }
+   
+ </style>
+ 
   </head>
   
   
@@ -399,6 +418,11 @@
     
 <script>
 
+
+  const style = document.querySelector("#fullScreen");
+  //console.log(style);
+  style.disabled = true;
+
   const menu = document.querySelector('header > details');
   const summary = document.querySelector('#summary');
   const bold = document.querySelector('#summary > b');
@@ -409,6 +433,17 @@
   
   for (let elem of pies) {
     elem.addEventListener('click', showPie);
+  }
+  
+  window.onresize = () => {
+      style.disabled = true;
+      let innerHeight = window.innerHeight;
+      let screenHeight = screen.height;
+      
+      // enable fullScreen style on full screen mode
+      if (innerHeight == screenHeight) {
+        fullScreen.disabled = false;
+      }
   }
   
   document.addEventListener('click', (e) => {

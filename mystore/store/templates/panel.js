@@ -1,4 +1,12 @@
 
+  
+  const style = document.querySelector("#fullScreen");
+  //console.log(style);
+  style.disabled = true;
+
+
+
+
   // get the necessary dom elements.
     let oldScreen = window.innerWidth;
     const section = document.querySelector('section');
@@ -319,13 +327,23 @@ function useState() {
       
     }
 
-
+   // console.log(window.innerHeight);
+   // console.log(screen.height);
 
     function reRender() {
       // reRender some dom content on window resize
       let newScreen = window.innerWidth;
       
-      // only rerender whnw there is a change in window width.
+      style.disabled = true;
+      let innerHeight = window.innerHeight;
+      let screenHeight = screen.height;
+      
+      // enable fullScreen style on full screen mode
+      if (innerHeight == screenHeight) {
+        fullScreen.disabled = false;
+      }
+      
+      // only rerender when there is a change in window width.
       if (newScreen == oldScreen) {
         return null;
       }
