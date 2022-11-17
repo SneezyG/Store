@@ -136,7 +136,7 @@
      #logo {
         border-radius: 10px;
         width: 50px;
-        margin: 30px 30px 0 10px;
+        margin: 20px 30px 10px 10px;
       }
       
       #mainleft {
@@ -149,32 +149,28 @@
       }
       
 
-      #nav {
-        float: left;
-        width: 30%;
-        height: 250px;
-        margin: 40px 5px 5px 5px;
-        border-right: 3px dashed rgb(204, 101, 4);
-        transition: 0.3s;
-      }
-      
-      #nav > ul {
-         padding-top: 40px;
-         width: 90%;
+       #nav {
+         width: 30%;
+         float: left;
+         border-right: 3px dashed rgb(204, 101, 4);
          list-style: none;
+         margin: 0;
+         padding: 60px 0 40px 0;
+         margin-top: 30px;
+         transition: 0.3s;
       }
       
       #nav li {
         position: relative;
-        right: 20px;
-        font-size: 16px;
-        cursor: pointer;
+        font-size: 14px;
         color: white;
-        width: 70%;
+        width: 60%;
+        padding: 8px;
+        margin: auto;
         margin-bottom: 15px;
-        padding: 10px;
         background-color: rgb(219, 87, 25);
         text-align: center;
+        cursor: pointer;
       }
       
       
@@ -470,24 +466,6 @@
    }
 
 
-
-
-
-@media only screen and (max-width: 1000px) { 
-   
-  #mainleft input {
-    width: ;
-  }
-  
-  #nav li {
-   right: 30px;
-   font-size: 15px;
-   padding: 8px;
-  }
-  
-}
-      
-    
  
   
 
@@ -535,13 +513,18 @@
          width: 88%;
        }
 
-       #nav li {
-         font-size: 14px;
-       }
-
-       #logo {
+     #nav {
+       width: 25%;
+     }
+     
+     #nav li {
+       width: 70%;
+       font-size: 12px;
+     }
+     
+     #logo {
         width: 40px;
-        margin-top: 20px;
+        margin-top: 10px;
       }
 
 
