@@ -13,7 +13,7 @@
      body {
         margin: 0;
         padding: 0;
-        background-color: #F5F5F5;
+        background-color: #FFF5EE;
         user-select: none;
       }
       
@@ -118,8 +118,8 @@
       }
       
       article {
-        border: 2px dashed #91A3B0;
-        background-color: #E5E4E2;
+        border: 2px solid #91A3B0;
+        background-color: #FFF5EE;
         border-radius: 5px;
         width: 70%;
         margin: auto;
@@ -132,21 +132,21 @@
      
    
       article > input {
-        width: 70%;
-        padding: 7px;
+        width: 60%;
+        padding: 7px 7px 7px 15px;
         font-size: 15px;
-        border: 1px solid #91A3B0;
+        border: 1.5px solid #91A3B0;
         border-radius: 5px;
         outline-color: #91A3B0;
+        background-color: #FFF5EE;
       }
       
-      
       #id {
-        margin-top: 30px;
         margin-bottom: 15px;
       }
       
       #code {
+        margin-top: 30px;
         margin-bottom: 15px;
       }
       
@@ -162,6 +162,11 @@
         font-size: 18px;
       }
       
+      article > span {
+        display: block;
+        width: 60%;
+        font-size: 11px;
+      }
       #sale {
         text-align: center;
         width: 70%;
@@ -182,7 +187,7 @@
      overflow: hidden;
      padding-top: 50px;
      position: fixed;
-     background-color: #F5F5F5;
+     background-color: #FFF5EE;
      border: 2px solid rgb(180, 93, 11);
    }
    
@@ -365,7 +370,7 @@
    <details>
     <summary>Note</summary>
     <ul>
-      <li>Returned sales will reflect in the sales report(i.e total sales = sales - returned sales).</li>
+      <li>Transaction-id is an optional field to validate customer's receipt.</li>
       <li>Total number of returned sales is equal to the number of items returned in the current month.</li>
       <li>Total number of returned items is compute on per month basis only.</li>
     </ul>
@@ -377,10 +382,11 @@
       
       <article>
       <p id="sale">Total no of returned sales: <span>200  </span></p>
-      <input id="id" name="id" placeholder="Transaction ID" autofocus/>
-      <input id="code" name="code" placeholder="Item Barcode" autofocus/> <br/>
+      <input id="code" name="code" placeholder="Item barcode" autofocus/>
+      <span>optional*</span>
+      <input id="id" name="id" placeholder="Transaction Id" /> <br>
       no of return: <input id="return" value=1 type="number" name="return">
-      <p><span>Note: </span>Transaction Id is the same as receipt serial no</p>
+      <p><span>Note: </span>transaction-Id is the same as receipt-Id</p>
       </article>
      
      <p><button id="process">Process</button></p>

@@ -45,9 +45,11 @@
     stack.addEventListener('click', shift, {once:true});
     look.addEventListener('click', lookup);
     add.addEventListener('click', addItem)
+    
     exit.addEventListener('click', () => {
       item_info['mugshot'].src = "";
     });
+    
     window.onresize = reRender;
 
    cancel.addEventListener('click', () => {

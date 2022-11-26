@@ -79,7 +79,7 @@ class ItemAdmin(admin.ModelAdmin):
     }),
     )
     
-  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'returned', 'date', 'description')
+  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'returns', 'date', 'description')
   
 
   search_fields = ('serial_no',)
@@ -103,6 +103,10 @@ class ItemAdmin(admin.ModelAdmin):
        stock = stock - obj.sold
      
      return stock
+
+  def returns(self, obj):
+    "return amount return for an item object"
+    return obj.returns.count()
        
 
 
@@ -161,7 +165,7 @@ class TransactionAdmin(admin.ModelAdmin):
   
   date_hierarchy = 'date'
 
-  list_display = ('serial_no', 'buyer', 'attendant', 'date')
+  list_display = ('serial_no', 'attendant', 'date')
   
   list_filter = ('date',)
  
@@ -180,3 +184,39 @@ class TransactionAdmin(admin.ModelAdmin):
 
   def has_view_permission(self, request, obj=None):
         return request.user.is_superuser
+        
+        
+
+
+
+
+@admin.register(Returns)
+class ReturnsAdmin(admin.ModelAdmin):
+  
+  """
+    Register the Returns model into the admin.
+    Add some customisation.
+  """
+  
+  date_hierarchy = 'date'
+
+  list_display = ('item__name', 'quantity', 'date')
+  
+  list_filter = ('date',)
+ 
+  search_fields = ('item__serial_no', 'item__name')
+  
+  
+  
+  def has_add_permission(self, request):
+        return False
+
+  def has_change_permission(self, request, obj=None):
+        return False
+
+  def has_delete_permission(self, request, obj=None):
+        return False
+
+  def has_view_permission(self, request, obj=None):
+        return request.user.is_superuser
+        

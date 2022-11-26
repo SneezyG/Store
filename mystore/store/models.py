@@ -37,7 +37,6 @@ class Item(models.Model):
    cost_price = models.CharField(max_length=20, verbose_name='cost price($)', validators=[castValidator])
    selling_price = models.CharField(max_length=20, verbose_name='selling price($)', validators=[castValidator])
    sold = models.IntegerField(null=True, blank=True)
-   returned = models.IntegerField(null=True, blank=True)
    mugshot = models.ImageField(upload_to=path, null=True, blank=True)
    date = models.DateTimeField(auto_now=True)
    
@@ -82,12 +81,11 @@ class Sale(models.Model):
 class Transaction(models.Model):
   
   """
-  store data of a Transaction which technically involve a group of sales
+  store data of a Transaction which technically involve a group of sales.
   """
 
   serial_no = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="an auto generated uuid4 string for transaction ID")
   
-  buyer = models.CharField(max_length=20)
   attendant = models.CharField(max_length=20)
   date = models.DateField(auto_now_add=True)
   
@@ -95,6 +93,25 @@ class Transaction(models.Model):
     "Returns the transaction tag"
     tag = '%s(date: %s)' % (self.buyer, self.date)
     return tag
+
+
+
+class Returns(models.Model):
+  """
+  store item return data
+  """
+  
+  item = models.ForeignKey(Item, on_delete=models.SET_NULL, null=True, blank=True, related_name="returns")
+  quantity = models.IntegerField()
+  date = models.DateField(auto_now_add=True)
+  
+  def __str__(self):
+    "Returns the returns obj tag"
+    tag = '%s(date: %s)' % (self.item.name, self.date)
+    return tag
+
+  
+  
   
  
  

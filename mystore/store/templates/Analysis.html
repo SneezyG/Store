@@ -4,12 +4,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <style>
     
-    @keyframes chatimgAnime {
+    @keyframes chartimgAnime {
      from {
-       width: 17px;
+       width: 20px;
      }
      to {
-       width: 20px;
+       width: 25px;
      }
    }
    
@@ -17,7 +17,7 @@
     body {
         margin: 0;
         padding: 0;
-        background-color: #F5F5F5;
+        background-color: #FFF5EE;
         position: relative;
         user-select: none;
       }
@@ -39,7 +39,7 @@
         width: 100%;
         padding: 20px 5px 20px 5px;
         z-index: 1;
-        background-color: #F5F5F5;
+        background-color: #FFF5EE;
       }
       
       #header header {
@@ -164,7 +164,7 @@
         width: 70%;
         margin: auto;
         padding: 5px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         border-radius: 10px;
       }
       
@@ -183,10 +183,10 @@
       }
       
       article > img {
-        width: 17px;
+        width: 20px;
         float: right;
         border-radius: 10px;
-        animation: chatimgAnime;
+        animation: chartimgAnime;
         animation-play-state: paused;
         animation-duration: 0.1s;
       }
@@ -478,7 +478,7 @@
      elem.style.animation = "none";
      elem.offsetWidth;
      elem.style.animation = null;
-   });
+   }, {once:true});
    
   }
   

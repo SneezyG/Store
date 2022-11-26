@@ -1,2 +1,2 @@
 # Store
-Web application for a bulk store
+A point-of-sale Web application for a bulk store
