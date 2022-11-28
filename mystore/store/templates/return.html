@@ -2,6 +2,7 @@
 <html>
    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Store Return Screen</title>
     <style>
     
      @keyframes spiner {
@@ -340,20 +341,21 @@
       
 }
 
-    </style>
+ </style>
     
  <style id="fullScreen">
-     
-     body {
-       padding-top: 40px;
-     }
-     
+    /* 
+   this style is only enable on browser fullScreen mode.
+   */
+   body {
+     padding-top: 40px;
+   }
  </style>
  
-    </head>
+ </head>
+ 
     
 <body>
-  
   
   <img src="mystore~2.jpg"/>
   
@@ -419,12 +421,8 @@
   
 <script>
 
-
-  const style = document.querySelector("#fullScreen");
-  //console.log(style);
-  style.disabled = true;
-
-
+ // get the dom element this script depend on.
+ const style = document.querySelector("#fullScreen");
  const process = document.querySelector('#process');
  const error = document.querySelector('#info');
  const id = document.querySelector("#id");
@@ -439,13 +437,21 @@
  const drop = document.querySelector("#drop");
  const total = document.querySelector("#sale > span");
  
+ // call setScreen to enable/disable fullScreen.
+ setScreen();
+  
  
  process.addEventListener('click', Process);
  okay.addEventListener('click', () => {
    body.style.overflow = "auto";
  });
  
- window.onresize = () => {
+ 
+ // activate/deactivate fullScreen style.
+ window.onresize = setScreen;
+  
+ // enable and disable the fullScreen stylesheet.
+ function setScreen() {
       style.disabled = true;
       let innerHeight = window.innerHeight;
       let screenHeight = screen.height;
@@ -454,9 +460,10 @@
       if (innerHeight == screenHeight) {
         fullScreen.disabled = false;
       }
-  }
+ }
   
- 
+  
+ // reset inputs error display.
  for (let elem of inputs) {
    elem.addEventListener('focus', () => {
      error.innerHTML = "";
@@ -465,6 +472,7 @@
  }
  
  
+ // process a returned item request.
  function Process() {
    let id_value = id.value;
    let code_value = code.value;

@@ -2,6 +2,8 @@
 <html>
    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Store Update Screen</title>
+    
     <style>
     
      @keyframes spiner {
@@ -354,10 +356,12 @@
   
 }
 
-    </style>
+  </style>
     
   <style id="fullScreen">
-     
+    /* 
+    this style is only enable on browser fullScreen mode.
+    */
      body { 
        padding-top: 40px;
      }
@@ -365,10 +369,9 @@
      body > h4 {
        top: 40px;
      }
-     
- </style>
+  </style>
  
-    </head>
+  </head>
     
 <body>
   
@@ -452,11 +455,8 @@
   
 <script>
 
-  const style = document.querySelector("#fullScreen");
-  //console.log(style);
-  style.disabled = true;
-
   // get the necessary dom elements.
+  const style = document.querySelector("#fullScreen");
   const button = document.querySelector('#process');
   const dropbox = document.querySelector('article');
   const error = document.querySelector('#error');
@@ -467,6 +467,8 @@
   const spiner = document.querySelector("#spiner");
   const backdrop = document.querySelector("#drop");
   
+  // call setScreen to enable/disable fullScreen.
+  setScreen();
 
   
   /*
@@ -483,8 +485,10 @@
    body.style.overflow = "auto";
   });
   
+ // activate/deactivate fullScreen style.
+ window.onresize = setScreen;
   
-  window.onresize = () => {
+ function setScreen() {
       style.disabled = true;
       let innerHeight = window.innerHeight;
       let screenHeight = screen.height;
@@ -495,7 +499,7 @@
       }
   }
   
- 
+  
   
   
   // set some constraints on expected input files.

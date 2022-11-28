@@ -115,20 +115,18 @@
       }
       
       .drawer {
-        width: 25px;
+        width: 30px;
         margin: 0;
+        padding: 7px 10px 7px 0;
         position: fixed;
+        top: 45%;
         cursor: pointer;
       }
       
-      #stack {
-        top: 50%;
-      }
-      
+
       #hide {
-        top: 60%;
         opacity: 0.5;
-        width: 20px;
+        width: 25px;
         display: none
       }
       
@@ -496,7 +494,6 @@
        }
 
        #hide {
-         top: 40%;
          display: block;
        }
 

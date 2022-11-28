@@ -4,10 +4,15 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <title>Store Panel Screen</title>
+    
    <link rel="stylesheet" type="text/css" href="panel.css">
    
+   
    <style id="fullScreen">
-     
+    /* 
+   this style is only enable on browser fullScreen mode.
+   */
      header { 
        margin-top: 40px;
      }
@@ -92,7 +97,7 @@
   
   
     <div id="contain">
-    <!--
+    <!-- template for items added to transaction desk.
       <article>
         <span>X</span>
        <img data-id="" src="mystore~2.jpg" /> 
@@ -110,7 +115,8 @@
   </section>
   
   
-  <!-- construct the dialog that show the item details on look up-->
+  
+  <!-- construct the dialog that show the item details on look up -->
   <dialog id="item">
 
   <form method="dialog">
@@ -140,6 +146,7 @@
   </form>
   </dialog>
  
+  
   
   <!-- construct the dialog that displays error on look up-->
   <dialog id="not_found">

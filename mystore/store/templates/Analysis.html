@@ -2,7 +2,9 @@
 <html>
   <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <style>
+   <title>Store Analysis Screen</title>
+   
+ <style>
     
     @keyframes chartimgAnime {
      from {
@@ -307,6 +309,9 @@
     </style>
     
   <style id="fullScreen">
+   /* 
+   this style is only enable on browser fullScreen mode.
+   */
   
      header { 
        padding-top: 30px;
@@ -418,11 +423,9 @@
     
 <script>
 
-
+ // get the dom element this script depend on.
   const style = document.querySelector("#fullScreen");
-  //console.log(style);
-  style.disabled = true;
-
+ 
   const menu = document.querySelector('header > details');
   const summary = document.querySelector('#summary');
   const bold = document.querySelector('#summary > b');
@@ -430,12 +433,18 @@
   const reports = document.querySelectorAll('#header li');
   const pies = document.querySelectorAll('article > img');
   
+  // call setScreen to enable/disable fullScreen.
+  setScreen();
   
   for (let elem of pies) {
     elem.addEventListener('click', showPie);
   }
   
-  window.onresize = () => {
+  
+ // activate/deactivate fullScreen style.
+  window.onresize = setScreen;
+  
+  function setScreen() {
       style.disabled = true;
       let innerHeight = window.innerHeight;
       let screenHeight = screen.height;
@@ -445,6 +454,7 @@
         fullScreen.disabled = false;
       }
   }
+  
   
   document.addEventListener('click', (e) => {
     /* hide the menu when u click any part of the document and animate out the menu on onClick event.*/
@@ -470,9 +480,9 @@
   });
   
   
+ // show piechat analysis. 
   function showPie(e) {
    let elem = e.target;
-   //console.log(elem);
    elem.style.animationPlayState = "running";
    elem.addEventListener('animationend', () => {
      elem.style.animation = "none";

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
   
 <style>
 
@@ -57,7 +58,8 @@
 <a href="/accounts/login">MY STORE</a>
 
 <script>
-
+ 
+ // set the src attr of image if there exist a logo context.
  {% if logo %}
  let img = document.getElementById('img');
  img.src = "/media/" + "{{ logo }}";

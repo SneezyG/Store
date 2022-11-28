@@ -1,13 +1,6 @@
 
-  
-  const style = document.querySelector("#fullScreen");
-  //console.log(style);
-  style.disabled = true;
-
-
-
-
-  // get the necessary dom elements.
+    // get the necessary dom elements.
+    const style = document.querySelector("#fullScreen");
     let oldScreen = window.innerWidth;
     const section = document.querySelector('section');
     const drawer = document.querySelector('#hide');
@@ -31,14 +24,16 @@
     const cancel = document.querySelector("#cancel")
     
   
+  // call setScreen to enable/disable fullScreen.
+  setScreen();
+      
   
-  
- // app base state template.
+ // app base-state template.
  let state = [];
    
     
     
-    /*
+  /*
   attached event listenner to dom elements to kick start some dom manipulation and application processes.
   */
     drawer.addEventListener('click', Draw, {once:true});
@@ -193,11 +188,6 @@ function useState() {
   
    
    
-   
-   
-   
-   
-   
     
    // get item-dialog elements.
    const name = document.querySelector('#name');
@@ -328,22 +318,15 @@ function useState() {
       }, 300)
       
     }
-
-   // console.log(window.innerHeight);
-   // console.log(screen.height);
+    
+    
 
     function reRender() {
       // reRender some dom content on window resize
       let newScreen = window.innerWidth;
       
-      style.disabled = true;
-      let innerHeight = window.innerHeight;
-      let screenHeight = screen.height;
-      
-      // enable fullScreen style on full screen mode
-      if (innerHeight == screenHeight) {
-        fullScreen.disabled = false;
-      }
+      // call setScreen to enable/disable fullScreen.
+      setScreen();
       
       // only rerender when there is a change in window width.
       if (newScreen == oldScreen) {
@@ -378,6 +361,20 @@ function useState() {
 
 
     }
+    
+   
+ // activate/deactivate fullScreen style.
+  function setScreen() {
+      style.disabled = true;
+      let innerHeight = window.innerHeight;
+      let screenHeight = screen.height;
+      
+      // enable fullScreen style on full screen mode
+      if (innerHeight == screenHeight) {
+        fullScreen.disabled = false;
+      }
+  }
+  
     
     
  
