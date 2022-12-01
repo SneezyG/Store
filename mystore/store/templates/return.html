@@ -379,7 +379,7 @@
    <details>
     <summary>Note</summary>
     <ul>
-      <li>Transaction-id is an optional field to validate customer's receipt.</li>
+      <li>Receipt barcode is an optional field to validate customer's receipt.</li>
       <li>Total number of returned sales is equal to the number of items returned in the current month.</li>
       <li>Total number of returned items is compute on per month basis only.</li>
     </ul>
@@ -393,9 +393,9 @@
       <p id="sale">Total no of returned sales: <span>200  </span></p>
       <input id="code" name="code" placeholder="Item barcode" autofocus/>
       <span>optional*</span>
-      <input id="id" name="id" placeholder="Transaction Id" /> <br>
+      <input id="id" name="id" placeholder="Receipt barcode" /> <br>
       no of return: <input id="return" value=1 type="number" name="return">
-      <p><span>Note: </span>transaction-Id is the same as receipt-Id</p>
+      <p><span>Note: </span>transaction barcode is optional.</p>
       </article>
      
      <p><button id="process">Process</button></p>
