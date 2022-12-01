@@ -8,13 +8,21 @@
     
     @keyframes chartimgAnime {
      from {
-       width: 20px;
+       transform: scale(1);
      }
      to {
-       width: 25px;
+       transform: scale(1.5);
      }
    }
    
+   @keyframes spanAnime {
+     from {
+       transform: scale(1);
+     }
+     to {
+       transform: scale(1.2);
+     }
+   }
    
     body {
         margin: 0;
@@ -29,59 +37,57 @@
       }
     */ 
      
-      body > img {
-        margin: 60px 30px 30px 30px;
-        width: 40px;
+      #header > img {
+        margin: 0;
+        width: 30px;
         position: absolute;
-        z-index: 0;
+        left: 20px;
+        top: 10px;
       }
       
       #header {
         position: fixed;
         width: 100%;
-        padding: 20px 5px 20px 5px;
+        padding: 15px 0 0 0;
         z-index: 1;
         background-color: #FFF5EE;
       }
       
-      #header header {
-        font-size: 14px;
-        text-align: center;
-        height: 25px;
-      }
-     
-      #header details {
-        display: inline-block;
+      #header > hr {
+        margin: 15px auto 5px auto;
+        width: 50%;
       }
       
-      #header summary {
-        border: 1px solid rgb(204, 101, 4);
-        border-radius: 10px;
+      #header header {
+        font-size: 17px;
         text-align: center;
-        cursor: pointer;
-        padding: 6px 70px 4px 70px;
+      }
+      
+      #span {
+        display: flex;
+        justify-content: center;
+        margin: 15px 10px 0;
+      }
+      
+      
+      #span > span {
+        margin: 0 1.5% 0 1.5%;
+        font-size: 12.5px;
+        background-color: #dbd1d1;
+        padding: 6px 10px 6px 10px;
+        border-radius: 12px;
+        border: 0.1px solid #bf9494;
+        animation: spanAnime;
+        animation-play-state: paused;
+        animation-duration: 0.2s;
+      }
+      
+      #span > span:hover {
+        background-color: #bf9494;
       }
       
       #header b {
         opacity: 0.8;
-      }
-      
-      #header ul {
-        list-style: none;
-        width: 55%;
-        margin: auto;
-        margin-top: 12px;
-        padding: 0;
-      }
-      
-      #header li {
-        background-color: #D3D3D3;
-        padding: 12px 0 12px 0;
-        margin-bottom: 3px;
-        cursor: pointer;
-        /*border: 1px solid whitesmoke;*/
-        border-radius: 10px;
-        visibility: hidden;
       }
       
       #right {
@@ -90,6 +96,7 @@
         right: 5px;
         top: 90px;
         z-index: 0;
+        margin-top: 30px;
       }
       
       #left {
@@ -107,7 +114,7 @@
          list-style: none;
          margin: 0;
          padding: 60px 0 40px 0;
-         margin-top: 80px;
+         margin-top: 100px;
       }
       
       #nav li {
@@ -119,8 +126,14 @@
         margin: auto;
         margin-bottom: 15px;
         background-color: rgb(219, 87, 25);
+        border: 1px solid rgb(219, 87, 25);
         text-align: center;
         cursor: pointer;
+      }
+      
+      li#this {
+        background-color: #FFF5EE;
+        color: black;
       }
       
 
@@ -130,6 +143,7 @@
         right: 1px;
         top: 40px;
         padding-bottom: 70px;
+        margin-top: 30px;
       }
       
       #chart details {
@@ -158,11 +172,11 @@
       }
       
       #graph {
-        height: 400px;
+        height: 350px;
       }
       
       article {
-        background-color: #D3D3D3;
+        background-color: #dbd1d1;
         width: 70%;
         margin: auto;
         padding: 5px;
@@ -185,12 +199,14 @@
       }
       
       article > img {
-        width: 20px;
+        width: 25px;
         float: right;
+        position: relative;
+        bottom: 5px;
         border-radius: 10px;
         animation: chartimgAnime;
         animation-play-state: paused;
-        animation-duration: 0.1s;
+        animation-duration: 0.2s;
       }
       
       
@@ -224,30 +240,11 @@
 @media only screen and (max-width: 800px) { 
   
      #header header {
-       font-size: 13px;
+       font-size: 15px;
      }
      
-     body > img {
-       margin-left: 20px;
-       width: 30px
-     }
-
-     #header ul {
-       width: 65%;
-       margin-top: 5px;
-     }
-     
-     #header li {
-       padding: 11px 0 11px 0;
-     }
-     
-     #header summary {
-       cursor: auto;
-       padding: 6px 30px 4px 30px;
-     }
-
-     #content {
-       margin-top: 80px;
+     #span > span {
+       font-size: 11px;
      }
      
      section > p {
@@ -277,8 +274,7 @@
      }
      
       article > img {
-        position: relative;
-        bottom: 3px;
+        bottom: 8px;
       }
      
      #chart {
@@ -314,23 +310,23 @@
    */
   
      header { 
-       padding-top: 30px;
+       padding-top: 25px;
      }
      
      #chart {
-       margin-top: 40px;
+       margin-top: 60px;
      }
      
      #nav {
-       margin-top: 100px;
+       margin-top: 120px;
      }
      
      #right {
-       margin-top: 40px;
+       margin-top: 60px;
      }
      
-     body > img {
-       margin-top: 90px;
+     #header > img {
+       top: 40px;
      }
    
  </style>
@@ -340,20 +336,20 @@
   
 <body>
 
-     <img src="mystore~2.jpg" alt="logo" />
      
      <div id="header">
+       <img src="mystore~2.jpg" alt="logo" />
        <header>
-     <details>
-       <summary id="summary"><b>SALE REPORT</b> <sub>in last 30 days</sub></summary>       
-       <ul>
-         <li>in last 1 week</li>
-         <li>in last 2 weeks</li>
-         <li>in last 2 months</li>
-         <li>in last 4 months</li>
-       </ul>
-       </details>
+       <b>SALE REPORT</b>
        </header>
+       <div id="span">
+         <span id="first"> 1 week </span>
+         <span> 2 weeks </span>
+         <span> 1 month</span>
+         <span> 2 months </span>
+         <span> 4 months </span>
+       </div>
+       <hr/>
      </div>
      
    
@@ -364,7 +360,8 @@
     <ul id="nav">
        <li>Item Lookup</li>
        <li>Update Catalog</li>
-       <li>Sale Analysis</li>
+       <li id="this">Sale Analysis</li>
+       <li> Item Returns </li>
      </ul>
     
     
@@ -403,19 +400,19 @@
      <article id="three">
        <h6>Most sold item</h6>
        <p>Cocac olagg ghhhbdjdjd</p>
-       <img src="pie.jpg" title="click to show piechart" alt="pie-logo"/>
+       <img src="bar.png" title="click to show barchart" alt="bar-logo"/>
      </article>
 
      <article id="four">
        <h6>Most sold category</h6>
        <p>Beverageffg ghhhgdhdhdh</p>
-       <img src="pie.jpg" title="click to show piechart" alt="pie-logo"/>
+       <img src="bar.png" title="click to show barchart" alt="bar-logo"/>
      </article>
 
      <article id="five">
        <h6>Day with most sold</h6>
        <p>Wednesdaygg ghhhdhdjdjd</p>
-       <img src="pie.jpg" title="click to show piechart" alt="pie-logo"/>
+       <img src="bar.png" title="click to show barchart" alt="bar-logo"/>
      </article>
      
      </section>
@@ -423,21 +420,40 @@
     
 <script>
 
- // get the dom element this script depend on.
+  // get the dom element this script depend on.
   const style = document.querySelector("#fullScreen");
- 
-  const menu = document.querySelector('header > details');
-  const summary = document.querySelector('#summary');
-  const bold = document.querySelector('#summary > b');
-  const sub = document.querySelector('#summary > sub');
-  const reports = document.querySelectorAll('#header li');
   const pies = document.querySelectorAll('article > img');
+  const span = document.querySelectorAll('#span > span');
+  const firstSpan = document.querySelector("#first");
+  
+  // set a default style for "1 week" button
+  firstSpan.style.backgroundColor = "rgb(219, 87, 25)";
+  firstSpan.style.borderColor = "rgb(219, 87, 25)";
+  firstSpan.style.color = "white";
   
   // call setScreen to enable/disable fullScreen.
   setScreen();
   
   for (let elem of pies) {
-    elem.addEventListener('click', showPie);
+    elem.addEventListener('click', clickAnime);
+  }
+  
+  for (let elem of span) {
+    elem.addEventListener('click', () => {
+      for (let elem of span) {
+      elem.style.backgroundColor = "none";
+      elem.style.color = "none";
+      elem.style.borderColor = 'none'
+      elem.offsetWidth;
+      elem.style.backgroundColor = null;
+      elem.style.color = null;
+      elem.style.borderColor = null;
+      }
+      elem.style.backgroundColor = "rgb(219, 87, 25)";
+      elem.style.color = "white";
+      elem.style.borderColor = "rgb(219, 87, 25)";
+      clickAnime(elem);
+    });
   }
   
   
@@ -456,33 +472,9 @@
   }
   
   
-  document.addEventListener('click', (e) => {
-    /* hide the menu when u click any part of the document and animate out the menu on onClick event.*/
-    let elem = e.target;
-    if (elem != summary && elem != bold && elem != sub) {
-      menu.open=false;
-      for (let elem of reports) {
-        elem.style.visibility = "hidden";
-      }
-    }else {
-      let time = 0;
-      for (let elem of reports) {
-        if (menu.open == true) {
-          elem.style.visibility = "hidden";
-        } else {
-        setTimeout(() => {
-          elem.style.visibility = "visible";
-        }, time);
-        time += 50;
-      }
-      }
-    }
-  });
-  
-  
  // show piechat analysis. 
-  function showPie(e) {
-   let elem = e.target;
+  function clickAnime(e) {
+   let elem = e.target ?? e;
    elem.style.animationPlayState = "running";
    elem.addEventListener('animationend', () => {
      elem.style.animation = "none";

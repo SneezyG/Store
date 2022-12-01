@@ -22,17 +22,10 @@
       
       body > img {
         margin: 30px;
-        width: 50px;
+        width: 35px;
         position: absolute;
       }
       
-      body > h4 {
-        position: absolute;
-        right: 5%;
-        top: 10px;
-      }
-      
-    
       #contain {
         width: 100%;
         position: relative;
@@ -59,8 +52,14 @@
         margin: auto;
         margin-bottom: 15px;
         background-color: rgb(219, 87, 25);
+        border: 1px solid rgb(219, 87, 25);
         text-align: center;
         cursor: pointer;
+      }
+      
+     li#this {
+        background-color: #FFF5EE;
+        color: black;
       }
       
       #upload {
@@ -365,10 +364,7 @@
      body { 
        padding-top: 40px;
      }
-     
-     body > h4 {
-       top: 40px;
-     }
+
   </style>
  
   </head>
@@ -377,14 +373,14 @@
   
   
   <img src="mystore~2.jpg"/>
-  <h4><a href="#">Go to returns</a></h4>
   
   <div id="contain">
   
   <ul id="nav">
        <li>Item Lookup</li>
-       <li>Update Catalog</li>
+       <li id="this">Update Catalog</li>
        <li>Sale Analysis</li>
+       <li>Item Returns</li>
   </ul>
 
     
