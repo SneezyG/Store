@@ -227,12 +227,12 @@
         background-color: rgb(214, 163, 21);
       }
  
-      #five {
-        background-color: rgb(143, 209, 229);
-      }
-
       #four {
         background-color: rgb(240, 106, 28);
+      }
+
+      #five {
+        background-color: rgb(109, 183, 206);
       }
       
       
@@ -400,19 +400,16 @@
      <article id="three">
        <h6>Most sold item</h6>
        <p>Cocac olagg ghhhbdjdjd</p>
-       <img src="bar.png" title="click to show barchart" alt="bar-logo"/>
      </article>
 
      <article id="four">
        <h6>Most sold category</h6>
        <p>Beverageffg ghhhgdhdhdh</p>
-       <img src="bar.png" title="click to show barchart" alt="bar-logo"/>
      </article>
 
      <article id="five">
        <h6>Day with most sold</h6>
        <p>Wednesdaygg ghhhdhdjdjd</p>
-       <img src="bar.png" title="click to show barchart" alt="bar-logo"/>
      </article>
      
      </section>
@@ -422,11 +419,10 @@
 
   // get the dom element this script depend on.
   const style = document.querySelector("#fullScreen");
-  const pies = document.querySelectorAll('article > img');
   const span = document.querySelectorAll('#span > span');
   const firstSpan = document.querySelector("#first");
   
-  // set a default style for "1 week" button
+  // set a default style for report "1 week" button
   firstSpan.style.backgroundColor = "rgb(219, 87, 25)";
   firstSpan.style.borderColor = "rgb(219, 87, 25)";
   firstSpan.style.color = "white";
@@ -434,20 +430,17 @@
   // call setScreen to enable/disable fullScreen.
   setScreen();
   
-  for (let elem of pies) {
-    elem.addEventListener('click', clickAnime);
-  }
-  
+  // style the clicked reset button.
   for (let elem of span) {
     elem.addEventListener('click', () => {
       for (let elem of span) {
-      elem.style.backgroundColor = "none";
-      elem.style.color = "none";
-      elem.style.borderColor = 'none'
-      elem.offsetWidth;
-      elem.style.backgroundColor = null;
-      elem.style.color = null;
-      elem.style.borderColor = null;
+        elem.style.backgroundColor = "none";
+        elem.style.color = "none";
+        elem.style.borderColor = 'none'
+        elem.offsetWidth;
+        elem.style.backgroundColor = null;
+        elem.style.color = null;
+        elem.style.borderColor = null;
       }
       elem.style.backgroundColor = "rgb(219, 87, 25)";
       elem.style.color = "white";
@@ -472,7 +465,7 @@
   }
   
   
- // show piechat analysis. 
+ // animate and reset report duration button
   function clickAnime(e) {
    let elem = e.target ?? e;
    elem.style.animationPlayState = "running";

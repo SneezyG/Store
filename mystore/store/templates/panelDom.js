@@ -1,7 +1,6 @@
 
 // get the necessary dom elements.
 const style = document.querySelector("#fullScreen");
-let oldScreen = window.innerWidth;
 const section = document.querySelector('section');
 const drawer = document.querySelector('#hide');
 const backdrop = document.querySelector('#backdrop');
@@ -17,13 +16,21 @@ const item = document.querySelector('#item');
 const add = document.querySelector('#add');
 const exit = document.querySelector('#exit');
 const not_found = document.querySelector('#not_found');
-const basket = document.querySelector("#basket");
+const itemCount = document.querySelector("#itemCount");
 const Tgoods = document.querySelector("#Tgoods");
 const Tprice = document.querySelector("#Tprice");
 const process = document.querySelector("#process");
 const cancel = document.querySelector("#cancel")
+const receiptDom = document.querySelector("#receipt");
+const receipt = document.querySelector("#receipt > main");
+const table = document.querySelector("#table");
+const printButton = document.querySelector("#print");
+const totalSpan = document.querySelector("#totalSpan");
 
-  
+
+
+let oldScreen = window.innerWidth;
+
 // call setScreen to enable/disable fullScreen.
 setScreen();
 
@@ -33,20 +40,38 @@ attached event listenner to dom elements to kick start some dom manipulation and
 */
 drawer.addEventListener('click', Draw, {once:true});
 stack.addEventListener('click', shift, {once:true});
+
+printButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.print();
+    let scr = screen.width;
+  
+    let time = (scr > 800) ? 0 : 1000;
+    // set timeOut to capture the receiptDom.
+    setTimeout(() => {
+       //reset state to default.
+       sessionStorage.state = JSON.stringify(state);
+       window.location.reload();
+    }, time);
+ });
+ 
 window.onresize = reRender;
 
     
 // get item-dialog elements.
+const id = document.querySelector('#id');
 const name = document.querySelector('#name');
 const price = document.querySelector('#price');
 const available = document.querySelector('#available');
 const quantity = document.querySelector('#quantity');
 const size = document.querySelector('#size');
 const category = document.querySelector('#category');
+const description = document.querySelector('#description');
 const mugshot = document.querySelector('#mugshot');
 
 // create an Object of item-dialog elements.
 const item_info = {
+ 'id': id,
  'name': name, 
  'price': price, 
  'available': available, 
@@ -54,6 +79,7 @@ const item_info = {
  'quantity': quantity,
  'category': category, 
  'mugshot': mugshot,
+ 'description': description,
 };
 
    
@@ -91,7 +117,7 @@ function Draw() {
 
   setTimeout(() => {
   contain.style.visibility = "visible";
-  basket.style.visibility = "visible";
+  itemCount.style.visibility = "visible";
   }, 400)
 
 }
@@ -105,7 +131,7 @@ function Close() {
   preview.style.display = "none";
   drawer.addEventListener('click', Draw, {once:true});
   contain.style.visibility = "hidden";
-  basket.style.visibility = "hidden";
+  itemCount.style.visibility = "hidden";
 
 }
 
@@ -173,12 +199,12 @@ function reRender() {
   
   contain.style.marginTop = "none";
   contain.style.visibility = "none";
-  basket.style.visibility = "none";
+  itemCount.style.visibility = "none";
   contain.offsetWidth;
-  basket.offsetWidth;
+  itemCount.offsetWidth;
   contain.style.marginTop = null;
   contain.style.visibility = null;
-  basket.style.visibility = null;
+  itemCount.style.visibility = null;
 
   //remove drawers event listenner.
   drawer.removeEventListener('click', Close, {once:true});

@@ -126,7 +126,7 @@ class SaleAdmin(admin.ModelAdmin):
   
   list_filter = ('date',)
  
-  search_fields = ('transaction__serial_no',)
+  search_fields = ('transaction__id',)
   
   def category_subcategory(self, obj):
      "return the category and sub_category as a string"
@@ -165,7 +165,7 @@ class TransactionAdmin(admin.ModelAdmin):
   
   date_hierarchy = 'date'
 
-  list_display = ('serial_no', 'attendant', 'date')
+  list_display = ('id', 'attendant', 'date')
   
   list_filter = ('date',)
  

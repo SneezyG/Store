@@ -221,8 +221,6 @@
    
 
 #spiner {
-  position: fixed;
-  top: 20%;
   transform: translateZ(0) scale(1);
   height: 400px;
   width: 400px;
@@ -292,18 +290,6 @@
   background: rgb(180, 93, 11);
 }
 
-
-#drop {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  background-color: lightblue;
-  opacity: 0.7;
-  visibility: hidden;
-}
-      
-      
       
 
     
@@ -395,7 +381,7 @@
       <span>optional*</span>
       <input id="id" name="id" placeholder="Receipt barcode" /> <br>
       no of return: <input id="return" value=1 type="number" name="return">
-      <p><span>Note: </span>transaction barcode is optional.</p>
+      <p><span>Note: </span>receipt barcode is optional.</p>
       </article>
      
      <p><button id="process">Process</button></p>
@@ -441,7 +427,6 @@
  const body = document.querySelector('body');
  const okay = document.querySelector("#success button");
  const spiner = document.querySelector("#spiner");
- const drop = document.querySelector("#drop");
  const total = document.querySelector("#sale > span");
  
  // call setScreen to enable/disable fullScreen.
@@ -485,12 +470,10 @@
    let code_value = code.value;
    let retun_value = Number(retun.value);
    if (id_value && code_value && retun_value) {
-     spiner.show();
-     drop.style.visibility = "visible";
+     spiner.showModal();
      body.style.overflow = "hidden";
      setTimeout(() => {
        spiner.open = false;
-       drop.style.visibility = "hidden";
        success.showModal();
        let newTotal = Number(total.innerHTML.trim()) + retun_value;
        total.innerHTML = newTotal;

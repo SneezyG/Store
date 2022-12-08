@@ -83,15 +83,13 @@ class Transaction(models.Model):
   """
   store data of a Transaction which technically involve a group of sales.
   """
-
-  serial_no = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="an auto generated uuid4 string for transaction ID")
   
   attendant = models.CharField(max_length=20)
   date = models.DateField(auto_now_add=True)
   
   def __str__(self):
     "Returns the transaction tag"
-    tag = '%s(date: %s)' % (self.buyer, self.date)
+    tag = '%s(date: %s)' % (self.attendant, self.date)
     return tag
 
 

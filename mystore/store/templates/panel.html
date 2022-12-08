@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>Store Panel Screen</title>
@@ -36,7 +36,7 @@
 
 
   <main> 
-    <header>
+    <header id="mainHead">
      <img id='pin' src="pin.png"/>
       <h4> Admin </h4>
     </header>
@@ -82,8 +82,8 @@
   <img class="drawer" id="stack" src="stack.png" />
   <img class="drawer" id="hide" src="drawer.png" /> 
     
-  <p id="basket"> 0 item added</p>
-    <div id="sectionHeader">
+  <p id="itemCount"> 0 item added</p>
+   <div id="sectionHeader">
     <p id="first"> PREVIEW 
        <button id="process" class="checkout">Process</button>
        <button id="cancel" class="checkout">Cancel</button>
@@ -139,6 +139,10 @@
   </p>
   <p>Size: <span class="data" id="size">none</span></p>
   <p>Category: <span class="data" id="category">beauty</span></p>
+  
+  <!-- hidden dialog content s-->
+  <span class="hidden" id="description">description</span>
+  <span class="hidden" id="id">ID</span>
 
   </div>
   
@@ -157,10 +161,65 @@
   </form>
   </dialog>
   
+  
+  
+<!-- construct the dialog to preview and print receipt -->
+<dialog id="receipt">
+   <header>
+    <h3>Transaction successful!</h3>
+   </header>
+   
+   <form method="dialog">
+    <button id="print">Print Receipt</button>
+   </form>
+
+  <main>
+   
+   <h5>MY STORE</h5>
+   <p id="store">
+     <span>Address: 28 Adekunle Fajuyi Rd, Dugbe, Ibadan.</span>
+     <br/>
+     <span>Tel: 0905629927</span>
+   </p>
+   
+   <p id="title">RECEIPT</p>
+   
+   <p id="receiptHead">
+    <span>Description(qty)</span>
+    <span class="floatR">Price</span>
+   </p>
+   
+   
+   <div id="table">
+     <!-- receipt item templates.
+     <p>
+       <span> shhsiejehdbxbxhxusjjsnd</span>
+       <span class="floatR"> &hsjssjsj</span>
+     </p>
+     -->
+   </div>
+   
+   
+  <p id="total">
+    <span>Total</span>
+    <span id="totalSpan" class="floatR">#1500</span>
+  </p>
+
+  <div id="barcode">
+     <img/>
+  </div>
+  
+  <p id="thanks">Thank You</p>
+  
+  </main>
+</dialog>
+ 
+  
  
   
  <script src="panelDom.js"></script>
  <script src="panelItem.js"></script>
+ <script src="JsBarcode.all.min.js" charset="UTF-8"></script>
  
 </body>
 </html>
