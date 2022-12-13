@@ -9,13 +9,11 @@
   @keyframes rotate {
     from {
       transform: rotateZ(0deg);
-      width: 180px;
-      height: 180px;
+      width: 120px;
     }
     to {
       transform: rotateZ(360deg);
-      width: 100px;
-      height: 100px;
+      width: 60px;
     }
   }
     
@@ -28,8 +26,7 @@
   }
   
   img {
-    width: 180px;
-    height: 180px;
+    width: 120px;
     border-radius: 10px;
     animation-name: rotate;
     animation-duration: 15s;
@@ -54,20 +51,12 @@
 <body>
   
   
-<img id="img" style="display: none" alt="site logo"/> 
+<img src="mystore~2.jpg" alt="site logo"/> 
 <a href="/accounts/login">MY STORE</a>
 
 <script>
- 
- // set the src attr of image if there exist a logo context.
- {% if logo %}
- let img = document.getElementById('img');
- img.src = "/media/" + "{{ logo }}";
- img.style.display = "block";
- {% endif %}
    
 </script>
-
 
 
 </body>

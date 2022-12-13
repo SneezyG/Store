@@ -6,16 +6,22 @@
     
     <style>
     
-     @keyframes spiner {
-      0% { opacity: 0.5 }
-      100% { opacity: 0 }
-     }
+  @keyframes rotate {
+    from {
+      transform: rotateZ(0deg);
+      width: 80px;
+    }
+    to {
+      transform: rotateZ(360deg);
+      width: 40px;
+    }
+  }
+    
 
      body {
         margin: 0;
         padding: 0;
         background-color: #FFF5EE;
-        position: relative;
         user-select: none;
       }
       
@@ -223,81 +229,34 @@
    
    #success button {
      font-size: 15px;
-     padding: 8px 15px 8px 15px;
+     padding: 7px 15px 7px 15px;
      background-color: #00A693;
    }
    
 
-#spiner {
-  transform: translateZ(0) scale(1);
-  height: 400px;
-  width: 400px;
-  border: none;
-  background: none;
-  text-align: center;
-}
-
-   
-#spiner div {
-  top: 100px;
-  left: 48%;
-  position: absolute;
-  animation: spiner linear 1s infinite;
-  background: rgb(180, 93, 11);
-  width: 23px;
-  height: 40px;
-  border-radius: 20px / 40px;
-  transform-origin: 10px 75px;
-}#spiner div:nth-child(1) {
-  transform: rotate(0deg);
-  animation-delay: -0.9166666666666666s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(2) {
-  transform: rotate(30deg);
-  animation-delay: -0.8333333333333334s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(3) {
-  transform: rotate(60deg);
-  animation-delay: -0.75s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(4) {
-  transform: rotate(90deg);
-  animation-delay: -0.6666666666666666s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(5) {
-  transform: rotate(120deg);
-  animation-delay: -0.5833333333333334s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(6) {
-  transform: rotate(150deg);
-  animation-delay: -0.5s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(7) {
-  transform: rotate(180deg);
-  animation-delay: -0.4166666666666667s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(8) {
-  transform: rotate(210deg);
-  animation-delay: -0.3333333333333333s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(9) {
-  transform: rotate(240deg);
-  animation-delay: -0.25s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(10) {
-  transform: rotate(270deg);
-  animation-delay: -0.16666666666666666s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(11) {
-  transform: rotate(300deg);
-  animation-delay: -0.08333333333333333s;
-  background: rgb(180, 93, 11);
-}#spiner div:nth-child(12) {
-  transform: rotate(330deg);
-  animation-delay: 0s;
-  background: rgb(180, 93, 11);
-}
-
+    #spiner {
+      background-color: #FFF5EE;
+      position: absolute;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+      text-align: center;
+    }
+    
+    #spiner > img {
+      width: 80px;
+      border-radius: 10px;
+      animation-name: rotate;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      position: relative;
+      top: 35%;
+    }
+  
 
     
     
@@ -339,7 +298,13 @@
       article p {
         font-size: 14px;
       }
-  
+      
+      #success {
+        width: 220px;
+        height: 150px;
+        padding-top: 20px;
+      }
+      
 }
 
   </style>
@@ -426,8 +391,7 @@
  
   <!-- construct the dialog that displays loader-->
   <dialog id="spiner" autofocus>
-    <h3>Processing...</h3>
-   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <img src="mystore~2.jpg" alt="site logo"/>
   </dialog>
 
   
@@ -511,7 +475,7 @@
         error.style.visibility = "visible";
       }
       else {
-       spiner.showModal();
+       spiner.open=true;
        body.style.overflow = "hidden";
        setTimeout(() => {
        spiner.open = false;

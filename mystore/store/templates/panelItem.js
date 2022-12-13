@@ -48,7 +48,7 @@ process.addEventListener('click', () => {
     p.append(span2);
     
     table.append(p);
- }
+  }
  
  
  // generate barcode from transaction_id.
@@ -58,7 +58,8 @@ process.addEventListener('click', () => {
  
   totalSpan.innerHTML = "$" + total;
   // show receipt modal.
-  receiptDom.showModal();
+  receiptDom.open=true;
+  backdropB.style.visibility = "visible";
   
 });
 
@@ -142,7 +143,6 @@ function useState() {
   
   Tgoods.innerHTML = total_goods;
   Tprice.innerHTML = "$" + total_price;
-  console.log("am should be here once");
 }
   
   

@@ -3,7 +3,8 @@
 const style = document.querySelector("#fullScreen");
 const section = document.querySelector('section');
 const drawer = document.querySelector('#hide');
-const backdrop = document.querySelector('#backdrop');
+const backdropA = document.querySelector('#backdropA');
+const backdropB = document.querySelector('#backdropB');
 const stack = document.querySelector('#stack');
 const nav = document.querySelector('#nav');
 const mainleft = document.querySelector('#mainleft');
@@ -28,7 +29,6 @@ const printButton = document.querySelector("#print");
 const totalSpan = document.querySelector("#totalSpan");
 
 
-
 let oldScreen = window.innerWidth;
 
 // call setScreen to enable/disable fullScreen.
@@ -44,14 +44,16 @@ stack.addEventListener('click', shift, {once:true});
 printButton.addEventListener('click', (e) => {
     e.preventDefault();
     window.print();
-    let scr = screen.width;
+    let scrn = screen.width;
   
-    let time = (scr > 800) ? 0 : 1000;
+    let time = (scrn > 800) ? 0 : 1000;
     // set timeOut to capture the receiptDom.
     setTimeout(() => {
-       //reset state to default.
+       //close dialog and reset state to default.
+       receiptDom.open=false;
+       backdropB.style.visibility = "hidden";
        sessionStorage.state = JSON.stringify(state);
-       window.location.reload();
+       useState();
     }, time);
  });
  
@@ -111,7 +113,7 @@ quantity.addEventListener('input', (e) => {
 function Draw() {
   // draw out the hidden side section.
   section.style.width = "70%";
-  backdrop.style.visibility = "visible";
+  backdropA.style.visibility = "visible";
   preview.style.display = "block";
   drawer.addEventListener('click', Close, {once:true});
 
@@ -127,7 +129,7 @@ function Draw() {
 function Close() {
   // close back the hidden side section
   section.style.width = "11%";
-  backdrop.style.visibility = "hidden";
+  backdropA.style.visibility = "hidden";
   preview.style.display = "none";
   drawer.addEventListener('click', Draw, {once:true});
   contain.style.visibility = "hidden";
@@ -194,7 +196,7 @@ function reRender() {
   nav.style.display = "block";
   mainleft.style.width = "95%";
   hint.style.visibility = "visible";
-  backdrop.style.visibility = "hidden";
+  backdropA.style.visibility = "hidden";
   preview.style.display = "none";
   
   contain.style.marginTop = "none";
