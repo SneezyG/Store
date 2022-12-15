@@ -12,13 +12,16 @@
     opacity: 0;
   }
 }
- 
+
+
+html {
+  height: 100%;
+}
 
 body {
   margin: 0;
   padding: 0;
   background-color: #FFF5EE;
-  position: absolute;
   height: 100%;
   width: 100%;
   overflow: hidden;
