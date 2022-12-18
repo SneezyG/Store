@@ -47,18 +47,21 @@
   
   <div id="mainleft">
      <ul id="nav">
-       <li id="this">Item Lookup</li>
-       <li>Update Catalog</li>
-       <li>Sale Analysis</li>
-       <li>Item Returns</li>
+       <li id="active">Lookup</li>
+       <li>Update</li>
+       <li>Analysis</li>
+       <li>Returns</li>
      </ul>
     
     <div id="utility">
       
     <h4> look up product with </h4>
     
+    <div id="loadItem">
     <img src="barcode.jpg" /> 
-     
+    </div>
+    
+    <p id="validate">barcode input is empty!!</p>
     <input id="input" placeholder="Enter barcode" autofocus/>
     <span><button id="look">
       <img src="search.png" /> 
@@ -70,7 +73,6 @@
       </p>
     </dl>
       
-   
     </div>
     
   </div>
@@ -147,7 +149,7 @@
   </div>
   
   <form method="dialog">
-    <button id="add" value="cancel">Add item</button>
+    <button id="add" value="add">Add item</button>
   </form>
   </dialog>
  
@@ -214,6 +216,12 @@
   <p id="thanks">Thank You</p>
   
   </main>
+</dialog>
+
+
+<!-- construct the dialog that displays loader-->
+<dialog id="spiner" autofocus>
+<img src="mystore~2.jpg" alt="site logo"/>
 </dialog>
  
   

@@ -23,6 +23,7 @@ cancel.addEventListener('click', () => {
 
 process.addEventListener('click', () => {
  /* process sale and clear item desk if transaction is successful */
+  spiner.open = true;
   let state = JSON.parse(sessionStorage.state);
   let total = 0;
   
@@ -58,8 +59,13 @@ process.addEventListener('click', () => {
  
   totalSpan.innerHTML = "$" + total;
   // show receipt modal.
-  receiptDom.open=true;
-  backdropB.style.visibility = "visible";
+  setTimeout(() => {
+    //receiptDom.open=true;
+    //backdropB.style.visibility = "visible";
+    not_found.showModal();
+    not_found.children[0].innerHTML = "Transaction failed, try again!";
+    spiner.open = false;
+  }, 3000);
   
 });
 
@@ -193,9 +199,18 @@ function popState(id) {
 function lookup() {
   // look up item, display error/details dialog.
   let value = input.value.trim();
+  if (value.length == 0) {
+    let validate = document.querySelector("#validate");
+    validate.style.display = "block";
+    return null;
+  }
+  loadItem.style.animationPlayState = "running";
   let info = data[value];
   if (!info) {
-    not_found.showModal()
+    setTimeout(() => {
+      not_found.showModal();
+      resetAnime(loadItem);
+    }, 3000);
     return;
   }
   let keys = Object.keys(item_info);
@@ -209,10 +224,22 @@ function lookup() {
     }
   }
   
-  item.showModal();
+  setTimeout(() => {
+     item.showModal();
+     resetAnime(loadItem);
+    }, 3000);
   quantity.value = 1;
   add.style.pointerEvents = "auto";
   add.style.opacity = 1;
+}
+
+
+
+function resetAnime(e) {
+  let elem = e.target ?? e;
+  elem.style.animation = "none";
+  elem.offsetWidth;
+  elem.style.animation = null;
 }
 
 

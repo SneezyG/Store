@@ -6,14 +6,6 @@
    
  <style>
     
-    @keyframes chartimgAnime {
-     from {
-       transform: scale(1);
-     }
-     to {
-       transform: scale(1.5);
-     }
-   }
    
    @keyframes spanAnime {
      from {
@@ -24,6 +16,23 @@
      }
    }
    
+   @keyframes rotate {
+    from {
+      transform: rotateZ(0deg);
+      width: 80px;
+    }
+    to {
+      transform: rotateZ(360deg);
+      width: 40px;
+    }
+   }
+    
+   
+    html {
+      height: 100%;
+      width: 100%;
+    }
+    
     body {
         margin: 0;
         padding: 0;
@@ -31,12 +40,7 @@
         position: relative;
         user-select: none;
       }
-    /*  
-    #right::-webkit-scrollbar {
-           display: none;
-      }
-    */ 
-     
+
       #header > img {
         margin: 0;
         width: 30px;
@@ -131,7 +135,7 @@
         cursor: pointer;
       }
       
-      li#this {
+      li#active {
         background-color: #FFF5EE;
         color: black;
       }
@@ -198,17 +202,6 @@
         opacity: 0.8;
       }
       
-      article > img {
-        width: 25px;
-        float: right;
-        position: relative;
-        bottom: 5px;
-        border-radius: 10px;
-        animation: chartimgAnime;
-        animation-play-state: paused;
-        animation-duration: 0.2s;
-      }
-      
       #chart b {
         opacity: 0.7;
       }
@@ -228,6 +221,59 @@
       #five {
         background-color: rgb(109, 183, 206);
       }
+      
+     #spiner {
+      background-color: #FFF5EE;
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+      text-align: center;
+    }
+    
+    dialog::backdrop {
+        background: lightblue;
+        opacity: 0.7;
+   }
+    
+    #spiner > img {
+      width: 80px;
+      border-radius: 20px;
+      animation-name: rotate;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      position: relative;
+      top: 35%
+    }
+    
+    #not_found {
+      width: 400px;
+      height: 200px;
+      overflow: hidden;
+      padding-top: 50px;
+      background-color: #FFF5EE;
+      border: 2px solid rgb(180, 93, 11);
+    }
+    
+    #not_found  p {
+      text-align: center;
+    }
+    
+    #not_found > form {
+      margin-top: 50px;
+    }
+    
+    #not_found button {
+       font-size: 15px;
+       padding: 5px;
+       background-color: #D3D3D3;
+    }
+    
       
       
       
@@ -293,6 +339,12 @@
      #chart span {
        display: none;
      }
+     
+     #not_found {
+       width: 270px;
+       height: 150px;
+       padding-top: 20px;
+     }
     
 }
        
@@ -352,10 +404,10 @@
      
     
     <ul id="nav">
-       <li>Item Lookup</li>
-       <li>Update Catalog</li>
-       <li id="this">Sale Analysis</li>
-       <li> Item Returns </li>
+       <li>Lookup</li>
+       <li>Update</li>
+       <li id="active">Analysis</li>
+       <li>Returns </li>
      </ul>
     
     
@@ -407,14 +459,34 @@
      </article>
      
      </section>
+   
+  
+  <!-- construct the dialog that displays error-->
+  <dialog id="not_found">
+  <p> Failed, try again </p>
+  <form method="dialog">
+  <p> <button value="cancel">cancel</button> </p>
+  </form>
+  </dialog>
+ 
+
+ 
+  <!-- construct the dialog that displays loader-->
+  <dialog id="spiner" autofocus>
+  <img src="mystore~2.jpg" alt="site logo"/>
+  </dialog>
      
     
 <script>
 
   // get the dom element this script depend on.
+  const body = document.querySelector("body");
   const style = document.querySelector("#fullScreen");
   const span = document.querySelectorAll('#span > span');
   const firstSpan = document.querySelector("#first");
+  const links = document.querySelectorAll("#nav > li");
+  const not_found = document.querySelector("#not_found");
+  const spiner = document.querySelector("#spiner");
   
   // set a default style for report "1 week" button
   firstSpan.style.backgroundColor = "rgb(219, 87, 25)";
@@ -424,7 +496,7 @@
   // call setScreen to enable/disable fullScreen.
   setScreen();
   
-  // style the clicked reset button.
+  // style the span button and call clickedAnime to animate it.
   for (let elem of span) {
     elem.addEventListener('click', () => {
       for (let elem of span) {
@@ -458,12 +530,33 @@
       }
   }
   
+ for (let elem of links) {
+    elem.addEventListener("click", (e) => {
+      let elem = e.target;
+      let children = elem.parentElement.children;
+      for (let child of children) {
+        if (child == elem) {
+           child.id = "active";
+        }else {
+           child.id = "";
+        }
+      }
+    });
+  }
+  
   
  // animate and reset report duration button
   function clickAnime(e) {
    let elem = e.target ?? e;
    elem.style.animationPlayState = "running";
    elem.addEventListener('animationend', () => {
+     spiner.open = true;
+     body.style.overflow = "hidden"
+     setTimeout(() => {
+       spiner.open = false;
+       body.style.overflow = "auto"
+       //not_found.showModal()
+     }, 5000);
      elem.style.animation = "none";
      elem.offsetWidth;
      elem.style.animation = null;

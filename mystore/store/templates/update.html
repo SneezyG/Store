@@ -51,7 +51,7 @@
       
       #nav li {
         position: relative;
-        font-size: 14px;
+        font-size: 15px;
         color: white;
         width: 60%;
         padding: 8px;
@@ -63,7 +63,7 @@
         cursor: pointer;
       }
       
-     li#this {
+     li#active {
         background-color: #FFF5EE;
         color: black;
       }
@@ -106,14 +106,13 @@
         bottom: 30px;
       }
       
-      section  button {
+      section button {
          padding: 10px;
          width: 150px;
          font-size: 16px;
-         font-weight: bold;
-         color: white;
          background-color: #00A693;
          cursor: pointer;
+         margin-bottom: 80px;
       }
       section > p {
         text-align: center;
@@ -220,7 +219,6 @@
    
    #success  p {
      text-align: center;
-     color: green;
    }
    
    #success > form {
@@ -236,7 +234,7 @@
 
     #spiner {
       background-color: #FFF5EE;
-      position: absolute;
+      position: fixed;
       top: 0;
       padding: 0;
       margin: 0;
@@ -248,7 +246,7 @@
     
     #spiner > img {
       width: 80px;
-      border-radius: 10px;
+      border-radius: 20px;
       animation-name: rotate;
       animation-duration: 3s;
       animation-iteration-count: infinite;
@@ -256,6 +254,30 @@
       position: relative;
       top: 35%;
     }
+    
+    #not_found {
+      width: 400px;
+      height: 200px;
+      overflow: hidden;
+      padding-top: 50px;
+      background-color: #FFF5EE;
+      border: 2px solid rgb(180, 93, 11);
+    }
+    
+    #not_found  p {
+      text-align: center;
+    }
+    
+    #not_found > form {
+      margin-top: 50px;
+    }
+    
+    #not_found button {
+       font-size: 15px;
+       padding: 5px;
+       background-color: #D3D3D3;
+    }
+    
   
 
     
@@ -305,6 +327,12 @@
         padding-top: 20px;
       }
       
+      #not_found {
+        width: 270px;
+        height: 150px;
+        padding-top: 20px;
+      }
+      
 }
 
   </style>
@@ -329,10 +357,10 @@
   <div id="contain">
   
   <ul id="nav">
-       <li>Item Lookup</li>
-       <li id="this">Update Catalog</li>
-       <li>Sale Analysis</li>
-       <li>Item Returns</li>
+       <li>Lookup</li>
+       <li id="active">Update</li>
+       <li>Analysis</li>
+       <li>Returns</li>
   </ul>
 
     
@@ -384,7 +412,16 @@
   <dialog id="success" autofocus>
   <p>Process Successful !</p>
   <form method="dialog">
-  <p> <button>Okay</button> </p>
+  <p> <button class="cancel">Okay</button> </p>
+  </form>
+  </dialog>
+  
+  
+  <!-- construct the dialog that displays error-->
+  <dialog id="not_found">
+  <p> Failed, try again </p>
+  <form method="dialog">
+  <p> <button class="cancel">cancel</button> </p>
   </form>
   </dialog>
   
@@ -408,16 +445,40 @@
   const fileElem = document.querySelector('#fileElem');
   const filename = document.querySelector('#filename');
   const body = document.querySelector('body');
-  const okay = document.querySelector("#success button");
+  const success = document.querySelector("#success");
+  const cancelBtns = document.querySelectorAll(".cancel");
   const spiner = document.querySelector("#spiner");
+  const not_found = document.querySelector("#not_found");
+  const links = document.querySelectorAll("#nav > li");
   
   // call setScreen to enable/disable fullScreen.
   setScreen();
+  
+  
+  for (let elem of cancelBtns) {
+    elem.addEventListener('click', () => {
+       body.style.overflow = "auto";
+    });
+  }
 
   
   /*
   attached event listenner to dom elements to kick start some dom manipulation and application processes.
   */
+  for (let elem of links) {
+    elem.addEventListener("click", (e) => {
+      let elem = e.target;
+      let children = elem.parentElement.children;
+      for (let child of children) {
+        if (child == elem) {
+           child.id = "active";
+        }else {
+           child.id = "";
+        }
+      }
+    });
+  }
+  
   fileElem.addEventListener('change', checkmate);
   button.addEventListener('click', process);
   dropbox.addEventListener("dragenter", dragenter, false);
@@ -425,9 +486,6 @@
   dropbox.addEventListener("dragover", dragover, false);
   dropbox.addEventListener("drop", drop, false);
 
-  okay.addEventListener('click', () => {
-   body.style.overflow = "auto";
-  });
   
  // activate/deactivate fullScreen style.
  window.onresize = setScreen;
@@ -475,12 +533,13 @@
         error.style.visibility = "visible";
       }
       else {
-       spiner.open=true;
+       spiner.open = true;
        body.style.overflow = "hidden";
        setTimeout(() => {
-       spiner.open = false;
-       success.showModal();
-       }, 3000);
+         spiner.open = false;
+         not_found.showModal();
+         //success.showModal();
+       }, 5000);
     }
   } 
     

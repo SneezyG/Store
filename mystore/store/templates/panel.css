@@ -13,6 +13,31 @@
   }
 }
 
+@keyframes lookAnime {
+/* animation barcode img on item lookup */
+  from {
+    width: 70px;
+    left: 0;
+    top: 0;
+  }
+  to {
+    width: 50px;
+    left: 10px;
+    top: 10px;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+    width: 80px;
+  }
+  to {
+    transform: rotateZ(360deg);
+    width: 40px;
+  }
+}
+
 
 html {
   height: 100%;
@@ -179,7 +204,7 @@ section::-webkit-scrollbar {
   cursor: pointer;
 }
 
-li#this {
+li#active {
   background-color: #FFF5EE;
   color: black;
 }
@@ -214,6 +239,13 @@ li#this {
   border: 1px solid rgb(172, 166, 151);
 }
 
+#validate {
+  margin: 0;
+  display: none;
+  color: red;
+  font-size: 13px;
+}
+
 #mainleft  h4 {
   margin-top: 5px;
 }
@@ -231,12 +263,22 @@ li#this {
   width: 18px;
 }
 
-
-#utility > img {
+#loadItem {
   width: 70px;
+  height: 70px;
   margin: 10px 20px 40px 0;
-  border-radius: 5px;
+}
+
+#loadItem > img {
+  width: 70px;
+  border-radius: 15px;
   opacity: 0.7;
+  position: relative;
+  animation-name: lookAnime;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: paused;
 }
 
 
@@ -608,12 +650,35 @@ dialog::backdrop {
 #receipt button {
    padding: 7px 10px;
    font-size: 13px;
-   font-weight: bold;
-   color: white;
    background-color: #00A693;
    cursor: pointer;
    margin-top: 20px;
 }
+
+#spiner {
+  background-color: #FFF5EE;
+  position: absolute;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  text-align: center;
+  z-index: 3;
+}
+
+#spiner > img {
+  width: 80px;
+  border-radius: 20px;
+  animation-name: rotate;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  position: relative;
+  top: 35%
+}
+   
 
 
 
@@ -677,6 +742,9 @@ dialog::backdrop {
          right: 30px;
        }
        
+       #loadItem > img { 
+         animation-duration: 1s;
+       }
        
        #preview button {
          margin-top: 10px;
