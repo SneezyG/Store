@@ -84,6 +84,7 @@
         animation: spanAnime;
         animation-play-state: paused;
         animation-duration: 0.2s;
+        animation-delay: 0.1;
       }
       
       #span > span:hover {
@@ -550,16 +551,18 @@
    let elem = e.target ?? e;
    elem.style.animationPlayState = "running";
    elem.addEventListener('animationend', () => {
-     spiner.open = true;
-     body.style.overflow = "hidden"
+     setTimeout(() => {
+       spiner.open = true;
+       body.style.overflow = "hidden";
+     }, 150);
      setTimeout(() => {
        spiner.open = false;
        body.style.overflow = "auto"
-       //not_found.showModal()
+       //not_found.showModal();
+       elem.style.animation = "none";
+       elem.offsetWidth;
+       elem.style.animation = null;
      }, 5000);
-     elem.style.animation = "none";
-     elem.offsetWidth;
-     elem.style.animation = null;
    }, {once:true});
    
   }

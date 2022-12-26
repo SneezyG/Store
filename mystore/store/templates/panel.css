@@ -279,6 +279,7 @@ li#active {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-play-state: paused;
+  animation-delay: 0.2s;
 }
 
 
@@ -463,7 +464,7 @@ dialog::backdrop {
 
 #item {
   width: 600px;
-  height: 420px;
+  height: 410px;
   overflow: hidden;
 }
 
@@ -471,6 +472,7 @@ dialog::backdrop {
 #item > img {
   float: left;
   width: 230px;
+  height: 285px;
   margin: 40px 0 0 30px;
   border-radius: 5px;
 }
@@ -803,11 +805,12 @@ dialog::backdrop {
 
       #item {
         width: 400px;
-        height: 330px;
+        height: 320px;
       }
 
       #item > img {
         width: 150px;
+        height: 200px;
         margin: 47px 0 0 10px;
       }
 
