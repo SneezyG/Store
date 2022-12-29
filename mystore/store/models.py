@@ -53,9 +53,7 @@ class Sale(models.Model):
   
   """
    store data of a sale.
-
    Every field is required except date which is auto-generated.
-
   """
  
   serial_no = models.CharField(max_length=20, verbose_name='barcode')

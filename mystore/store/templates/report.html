@@ -16,15 +16,34 @@
      }
    }
    
-   @keyframes rotate {
-    from {
-      transform: rotateZ(0deg);
-      width: 80px;
-    }
-    to {
-      transform: rotateZ(360deg);
-      width: 40px;
-    }
+   @keyframes visualAnime {
+     0% {
+       transform: scale(1);
+       filter: blur(0);
+     }
+     50% {
+       transform: scale(0.7);
+       filter: blur(2px);
+     }
+     100% {
+       transform: scale(1);
+       filter: blur(0);
+     }
+   }
+   
+   @keyframes graphAnime {
+     0% {
+       opacity: 1;
+       filter: blur(0);
+     }
+     50% {
+       opacity: 0.7;
+       filter: blur(2px);
+     }
+     100% {
+       opacity: 1;
+       filter: blur(0);
+     }
    }
     
    
@@ -70,7 +89,7 @@
       #span {
         display: flex;
         justify-content: center;
-        margin: 15px 10px 0;
+        margin: 20px 10px 0;
       }
       
       
@@ -83,12 +102,12 @@
         border: 0.1px solid #bf9494;
         animation: spanAnime;
         animation-play-state: paused;
-        animation-duration: 0.2s;
+        animation-duration: 0.15s;
         animation-delay: 0.1;
       }
       
       #span > span:hover {
-        background-color: #bf9494;
+        background-color: #d3c1c1;
       }
       
       #header b {
@@ -146,7 +165,7 @@
         width: 75%;
         position: absolute;
         right: 1px;
-        top: 40px;
+        top: 50px;
         padding-bottom: 70px;
         margin-top: 30px;
       }
@@ -178,15 +197,26 @@
       
       #graph {
         height: 350px;
+        /*
+        background-color: lightblue;
+        animation: graphAnime;
+        animation-play-state: paused;
+        animation-duration: 0.7s;
+        animation-delay: 0.5;
+        */
       }
       
       article {
-        background-color: #dbd1d1;
+        background-color: rgb(230, 159, 118);
         width: 70%;
         margin: auto;
         padding: 5px;
         margin-bottom: 20px;
         border-radius: 10px;
+        animation: visualAnime;
+        animation-play-state: paused;
+        animation-duration: 0.7s;
+        animation-delay: 0.5;
       }
       
       article > p {
@@ -207,74 +237,23 @@
         opacity: 0.7;
       }
 
-      #two {
-        background-color: rgb(9, 155, 135);
+      #profit {
+        background-color: rgb(127, 184, 176);
       }
 
-      #three {
-        background-color: rgb(214, 163, 21);
+      #item {
+        background-color: #dbd1d1;
       }
  
-      #four {
-        background-color: rgb(240, 106, 28);
+      #category {
+        background-color: rgb(184, 168, 124);
       }
 
-      #five {
-        background-color: rgb(109, 183, 206);
+      #day {
+        background-color: rgb(149, 195, 209);
       }
       
-     #spiner {
-      background-color: #FFF5EE;
-      position: fixed;
-      z-index: 2;
-      top: 0;
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-      border: none;
-      text-align: center;
-    }
-    
-    dialog::backdrop {
-        background: lightblue;
-        opacity: 0.7;
-   }
-    
-    #spiner > img {
-      width: 80px;
-      border-radius: 20px;
-      animation-name: rotate;
-      animation-duration: 3s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-      position: relative;
-      top: 35%
-    }
-    
-    #not_found {
-      width: 400px;
-      height: 200px;
-      overflow: hidden;
-      padding-top: 50px;
-      background-color: #FFF5EE;
-      border: 2px solid rgb(180, 93, 11);
-    }
-    
-    #not_found  p {
-      text-align: center;
-    }
-    
-    #not_found > form {
-      margin-top: 50px;
-    }
-    
-    #not_found button {
-       font-size: 15px;
-       padding: 5px;
-       background-color: #D3D3D3;
-    }
-    
+
       
       
       
@@ -340,12 +319,6 @@
      #chart span {
        display: none;
      }
-     
-     #not_found {
-       width: 270px;
-       height: 150px;
-       padding-top: 20px;
-     }
     
 }
        
@@ -392,9 +365,9 @@
        <div id="span">
          <span id="first"> 1 week </span>
          <span> 2 weeks </span>
-         <span> 1 month</span>
-         <span> 2 months </span>
-         <span> 4 months </span>
+         <span> 4 weeks</span>
+         <span> 8 weeks </span>
+         <span> 16 weeks </span>
        </div>
        <hr/>
      </div>
@@ -407,7 +380,7 @@
     <ul id="nav">
        <li>Lookup</li>
        <li>Update</li>
-       <li id="active">Analysis</li>
+       <li id="active">Report</li>
        <li>Returns </li>
      </ul>
     
@@ -415,7 +388,7 @@
      <div id="chart">
       <details open>
        <summary><b>Sale chart</b>
-       <span> a plot of items sold per day in the last 30 days</span>
+       <span> a plot of items sold per day in the last 28 days</span>
        </summary>
        <div id="graph">
        </div>
@@ -423,7 +396,7 @@
       
       <details>
        <summary><b>Profit chart</b>
-       <span> a plot of profit made per day in the last 30 days</span>
+       <span> a plot of profit made per day in the last 28 days</span>
        </summary>
        <div id="graph">
        </div>       
@@ -434,48 +407,34 @@
      
      <section id="right"> 
 
-     <article id="one" class="growth">
+     <article id="sales" class="growth">
        <h6>Total Sale</h6>
        <p>1200ffghhhhh0yyyuuuyy</p>
      </article>
 
-     <article id="two" class="growth">
+     <article id="profit" class="growth">
        <h6> Gross Profit </h6>
        <p> $20000gghhhjjjjhhdhjdj</p>
      </article>
        
-     <article id="three">
+     <article id="item">
        <h6>Most sold item</h6>
        <p>Cocac olagg ghhhbdjdjd</p>
      </article>
 
-     <article id="four">
+     <article id="category">
        <h6>Most sold category</h6>
        <p>Beverageffg ghhhgdhdhdh</p>
      </article>
 
-     <article id="five">
+     <article id="day">
        <h6>Day with most sold</h6>
        <p>Wednesdaygg ghhhdhdjdjd</p>
      </article>
      
      </section>
    
-  
-  <!-- construct the dialog that displays error-->
-  <dialog id="not_found">
-  <p> Failed, try again </p>
-  <form method="dialog">
-  <p> <button value="cancel">cancel</button> </p>
-  </form>
-  </dialog>
  
-
- 
-  <!-- construct the dialog that displays loader-->
-  <dialog id="spiner" autofocus>
-  <img src="mystore~2.jpg" alt="site logo"/>
-  </dialog>
      
     
 <script>
@@ -486,8 +445,9 @@
   const span = document.querySelectorAll('#span > span');
   const firstSpan = document.querySelector("#first");
   const links = document.querySelectorAll("#nav > li");
-  const not_found = document.querySelector("#not_found");
-  const spiner = document.querySelector("#spiner");
+  const article = document.querySelectorAll('article');
+  const graph = document.querySelectorAll('#graph');
+  
   
   // set a default style for report "1 week" button
   firstSpan.style.backgroundColor = "rgb(219, 87, 25)";
@@ -551,21 +511,38 @@
    let elem = e.target ?? e;
    elem.style.animationPlayState = "running";
    elem.addEventListener('animationend', () => {
-     setTimeout(() => {
-       spiner.open = true;
-       body.style.overflow = "hidden";
-     }, 150);
-     setTimeout(() => {
-       spiner.open = false;
-       body.style.overflow = "auto"
-       //not_found.showModal();
        elem.style.animation = "none";
        elem.offsetWidth;
        elem.style.animation = null;
-     }, 5000);
-   }, {once:true});
-   
+       // call visual function
+       visual();
+   });
   }
+  
+ // animate and set visual components
+ function visual() {
+   for (let elem of article) {
+      elem.style.animationPlayState = "running";
+     elem.addEventListener('animationend', () => {
+       elem.style.animation = "none";
+       elem.offsetWidth;
+       elem.style.animation = null;
+     }, {once:true});
+   }
+  /*
+   for (let elem of graph) {
+     elem.style.animationPlayState = "running";
+     elem.addEventListener('animationend', () => {
+       for (let elem of graph) {
+         elem.style.animation = "none";
+         elem.offsetWidth;
+         elem.style.animation = null;
+       }
+     }, {once:true});
+   }
+  */
+   
+ }
   
 </script>
 
