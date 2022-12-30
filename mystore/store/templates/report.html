@@ -31,21 +31,6 @@
      }
    }
    
-   @keyframes graphAnime {
-     0% {
-       opacity: 1;
-       filter: blur(0);
-     }
-     50% {
-       opacity: 0.7;
-       filter: blur(2px);
-     }
-     100% {
-       opacity: 1;
-       filter: blur(0);
-     }
-   }
-    
    
     html {
       height: 100%;
@@ -195,16 +180,84 @@
         top: 3px;
       }
       
-      #graph {
-        height: 350px;
-        /*
-        background-color: lightblue;
-        animation: graphAnime;
-        animation-play-state: paused;
-        animation-duration: 0.7s;
-        animation-delay: 0.5;
-        */
+      #svg1 {
+         padding: 10px 10px 0 20px;
+         height: 350px;
+         overflow-x: auto;
+         overflow-y: hidden;
       }
+      
+      #svg1::-webkit-scrollbar {
+        width: 8px;
+        height: 11px;
+      }
+      
+      /* Track */
+      #svg1::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 3px;
+      }
+       
+      /* Handle */
+      #svg1::-webkit-scrollbar-thumb {
+        background: #bd9795; 
+        border-radius: 3px;
+      }
+      
+      /* Handle on hover */
+      #svg1::-webkit-scrollbar-thumb:hover {
+        background: #ec807a;
+      }
+      
+      #svg2 {
+         padding: 10px 10px 0 20px;
+         height: 350px;
+         overflow-x: auto;
+         overflow-y: hidden;
+      }
+      
+      #svg2::-webkit-scrollbar {
+        width: 8px;
+        height: 11px;
+      }
+      
+      /* Track */
+      #svg2::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 3px;
+      }
+       
+      /* Handle */
+      #svg2::-webkit-scrollbar-thumb {
+        background: #88aa90; 
+        border-radius: 3px;
+      }
+      
+      /* Handle on hover */
+      #svg2::-webkit-scrollbar-thumb:hover {
+        background: #68a577; 
+      }
+   
+      svg {
+         height: 100%;
+         position: relative;
+       }
+       
+       #xAxisG text, #yAxisG text {
+        fill: grey;
+        font-size: 12px;
+       }
+      
+       #yAxisG text {
+        font-size: 14px;
+        fill: #4f442b;
+       }
+       
+       .profitPoints text, .salePoints text {
+         font-size: 12px;
+         opacity: 0;
+       }
+       
       
       article {
         background-color: rgb(230, 159, 118);
@@ -363,11 +416,11 @@
        <b>SALE REPORT</b>
        </header>
        <div id="span">
-         <span id="first"> 1 week </span>
-         <span> 2 weeks </span>
-         <span> 4 weeks</span>
-         <span> 8 weeks </span>
-         <span> 16 weeks </span>
+         <span id="first" data-week="1"> 1 week </span>
+         <span data-week="2"> 2 weeks </span>
+         <span data-week="4"> 4 weeks</span>
+         <span data-week="8"> 8 weeks </span>
+         <span data-week="16"> 16 weeks </span>
        </div>
        <hr/>
      </div>
@@ -390,16 +443,20 @@
        <summary><b>Sale chart</b>
        <span> a plot of items sold per day in the last 28 days</span>
        </summary>
-       <div id="graph">
-       </div>
+      <div id="svg1" class="svg"> 
+      <svg>
+      </svg>
+      </div>
       </details>
       
       <details>
        <summary><b>Profit chart</b>
        <span> a plot of profit made per day in the last 28 days</span>
        </summary>
-       <div id="graph">
-       </div>       
+      <div id="svg2" class="svg"> 
+      <svg>
+      </svg>
+      </div>
       </details>
       
      </div>
@@ -436,7 +493,9 @@
    
  
      
-    
+<script src="d3.min.js"></script>
+<script src="data.js"></script>   
+<script src="chart.js"></script>   
 <script>
 
   // get the dom element this script depend on.
@@ -446,7 +505,6 @@
   const firstSpan = document.querySelector("#first");
   const links = document.querySelectorAll("#nav > li");
   const article = document.querySelectorAll('article');
-  const graph = document.querySelectorAll('#graph');
   
   
   // set a default style for report "1 week" button
@@ -522,26 +580,13 @@
  // animate and set visual components
  function visual() {
    for (let elem of article) {
-      elem.style.animationPlayState = "running";
+     elem.style.animationPlayState = "running";
      elem.addEventListener('animationend', () => {
        elem.style.animation = "none";
        elem.offsetWidth;
        elem.style.animation = null;
      }, {once:true});
    }
-  /*
-   for (let elem of graph) {
-     elem.style.animationPlayState = "running";
-     elem.addEventListener('animationend', () => {
-       for (let elem of graph) {
-         elem.style.animation = "none";
-         elem.offsetWidth;
-         elem.style.animation = null;
-       }
-     }, {once:true});
-   }
-  */
-   
  }
   
 </script>

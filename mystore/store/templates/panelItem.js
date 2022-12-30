@@ -120,6 +120,8 @@ function useState() {
   
     let img = document.createElement('img');
     img.src = item.mugshot;
+    img.dataset.id = item.id;
+    img.addEventListener('click', fullDetails)
     article.append(img);
   
     let nodes = {
@@ -211,7 +213,7 @@ function lookup() {
       not_found.showModal();
       resetAnime(loadItem);
     }, 3000);
-    return;
+    return null;
   }
   let keys = Object.keys(item_info);
   
@@ -229,8 +231,45 @@ function lookup() {
      resetAnime(loadItem);
     }, 3000);
   quantity.value = 1;
+  quantity.disabled = false;
   add.style.pointerEvents = "auto";
   add.style.opacity = 1;
+}
+
+
+
+function fullDetails(e) {
+  let id = e.target.dataset.id;
+  let info;
+  
+  let state = JSON.parse(sessionStorage.state);
+  let index = 0;
+  for (let item of state) {
+     if (item.id == id) {
+       info = item;
+       //console.log(info);
+       break;
+     }
+     index ++;
+  }
+  
+  let keys = Object.keys(item_info);
+  
+  for (let key of keys) {
+    let elem = item_info[key];
+    if (elem.tagName == "IMG") {
+      elem.src = info[key];
+    } else {
+     elem.innerHTML = info[key];
+    }
+  }
+  
+  item.showModal();
+  quantity.value = info.quantity;
+  quantity.disabled = true;
+  add.style.pointerEvents = "none";
+  add.style.opacity = 0.6;
+  
 }
 
 
@@ -269,9 +308,12 @@ function addItem() {
   let quantity = Number(item_info['quantity'].value);
   let description = item_info['description'].innerHTML;
   let size = item_info['size'].innerHTML;
+  let category = item_info['category'].innerHTML;
+  let available = item_info['available'].innerHTML;
   
   
-  let item = {id, mugshot, name, price, quantity, size, description}
+  let item = {id, mugshot, name, price, quantity, size, description, category, available};
+  //console.log(item);
   
   // call pushState to update state.
   pushState(item);
