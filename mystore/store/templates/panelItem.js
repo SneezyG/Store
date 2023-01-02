@@ -60,10 +60,10 @@ process.addEventListener('click', () => {
   totalSpan.innerHTML = "$" + total;
   // show receipt modal.
   setTimeout(() => {
-    //receiptDom.open=true;
-    //backdropB.style.visibility = "visible";
-    not_found.showModal();
-    not_found.children[0].innerHTML = "Transaction failed, try again!";
+    receiptDom.open=true;
+    backdropB.style.visibility = "visible";
+    //not_found.showModal();
+    //not_found.children[0].innerHTML = "Transaction failed, try again!";
     spiner.open = false;
   }, 3000);
   
@@ -334,7 +334,7 @@ const data = {
     'size': '200ltrs',
     'price': 200,
     'mugshot': 'glycerin.jpg',
-    'description': 'Eden mosturing beauty soap, 250geghrbdbxhduiehdbcbxbjdieidjbdbxjdudiidrjbdbxhxjdiierjnxnxjxieiejndndbchxjurieiej',
+    'description': 'eden mosturing beauty soap, 250geghrbdbxhduiehdbcbxbjdieidjbdbxjdudiidrjbdbxhxjdiierjnxnxjxieiejndndbchxjurieiej',
   },
   
   '112': {
@@ -345,7 +345,7 @@ const data = {
     'size': 'none',
     'price': 1000,
     'mugshot': 'mifi.jpg',
-    'description': 'Airtle 4g wifi modem, with ethenet usb cable',
+    'description': 'airtle 4g wifi modem, with ethenet usb cable',
   },
   
   '113': {
@@ -367,7 +367,7 @@ const data = {
     'size': 'big',
     'price': 500,
     'mugshot': 'st_ives.jpg',
-    'description': 'St.ives softening body lotion, coconut & orchid, 500g',
+    'description': 'st.ives softening body lotion, coconut & orchid, 500g',
   },
   
   '115': {

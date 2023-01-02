@@ -28,7 +28,6 @@
       body > img {
         margin: 30px;
         width: 35px;
-        height: 35px;
         position: absolute;
       }
       
@@ -192,85 +191,92 @@
         font-size: 14px;
         padding-left: 5px;
       }
+  
+     dialog {
+       user-select: none;
+     }
+     
+     dialog button {
+      cursor: pointer;
+      padding: 5px 10px 5px 10px;
+     }
+        
+     #success {
+       user-select: none;
+       width: 300px;
+       height: 150px;
+       overflow: hidden;
+       padding-top: 50px;
+       position: fixed;
+       background-color: #FFF5EE;
+       border: 2px solid rgb(180, 93, 11);
+     }
+     
+     dialog::backdrop {
+          background: lightblue;
+          opacity: 0.7;
+     }
+        
+     
+     #success  p {
+       text-align: center;
+     }
+     
+     #success > form {
+       margin-top: 50px;
+     }
+     
+     #success button {
+       font-size: 14px;
+       background-color: #00A693;
+     }
+     
+  
+      #spiner {
+        background-color: #FFF5EE;
+        position: fixed;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        border: none;
+        text-align: center;
+      }
       
-   #success {
-     user-select: none;
-     width: 300px;
-     height: 150px;
-     overflow: hidden;
-     padding-top: 50px;
-     position: fixed;
-     background-color: #FFF5EE;
-     border: 2px solid rgb(180, 93, 11);
-   }
-   
-   dialog::backdrop {
-        background: lightblue;
-        opacity: 0.7;
-   }
+      #spiner > img {
+        width: 80px;
+        border-radius: 20px;
+        animation-name: rotate;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        position: relative;
+        top: 35%
+      }
       
-   
-   #success  p {
-     text-align: center;
-   }
-   
-   #success > form {
-     margin-top: 50px;
-   }
-   
-   #success button {
-     font-size: 15px;
-     padding: 7px 15px 7px 15px;
-     background-color: #00A693;
-   }
-   
-
-    #spiner {
-      background-color: #FFF5EE;
-      position: fixed;
-      top: 0;
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-      border: none;
-      text-align: center;
-    }
-    
-    #spiner > img {
-      width: 80px;
-      border-radius: 20px;
-      animation-name: rotate;
-      animation-duration: 3s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-      position: relative;
-      top: 35%
-    }
-    
-    #not_found {
-      width: 400px;
-      height: 200px;
-      overflow: hidden;
-      padding-top: 50px;
-      background-color: #FFF5EE;
-      border: 2px solid rgb(180, 93, 11);
-    }
-    
-    #not_found  p {
-      text-align: center;
-    }
-    
-    #not_found > form {
-      margin-top: 50px;
-    }
-    
-    #not_found button {
-       font-size: 15px;
-       padding: 5px;
-       background-color: #D3D3D3;
-    }
-    
+      #not_found {
+        width: 400px;
+        height: 200px;
+        overflow: hidden;
+        padding-top: 50px;
+        background-color: #FFF5EE;
+        border: 2px solid rgb(180, 93, 11);
+      }
+      
+      #not_found  p {
+        text-align: center;
+      }
+      
+      #not_found > form {
+        margin-top: 50px;
+      }
+      
+      #not_found button {
+         font-size: 15px;
+         background-color: #D3D3D3;
+      }
+      
     
      
     
@@ -292,10 +298,15 @@
      #nav li {
        width: 70%;
        font-size: 12px;
+       cursor: auto;
      }
       
       section > h4 {
         font-size: 15px;
+      }
+      
+      section button {
+        cursor: auto;
       }
       
       details {
@@ -304,6 +315,7 @@
       
       summary {
         font-size: 14px;
+        cursor: auto;
       }
       
       #success {
@@ -317,6 +329,10 @@
         height: 150px;
         padding-top: 20px;
       }
+      
+     dialog button {
+       cursor: auto;
+     }
       
 }
 
@@ -388,7 +404,7 @@
   
   <!-- construct the dialog that displays error-->
   <dialog id="not_found">
-  <p> Failed, try again </p>
+  <p> Failed, try again. </p>
   <form method="dialog">
   <p> <button class="cancel">cancel</button> </p>
   </form>

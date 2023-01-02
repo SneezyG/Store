@@ -29,7 +29,6 @@
       body > img {
         margin: 30px;
         width: 35px;
-        height: 35px;
         position: absolute;
       }
       
@@ -201,6 +200,16 @@
       cursor: pointer;
     }
     
+    dialog {
+     user-select: none;
+     font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    dialog button {
+      cursor: pointer;
+      padding: 5px 10px 5px 10px;
+    }
+    
     #success {
      user-select: none;
      width: 300px;
@@ -228,7 +237,6 @@
    
    #success button {
      font-size: 15px;
-     padding: 7px 15px 7px 15px;
      background-color: #00A693;
    }
    
@@ -275,7 +283,6 @@
     
     #not_found button {
        font-size: 15px;
-       padding: 5px;
        background-color: #D3D3D3;
     }
     
@@ -297,9 +304,14 @@
        width: 74%;
      }
      
+     #browse {
+       cursor: auto;
+     }
+     
      #nav li {
        width: 70%;
        font-size: 12px;
+       cursor: auto;
      }
       
       details {
@@ -308,10 +320,15 @@
       
       summary {
         font-size: 14px;
+        cursor: auto;
       }
       
       section > h4 {
         font-size: 14px;
+      }
+      
+      section button {
+        cursor: auto;
       }
       
       article  h3 {
@@ -332,6 +349,10 @@
         width: 270px;
         height: 150px;
         padding-top: 20px;
+      }
+      
+      dialog button {
+       cursor: auto;
       }
       
 }
@@ -398,7 +419,7 @@
     <label id="browse" for="fileElem">browse</label>
       to upload
       </p>
-      <p id="warn">Only one file can be process at a time and max file size is 3mb</p>
+      <p id="warn">Only one file can be process at a time and max file size is 3mb.</p>
       </span>
       </article>
      
@@ -420,7 +441,7 @@
   
   <!-- construct the dialog that displays error-->
   <dialog id="not_found">
-  <p> Failed, try again </p>
+  <p> Failed, try again. </p>
   <form method="dialog">
   <p> <button class="cancel">cancel</button> </p>
   </form>

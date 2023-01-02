@@ -82,8 +82,10 @@ body > main::-webkit-scrollbar {
 #mainHead > h4 { 
   margin: 5px;
   font-weight: normal;
+  text-transform: capitalize;
   position: relative;
   top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #pin {
@@ -159,14 +161,15 @@ section::-webkit-scrollbar {
 #hide {
   opacity: 0.5;
   width: 25px;
-  display: none
+  display: none;
+  cursor: auto;
 }
 
 
 #logo {
   border-radius: 10px;
-  width: 50px;
-  margin: 20px 30px 10px 10px;
+  width: 45px;
+  margin: 20px 30px 10px 20px;
 }
 
 #mainleft {
@@ -284,8 +287,10 @@ li#active {
 
 
 #hint > p{
-  font-size: 13px;
+  font-size: 14px;
   width: 80%;
+  letter-spacing: 0.7px;
+  word-spacing: 2px;
 }
 
 #hint {
@@ -316,6 +321,7 @@ li#active {
 
 details {
   border: 1.8px solid rgb(179, 90, 7);
+  text-transform: capitalize;
   border-radius: 5px;
   width: 140px;
   white-space: nowrap;
@@ -432,6 +438,7 @@ article > span {
 dialog {
   background-color: #FFF5EE;
   border: 2px solid rgb(180, 93, 11);
+  user-select: none;
 }
 
 dialog::backdrop {
@@ -457,7 +464,8 @@ dialog::backdrop {
 
 #not_found button {
    font-size: 15px;
-   padding: 5px;
+   cursor: pointer;
+   padding: 5px 10px 5px 10px;
    background-color: #D3D3D3;
 }
 
@@ -513,6 +521,7 @@ dialog::backdrop {
 
 .data {
   font-size: 17px;
+  text-transform: capitalize;
   position: relative;
   left: 5px;
 }
@@ -609,6 +618,9 @@ dialog::backdrop {
   width: 48%;
 }
 
+#table span:first-letter {
+  text-transform: capitalize;
+}
 
 #total {
   font-size: 14px;
@@ -748,6 +760,10 @@ dialog::backdrop {
          animation-duration: 1s;
        }
        
+       #look {
+         cursor: auto;
+       }
+       
        #preview button {
          margin-top: 10px;
        }
@@ -764,6 +780,10 @@ dialog::backdrop {
        #contain {
          visibility: hidden;
          margin-top: 160px;
+       }
+       
+       .drawer {
+         cursor: auto;
        }
 
        #hide {
@@ -785,6 +805,7 @@ dialog::backdrop {
      #nav li {
        width: 65%;
        font-size: 12px;
+       cursor: auto;
      }
      
      #logo {
@@ -802,10 +823,26 @@ dialog::backdrop {
         height: 150px;
         padding-top: 20px;
       }
+      
+      #not_found button {
+        cursor: auto;
+      }
 
       #item {
         width: 400px;
         height: 320px;
+      }
+      
+      summary {
+        cursor: auto;
+      }
+      
+      article > img {
+        cursor: auto;
+      }
+      
+      article > span {
+        cursor: auto;
       }
 
       #item > img {
@@ -853,6 +890,14 @@ dialog::backdrop {
       
       #receipt > main {
         width: 65%;
+      }
+      
+      #receipt button {
+        cursor: auto;
+      }
+      
+      #first button {
+        cursor: auto;
       }
 
 }
