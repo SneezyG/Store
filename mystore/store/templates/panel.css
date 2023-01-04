@@ -516,7 +516,7 @@ dialog::backdrop {
 
 #info > p {
   margin-bottom: 30px;
-  font-size: 13.5px;
+  font-size: 14px;
 }
 
 .data {
@@ -524,6 +524,7 @@ dialog::backdrop {
   text-transform: capitalize;
   position: relative;
   left: 5px;
+  font-family: sans-serif;
 }
 
 #info input {
@@ -858,7 +859,7 @@ dialog::backdrop {
 
       #info > p {
         margin-bottom: 20px;
-        font-size: 11.5px;
+        font-size: 12px;
       }
 
       .data {
