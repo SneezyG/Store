@@ -63,7 +63,7 @@ function Draw(e) {
       profits = profitData.slice(0, 112);
       sales = saleData.slice(0, 112);
       break;
-}
+  }
 
 // draw charts
 ProfitChart();

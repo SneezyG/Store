@@ -122,7 +122,7 @@ class SaleAdmin(admin.ModelAdmin):
 
   date_hierarchy = 'date'
   
-  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'cost_price', 'selling_price', 'date' )
+  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'profit', 'cost_price', 'selling_price', 'date' )
   
   list_filter = ('date',)
  
@@ -200,7 +200,7 @@ class ReturnsAdmin(admin.ModelAdmin):
   
   date_hierarchy = 'date'
 
-  list_display = ('item__name', 'quantity', 'date')
+  list_display = ('item__name', 'item__size', 'item__color', 'quantity', 'date')
   
   list_filter = ('date',)
  

@@ -28,7 +28,7 @@ process.addEventListener('click', () => {
   let total = 0;
   
   // transaction_id returned from the server.
-  let transaction_id = "111345656734";
+  let transaction_id = "Store111";
   
   // reset receipt content.
   table.replaceChildren();

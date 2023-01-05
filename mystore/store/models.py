@@ -61,9 +61,11 @@ class Sale(models.Model):
   category = models.CharField(max_length=20)
   sub_catg = models.CharField(max_length=20, null=True,  blank=True)
   sold = models.IntegerField()
+  profit = models.CharField(max_length=20)
   cost_price = models.CharField(max_length=20)
   selling_price = models.CharField(max_length=20)
   transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
+  day = models.DateField(auto_now_add);
   date = models.DateTimeField(auto_now_add=True)
   
   
@@ -81,7 +83,6 @@ class Transaction(models.Model):
   """
   store data of a Transaction which technically involve a group of sales.
   """
-  
   attendant = models.CharField(max_length=20)
   date = models.DateField(auto_now_add=True)
   

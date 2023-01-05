@@ -185,7 +185,7 @@ section::-webkit-scrollbar {
  #nav {
    width: 30%;
    float: left;
-   border-right: 3px dashed rgb(204, 101, 4);
+   border-right: 4px ridge rgb(245, 197, 155);
    list-style: none;
    margin: 0;
    padding: 60px 0 40px 0;
