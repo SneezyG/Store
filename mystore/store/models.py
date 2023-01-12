@@ -65,7 +65,7 @@ class Sale(models.Model):
   cost_price = models.CharField(max_length=20)
   selling_price = models.CharField(max_length=20)
   transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
-  day = models.DateField(auto_now_add);
+  day = models.DateField(auto_now_add=True);
   date = models.DateTimeField(auto_now_add=True)
   
   
@@ -98,7 +98,7 @@ class Returns(models.Model):
   store item return data
   """
   
-  item = models.ForeignKey(Item, on_delete=models.SET_NULL, null=True, blank=True, related_name="returns")
+  item = models.ForeignKey("Item", on_delete=models.SET_NULL, null=True, blank=True, related_name="returns")
   quantity = models.IntegerField()
   date = models.DateField(auto_now_add=True)
   

@@ -52,6 +52,7 @@ for (let elem of links) {
     for (let child of children) {
       if (child == elem) {
          child.id = "active";
+         window.location.assign(child.dataset.url);
       }else {
          child.id = "";
       }

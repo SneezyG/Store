@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,8 +52,9 @@
 <body>
   
   
-<img src="mystore~2.jpg" alt="site logo"/> 
-<a href="/accounts/login">MY STORE</a>
+<img src="{% static 'store/image/logo.jpg' %}" alt="site logo"/> 
+
+<a href="{% url "login" %}">MY STORE</a>
 
 <script>
    

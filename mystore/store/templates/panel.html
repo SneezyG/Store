@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,7 +7,7 @@
     
     <title>Store Panel Screen</title>
     
-    <link rel="stylesheet" type="text/css" href="panel.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/panel.css' %}">
    
    
    <style id="fullScreen">
@@ -37,20 +38,20 @@
 
   <main> 
     <header id="mainHead">
-     <img id='pin' src="pin.png"/>
+     <img id='pin' src="{% static 'store/image/pin.png' %}"/>
       <h4> admin </h4>
     </header>
 
  
-  <a href="/admin/store"><img id="logo" src="mystore~2.jpg"/></a>
+  <a href="/admin/store"><img id="logo" src="{% static 'store/image/logo.jpg' %}"/></a>
 
   
   <div id="mainleft">
      <ul id="nav">
-       <li id="active">Lookup</li>
-       <li>Update</li>
-       <li>Report</li>
-       <li>Returns</li>
+       <li id="active" data-url="{% url "app:panel" %}">Lookup</li>
+       <li data-url="{% url "app:update" %}">Update</li>
+       <li data-url="{% url "app:report" %}">Report</li>
+       <li data-url="{% url "app:return" %}">Returns</li>
      </ul>
     
     <div id="utility">
@@ -58,13 +59,13 @@
     <h4> Look up product with </h4>
     
     <div id="loadItem">
-    <img src="barcode.jpg" /> 
+    <img src="{% static 'store/image/barcode.jpg' %}" /> 
     </div>
     
     <p id="validate">barcode input is empty!!</p>
     <input id="input" placeholder="Enter barcode" autofocus/>
     <span><button id="look">
-      <img src="search.png" /> 
+      <img src="{% static 'store/image/search.png' %}" /> 
     </button></span>
   
     <dl id="hint">
@@ -81,8 +82,8 @@
   <div id="backdropA" class="backdrop" onclick="Close()"> </div>
   
   <section> 
-  <img class="drawer" id="stack" src="stack.png" />
-  <img class="drawer" id="hide" src="drawer.png" /> 
+  <img class="drawer" id="stack" src="{% static 'store/image/stack.png' %}" />
+  <img class="drawer" id="hide" src="{% static 'store/image/drawer.png' %}" /> 
     
   <p id="itemCount"> 0 item added</p>
    <div id="sectionHeader">
@@ -221,15 +222,15 @@
 
 <!-- construct the dialog that displays loader-->
 <dialog id="spiner" autofocus>
-<img src="mystore~2.jpg" alt="site logo"/>
+<img src="{% static 'store/image/logo.jpg' %}" alt="site logo"/>
 </dialog>
  
   
  
   
- <script src="panelDom.js"></script>
- <script src="panelItem.js"></script>
- <script src="JsBarcode.all.min.js" charset="UTF-8"></script>
+ <script src="{% static 'store/script/panelDom.js' %}"></script>
+ <script src="{% static 'store/script/panelItem.js' %}"></script>
+ <script src="{% static 'store/script/JsBarcode.all.min.js' %}" charset="UTF-8"></script>
  
 </body>
 </html>

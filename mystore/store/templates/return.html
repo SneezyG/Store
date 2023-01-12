@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Store Return Screen</title>
     
-   <link rel="stylesheet" type="text/css" href="return.css">
+   <link rel="stylesheet" type="text/css" href="{% static 'store/css/return.css' %}">
     
   <style id="fullScreen">
     /* 
@@ -20,15 +21,15 @@
     
 <body>
   
-  <img src="mystore~2.jpg"/>
+  <img src="{% static 'store/image/logo.jpg' %}"/>
   
   <div id="contain">
     
   <ul id="nav">
-       <li>Lookup</li>
-       <li>Update</li>
-       <li>Report</li>
-       <li id="active">Returns</li>
+       <li data-url="{% url "app:panel" %}">Lookup</li>
+       <li data-url="{% url "app:update" %}">Update</li>
+       <li data-url="{% url "app:report" %}">Report</li>
+       <li id="active" data-url="{% url "app:return" %}">Returns</li>
   </ul>
     
   <div id="upload">
@@ -82,11 +83,11 @@
  
   <!-- construct the dialog that displays loader-->
   <dialog id="spiner" autofocus>
-  <img src="mystore~2.jpg" alt="site logo"/>
+  <img src="{% static 'store/image/logo.jpg' %}" alt="site logo"/>
   </dialog>
 
   
-<script src="return.js"></script>
+<script src="{% static 'store/script/return.js' %}"></script>
 
 </body>
 </html>

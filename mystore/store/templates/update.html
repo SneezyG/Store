@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Store Update Screen</title>
     
-   <link rel="stylesheet" type="text/css" href="update.css">
+   <link rel="stylesheet" type="text/css" href="{% static 'store/css/update.css' %}">
     
   <style id="fullScreen">
     /* 
@@ -20,15 +21,15 @@
 <body>
   
   
-  <img src="mystore~2.jpg"/>
+  <img src="{% static 'store/image/logo.jpg' %}"/>
   
   <div id="contain">
   
   <ul id="nav">
-       <li>Lookup</li>
-       <li id="active">Update</li>
-       <li>Report</li>
-       <li>Returns</li>
+       <li data-url="{% url "app:panel" %}">Lookup</li>
+       <li id="active" data-url="{% url "app:update" %}">Update</li>
+       <li data-url="{% url "app:report" %}">Report</li>
+       <li data-url="{% url "app:return" %}">Returns</li>
   </ul>
 
     
@@ -51,7 +52,7 @@
       <p id="error"> </p>
       <article>
       <span id="filename">constant.csv</span>
-      <img src="upload.png"/>
+      <img src="{% static 'store/image/upload.png' %}"/>
       <span>
       <h3> Drag & Drop </h3>
       
@@ -96,12 +97,12 @@
  
   <!-- construct the dialog that displays loader-->
   <dialog id="spiner" autofocus>
-  <img src="mystore~2.jpg" alt="site logo"/>
+  <img src="{% static 'store/image/logo.jpg' %}" alt="site logo"/>
   </dialog>
 
   
   
-<script src="update.js"></script>
+<script src="{% static 'store/script/update.js' %}"></script>
 
 </body>
 </html>

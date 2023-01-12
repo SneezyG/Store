@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry
-from .models import Item, Sale, Transaction
+from .models import Item, Sale, Transaction, Returns
 
 
 # admin interface customization
@@ -200,14 +200,25 @@ class ReturnsAdmin(admin.ModelAdmin):
   
   date_hierarchy = 'date'
 
-  list_display = ('item__name', 'item__size', 'item__color', 'quantity', 'date')
+  list_display = ('get_name', 'get_size', 'get_color', 'quantity', 'date')
   
   list_filter = ('date',)
  
   search_fields = ('item__serial_no', 'item__name')
   
   
-  
+  def get_name(self, obj):
+     verbose_name= 'Item name'
+     return obj.item.name
+     
+  def get_color(self, obj):
+     verbose_name= 'Item color'
+     return obj.item.color
+     
+  def get_size(self, obj):
+     verbose_name= 'Item size'
+     return obj.item.size
+     
   def has_add_permission(self, request):
         return False
 

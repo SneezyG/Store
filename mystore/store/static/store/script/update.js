@@ -33,7 +33,8 @@
       let children = elem.parentElement.children;
       for (let child of children) {
         if (child == elem) {
-           child.id = "active";
+          child.id = "active";
+          window.location.assign(child.dataset.url);
         }else {
            child.id = "";
         }
