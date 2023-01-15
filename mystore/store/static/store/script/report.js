@@ -4,7 +4,6 @@
   const style = document.querySelector("#fullScreen");
   const span = document.querySelectorAll('#span > span');
   const firstSpan = document.querySelector("#first");
-  const links = document.querySelectorAll("#nav > li");
   const article = document.querySelectorAll('article');
   
   
@@ -50,22 +49,7 @@
       }
   }
   
- for (let elem of links) {
-    elem.addEventListener("click", (e) => {
-      let elem = e.target;
-      let children = elem.parentElement.children;
-      for (let child of children) {
-        if (child == elem) {
-           child.id = "active";
-           window.location.assign(child.dataset.url);
-        }else {
-           child.id = "";
-        }
-      }
-    });
-  }
-  
-  
+ 
  // animate and reset report duration button
   function clickAnime(e) {
    let elem = e.target ?? e;

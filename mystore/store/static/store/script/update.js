@@ -11,7 +11,6 @@
   const cancelBtns = document.querySelectorAll(".cancel");
   const spiner = document.querySelector("#spiner");
   const not_found = document.querySelector("#not_found");
-  const links = document.querySelectorAll("#nav > li");
   
   // call setScreen to enable/disable fullScreen.
   setScreen();
@@ -23,24 +22,7 @@
     });
   }
 
-  
-  /*
-  attached event listenner to dom elements to kick start some dom manipulation and application processes.
-  */
-  for (let elem of links) {
-    elem.addEventListener("click", (e) => {
-      let elem = e.target;
-      let children = elem.parentElement.children;
-      for (let child of children) {
-        if (child == elem) {
-          child.id = "active";
-          window.location.assign(child.dataset.url);
-        }else {
-           child.id = "";
-        }
-      }
-    });
-  }
+ 
   
   fileElem.addEventListener('change', checkmate);
   button.addEventListener('click', process);

@@ -37,14 +37,6 @@
         position: relative;
         user-select: none;
       }
-
-      #header > img {
-        margin: 0;
-        width: 35px;
-        position: absolute;
-        left: 20px;
-        top: 10px;
-      }
       
       #header {
         position: fixed;
@@ -110,6 +102,13 @@
         top: 50px;
       }
 
+      #left > img {
+        margin: 0;
+        position: absolute;
+        top: 60px;
+        left: 20px;
+        width: 40px;
+      }
     
       #nav {
          width: 21%;
@@ -122,24 +121,27 @@
       }
       
       #nav li {
-        position: relative;
-        font-size: 14px;
-        color: white;
-        width: 60%;
-        padding: 8px;
-        margin: auto;
         margin-bottom: 15px;
-        background-color: rgb(219, 87, 25);
-        border: 1px solid rgb(219, 87, 25);
         text-align: center;
-        cursor: pointer;
       }
       
-      li#active {
+      #nav a {
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        padding: 8px;
+        width: 60%;
+        background-color: rgb(219, 87, 25);
+        border: 1px solid rgb(219, 87, 25);
+      }
+      
+      a#active {
         background-color: #FFF5EE;
         color: black;
       }
-      
+            
 
       #chart {
         width: 75%;
@@ -333,6 +335,10 @@
        width: 80%;
      }
      
+     #left > img {
+       width: 35px;
+     }
+     
      article {
        width: 90%;
        padding: 2px;
@@ -355,7 +361,7 @@
        width: 25%;
      }
      
-     #nav li {
+     #nav a {
        width: 70%;
        font-size: 12px;
        cursor: auto;

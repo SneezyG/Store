@@ -14,7 +14,6 @@
  const body = document.querySelector('body');
  const spiner = document.querySelector("#spiner");
  const total = document.querySelector("#sale > span");
- const links = document.querySelectorAll("#nav > li");
  
  // call setScreen to enable/disable fullScreen.
  setScreen();
@@ -28,22 +27,7 @@
    });
  }
  
- 
- for (let elem of links) {
-    elem.addEventListener("click", (e) => {
-      let elem = e.target;
-      let children = elem.parentElement.children;
-      for (let child of children) {
-        if (child == elem) {
-          child.id = "active";
-          window.location.assign(child.dataset.url);
-        }else {
-           child.id = "";
-        }
-      }
-    });
-  }
-  
+
  
  
  // activate/deactivate fullScreen style.

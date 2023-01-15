@@ -22,7 +22,7 @@
       
       body > img {
         margin: 30px;
-        width: 35px;
+        width: 40px;
         position: absolute;
       }
       
@@ -44,20 +44,23 @@
       }
       
       #nav li {
-        position: relative;
-        font-size: 15px;
-        color: white;
-        width: 60%;
-        padding: 8px;
-        margin: auto;
         margin-bottom: 15px;
-        background-color: rgb(219, 87, 25);
-        border: 1px solid rgb(219, 87, 25);
         text-align: center;
-        cursor: pointer;
       }
       
-     li#active {
+      #nav a {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 14px;
+        color: white;
+        text-decoration: none;
+        padding: 8px;
+        width: 60%;
+        background-color: rgb(219, 87, 25);
+        border: 1px solid rgb(219, 87, 25);
+      }
+      
+      a#active {
         background-color: #FFF5EE;
         color: black;
       }
@@ -285,6 +288,10 @@
     
     
 @media only screen and (max-width: 800px) { 
+     
+     body > img {
+       width: 35px;
+     }
   
       article {
         width: 75%;
@@ -294,17 +301,17 @@
        width: 25%;
      }
      
+     #nav a {
+       width: 70%;
+       font-size: 12px;
+       cursor: auto;
+     }
+     
      #upload {
        width: 74%;
      }
      
      #browse {
-       cursor: auto;
-     }
-     
-     #nav li {
-       width: 70%;
-       font-size: 12px;
        cursor: auto;
      }
       

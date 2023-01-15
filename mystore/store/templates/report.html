@@ -40,7 +40,6 @@
 
      
      <div id="header">
-       <img src="{% static 'store/image/logo.jpg' %}" alt="logo" />
        <header>
        <b>SALE REPORT</b>
        </header>
@@ -57,13 +56,14 @@
    
     
     <section id="left">  
-     
+    
+    <img src="{% static 'store/image/logo.jpg' %}" alt="logo" />
     
     <ul id="nav">
-       <li data-url="{% url "app:panel" %}">Lookup</li>
-       <li data-url="{% url "app:update" %}">Update</li>
-       <li id="active" data-url="{% url "app:report" %}">Report</li>
-       <li data-url="{% url "app:return" %}">Returns</li>
+       <li><a href="{% url "app:panel" %}">Lookup</a></li>
+       <li><a href="{% url "app:update" %}">Update</a></li>
+       <li><a id="active" href="{% url "app:report" %}">Report</a></li>
+       <li><a href="{% url "app:return" %}">Returns</a></li>
      </ul>
     
     

@@ -7,7 +7,6 @@ const backdropA = document.querySelector('#backdropA');
 const backdropB = document.querySelector('#backdropB');
 const stack = document.querySelector('#stack');
 const nav = document.querySelector('#nav');
-const links = document.querySelectorAll("#nav > li");
 const mainleft = document.querySelector('#mainleft');
 const hint = document.querySelector("#hint")
 const preview = document.querySelector("#preview");
@@ -44,21 +43,6 @@ attached event listenner to dom elements to kick start some dom manipulation and
 drawer.addEventListener('click', Draw, {once:true});
 stack.addEventListener('click', shift, {once:true});
 
-
-for (let elem of links) {
-  elem.addEventListener("click", (e) => {
-    let elem = e.target;
-    let children = elem.parentElement.children;
-    for (let child of children) {
-      if (child == elem) {
-         child.id = "active";
-         window.location.assign(child.dataset.url);
-      }else {
-         child.id = "";
-      }
-    }
-  });
-}
 
 
 input.addEventListener("focus", () => {

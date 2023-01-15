@@ -26,10 +26,10 @@
   <div id="contain">
     
   <ul id="nav">
-       <li data-url="{% url "app:panel" %}">Lookup</li>
-       <li data-url="{% url "app:update" %}">Update</li>
-       <li data-url="{% url "app:report" %}">Report</li>
-       <li id="active" data-url="{% url "app:return" %}">Returns</li>
+     <li><a href="{% url "app:panel" %}">Lookup</a></li>
+     <li><a href="{% url "app:update" %}">Update</a></li>
+     <li><a href="{% url "app:report" %}">Report</a></li>
+     <li><a id="active" href="{% url "app:return" %}">Returns</a></li>
   </ul>
     
   <div id="upload">

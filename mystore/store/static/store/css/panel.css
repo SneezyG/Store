@@ -168,14 +168,14 @@ section::-webkit-scrollbar {
 
 #logo {
   border-radius: 10px;
-  width: 45px;
+  width: 40px;
   margin: 20px 30px 10px 20px;
 }
 
 #mainleft {
   width: 95%;
   height: 400px;
-  margin: 0 5px 5px 5px;
+  margin: 0 5px 5px 0;
   position: relative;
   bottom: 30px;
   transition: 0.2s;
@@ -194,24 +194,26 @@ section::-webkit-scrollbar {
 }
 
 #nav li {
-  position: relative;
-  font-size: 14px;
-  color: white;
-  width: 60%;
-  padding: 8px;
-  margin: auto;
   margin-bottom: 15px;
+  text-align: center;
+}
+
+#nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  width: 60%;
   background-color: rgb(219, 87, 25);
   border: 1px solid rgb(219, 87, 25);
-  text-align: center;
+  font-size: 14px;
   cursor: pointer;
 }
 
-li#active {
+a#active {
   background-color: #FFF5EE;
   color: black;
 }
-
 
 #utility {
   display: flex;
@@ -803,14 +805,14 @@ dialog::backdrop {
        width: 25%;
      }
      
-     #nav li {
+     #nav a {
        width: 65%;
        font-size: 12px;
        cursor: auto;
      }
      
      #logo {
-        width: 40px;
+        width: 35px;
         margin-top: 10px;
       }
 
