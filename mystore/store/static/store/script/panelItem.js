@@ -212,7 +212,7 @@ function lookup() {
     setTimeout(() => {
       not_found.showModal();
       resetAnime(loadItem);
-    }, 3000);
+    }, 10000);
     return null;
   }
   let keys = Object.keys(item_info);

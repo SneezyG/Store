@@ -10,17 +10,13 @@
    }
    
    @keyframes visualAnime {
-     0% {
+     from {
        transform: scale(1);
-       filter: blur(0);
+       opacity: 1;
      }
-     50% {
-       transform: scale(0.8);
-       filter: blur(2px);
-     }
-     100% {
-       transform: scale(1);
-       filter: blur(0);
+     to {
+       transform: scale(0.6);
+       opacity: 0;
      }
    }
    
@@ -48,7 +44,7 @@
       
       #header > hr {
         margin: 15px auto 5px auto;
-        width: 50%;
+        width: 60%;
       }
       
       #header header {
