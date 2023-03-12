@@ -83,11 +83,11 @@ body > main::-webkit-scrollbar {
 
 #mainHead > h4 { 
   margin: 5px;
-  font-weight: normal;
   text-transform: capitalize;
   position: relative;
   top: 5px;
   font-family: Arial, Helvetica, sans-serif;
+  color: #828E84;
 }
 
 #pin {
@@ -103,8 +103,7 @@ section {
   position: absolute;
   right: 0;
   top: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: 0.4s;
   background-color: #FFF5EE;
   box-shadow:  -1px 0 1px rgba(0,0,0,0.11), 
@@ -124,22 +123,49 @@ section::-webkit-scrollbar {
   
 
 #sectionHeader {
-  position: fixed;
+  position: ;
   z-index: 1;
-  width: 70%;
+  width: 100%;
   background-color: #FFF5EE;
   padding-top: 10px;
 }
 
 #contain {
-  max-width: 95%;
+  width: 90%;
+  box-sizing: border-box;
+  max-height: 65%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 80px;
-  margin-left: 50px;
-  padding-bottom: 150px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+  margin: 30px auto 0 auto;
 }
+
+
+#contain::-webkit-scrollbar {
+  width: 6px;
+  height: 11px;
+}
+
+/* Track */
+#contain::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 3px;
+}
+ 
+/* Handle */
+#contain::-webkit-scrollbar-thumb {
+  background: #bd9795; 
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+#contain::-webkit-scrollbar-thumb:hover {
+  background: #ec807a;
+}
+
 
 #itemCount {
   position: absolute;
@@ -152,10 +178,12 @@ section::-webkit-scrollbar {
 
 .drawer {
   width: 30px;
+  transition: 0.4s;
   margin: 0;
   padding: 7px 10px 7px 0;
   position: fixed;
   top: 45%;
+  right: 36%;
   cursor: pointer;
 }
 
@@ -384,17 +412,17 @@ article > span {
 #preview {
   display: none;
   transition: 2s;
-  margin: 10px 0 20px 20px;
+  margin: 10px 0 10px 20px;
 }
 
  #preview li {
   list-style: none;
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
 #preview Span {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
   opacity: 0.7;
   display: inline-block;
@@ -421,11 +449,11 @@ article > span {
 #first button {
   color: white;
   font-size: 13px;
-  padding: 6px 10px 8px 8px;
+  padding: 4px 8px 6px 6px;
   cursor: pointer;
   width: 80px;
   position: relative;
-  left: 20px;
+  left: 25px;
   top: 10px;
 }
 
@@ -761,6 +789,10 @@ dialog::backdrop {
          right: 30px;
        }
        
+       #checkout, #preview {
+         display: none;
+       }
+       
        #loadItem > img { 
          animation-duration: 1s;
        }
@@ -784,10 +816,10 @@ dialog::backdrop {
  
        #contain {
          visibility: hidden;
-         margin-top: 160px;
        }
        
        .drawer {
+         right: 11%;
          cursor: auto;
        }
 

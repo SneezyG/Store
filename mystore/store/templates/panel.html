@@ -81,15 +81,14 @@
   
   <div id="backdropA" class="backdrop" onclick="Close()"> </div>
   
-  <section> 
-  <img class="drawer" id="stack" src="{% static 'store/image/stack.png' %}" />
-  <img class="drawer" id="hide" src="{% static 'store/image/drawer.png' %}" /> 
-    
+  <section>
   <p id="itemCount"> 0 item added</p>
    <div id="sectionHeader">
     <p id="first"> PREVIEW 
-       <button id="process" class="checkout">Process</button>
-       <button id="cancel" class="checkout">Cancel</button>
+      <span id="checkout">
+       <button id="process">Process</button>
+       <button id="cancel">Cancel</button>
+      </span>
     </p>
     <ul id="preview">
       <li>Total goods: <span id="Tgoods"></span></li>
@@ -117,6 +116,10 @@
       -->
       </div>
   </section>
+  
+  
+  <img class="drawer" id="stack" src="{% static 'store/image/stack.png' %}" />
+  <img class="drawer" id="hide" src="{% static 'store/image/drawer.png' %}" /> 
   
   
   

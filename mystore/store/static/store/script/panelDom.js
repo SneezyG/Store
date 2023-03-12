@@ -21,6 +21,7 @@ const not_found = document.querySelector('#not_found');
 const itemCount = document.querySelector("#itemCount");
 const Tgoods = document.querySelector("#Tgoods");
 const Tprice = document.querySelector("#Tprice");
+const checkout = document.querySelector("#checkout");
 const process = document.querySelector("#process");
 const cancel = document.querySelector("#cancel")
 const receiptDom = document.querySelector("#receipt");
@@ -124,11 +125,13 @@ function Draw() {
   // draw out the hidden side section.
   section.style.width = "70%";
   backdropA.style.visibility = "visible";
-  preview.style.display = "block";
+  drawer.style.right = "70%";
   drawer.addEventListener('click', Close, {once:true});
 
   setTimeout(() => {
   contain.style.visibility = "visible";
+  preview.style.display = "block";
+  checkout.style.display = "block";
   itemCount.style.visibility = "visible";
   }, 400)
 
@@ -141,6 +144,8 @@ function Close() {
   section.style.width = "11%";
   backdropA.style.visibility = "hidden";
   preview.style.display = "none";
+  checkout.style.display = "none";
+  drawer.style.right = "11%";
   drawer.addEventListener('click', Draw, {once:true});
   contain.style.visibility = "hidden";
   itemCount.style.visibility = "hidden";
@@ -155,10 +160,10 @@ function shift() {
   nav.style.display = "none";
   hint.style.visibility = "hidden";
   mainleft.style.width = "60%";
+  stack.style.right = "57%";
   stack.addEventListener('click', still, {once:true});
   preview.style.display = "block";
   contain.style.visibility = "hidden";
-  contain.style.marginTop = "160px";
 
   setTimeout(() => {
   contain.style.visibility = "visible";
@@ -174,10 +179,10 @@ function still() {
   mainleft.style.width = "95%";
   nav.style.display = "block";
   nav.style.visibility = "hidden";
+  stack.style.right = "36%";
   stack.addEventListener('click', shift, {once:true});
   preview.style.display = "none";
   contain.style.visibility = "hidden";
-  contain.style.marginTop = "70px";
 
   setTimeout(() => {
   contain.style.visibility = "visible";
@@ -203,6 +208,9 @@ function reRender() {
   
   oldScreen = newScreen;
   section.style.width =  newScreen <= 800 ? "11%" : "36%";
+  drawer.style.right =  newScreen <= 800 ? "11%" : "36%";
+  stack.style.right =  newScreen <= 800 ? "11%" : "36%";
+  checkout.style.display = newScreen <= 800 ? "none" : "block";
   nav.style.display = "block";
   mainleft.style.width = "95%";
   hint.style.visibility = "visible";
