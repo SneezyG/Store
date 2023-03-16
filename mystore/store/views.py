@@ -78,3 +78,6 @@ def Error(request):
   return render(request, template)
 
 
+def Welcome(request):
+  template = "welcome.html"
+  return render(request, template)

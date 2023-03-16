@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User welcome Page</title>
+<style>
+
+ html,body{
+    margin: 0;
+    background-color: #FFF5EE;
+    user-select: none;
+  }
+  
+ body > img {
+    width: 40px;
+    border-radius: 7px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  #welcome {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #welcome > img {
+    width: 70px;
+    transform: scale(2);
+  }
+  
+  #welcome button {
+    padding: 10px 30px 10px 30px;
+    color: white;
+    background-color: rgb(219, 87, 25);
+    margin-top: 60px;
+  }
+  
+  p.group {
+    padding: 0;
+    margin: 0;
+    font-size: 13.5px;
+    color: #0066b2;
+  }
+  
+
+  
+</style>
+</head>
+<body>
+  
+  <img src="{% static 'store/image/logo.jpg' %}" alt="logo" />
+   
+   <div id="welcome">
+     <img src="{% static 'store/image/agent.png' %}" alt="logo" />
+     <p>Welcome back <b>Adigun</b></p>
+     <p class="group">You are signed in as supervisor</p>
+     <a href="{% url "app:panel" %}"><button>Go to application</button></a>
+   </div>
+
+
+</body>
+</html>
