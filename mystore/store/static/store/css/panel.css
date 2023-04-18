@@ -123,7 +123,6 @@ section::-webkit-scrollbar {
   
 
 #sectionHeader {
-  position: ;
   z-index: 1;
   width: 100%;
   background-color: #FFF5EE;
@@ -163,7 +162,7 @@ section::-webkit-scrollbar {
 
 /* Handle on hover */
 #contain::-webkit-scrollbar-thumb:hover {
-  background: #ec807a;
+  background: #ce8c88;
 }
 
 
@@ -263,10 +262,14 @@ a#active {
   margin-bottom: 20px;
 }
 
+form {
+  width: 100%;
+  text-align: center;
+}
 
 #mainleft input {
   width: 85%;
-  margin-top: 25px;
+  margin: 25px 0 7px 0;
   font-size: 15px;
   padding: 7px 7px 7px 20px;
   border-radius: 5px;
@@ -552,11 +555,10 @@ dialog::backdrop {
 }
 
 .data {
-  font-size: 17px;
+  font-size: 16px;
   text-transform: capitalize;
   position: relative;
   left: 5px;
-  font-family: sans-serif;
 }
 
 #info input {
@@ -577,6 +579,28 @@ dialog::backdrop {
   position: absolute;
   top: 20%;
   z-index: 3;
+}
+
+#receipt::-webkit-scrollbar {
+  width: 6px;
+  height: 11px;
+}
+
+/* Track */
+#receipt::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 3px;
+}
+ 
+/* Handle */
+#receipt::-webkit-scrollbar-thumb {
+  background: #bd9795; 
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+#receipt::-webkit-scrollbar-thumb:hover {
+  background: #ce8c88;
 }
    
 #receipt > header {

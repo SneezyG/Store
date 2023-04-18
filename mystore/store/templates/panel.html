@@ -63,11 +63,15 @@
     </div>
     
     <p id="validate">barcode input is empty!!</p>
-    <input id="input" placeholder="Enter barcode" autofocus/>
-    <span><button id="look">
-      <img src="{% static 'store/image/search.png' %}" /> 
-    </button></span>
-  
+    <form>
+      <input id="input" placeholder="Enter barcode" autofocus/>
+      <span>
+       <button id="look">
+        <img src="{% static 'store/image/search.png' %}" /> 
+       </button>
+      </span>
+    </form>
+    
     <dl id="hint">
       <dt> <h4>Hint :</h4> </dt>
       <p>A physical USB-barcode-scanner is an alternative to keyboard for entering barcode prior to product look up.

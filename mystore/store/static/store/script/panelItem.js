@@ -7,7 +7,7 @@ let state = [];
 /*
 attached event listenner to dom elements to kick start some dom manipulation and application processes.
 */
-look.addEventListener('click', lookup);
+lookupForm.addEventListener('submit', lookup);
 add.addEventListener('click', addItem)
 
 exit.addEventListener('click', () => {
@@ -198,8 +198,9 @@ function popState(id) {
  
 
 
-function lookup() {
+function lookup(e) {
   // look up item, display error/details dialog.
+  e.preventDefault();
   let value = input.value.trim();
   if (value.length == 0) {
     let validate = document.querySelector("#validate");

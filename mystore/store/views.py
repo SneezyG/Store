@@ -3,6 +3,18 @@ from django.views import View
 
 
 
+
+def Test(request):
+  
+   """
+   return the store-app index page with a link to the login interface.
+   """
+  
+   return render(request, 'panel.html')
+
+
+
+
 def Index(request):
   
    """
