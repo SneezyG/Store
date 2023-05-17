@@ -131,7 +131,7 @@ function Draw() {
   setTimeout(() => {
   contain.style.visibility = "visible";
   preview.style.display = "block";
-  checkout.style.display = "block";
+  checkout.style.display = "inline";
   itemCount.style.visibility = "visible";
   }, 400)
 
@@ -210,7 +210,7 @@ function reRender() {
   section.style.width =  newScreen <= 800 ? "11%" : "36%";
   drawer.style.right =  newScreen <= 800 ? "11%" : "36%";
   stack.style.right =  newScreen <= 800 ? "11%" : "36%";
-  checkout.style.display = newScreen <= 800 ? "none" : "block";
+  checkout.style.display = newScreen <= 800 ? "none" : "inline";
   nav.style.display = "block";
   mainleft.style.width = "95%";
   hint.style.visibility = "visible";

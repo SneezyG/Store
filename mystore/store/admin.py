@@ -79,7 +79,7 @@ class ItemAdmin(admin.ModelAdmin):
     }),
     )
     
-  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'returns', 'date', 'description')
+  list_display = ('serial_no', 'name', 'category_subcategory', 'cost_price', 'selling_price', 'stock', 'sold', 'date', 'description')
   
 
   search_fields = ('serial_no',)
@@ -95,18 +95,11 @@ class ItemAdmin(admin.ModelAdmin):
   def stock(self, obj):
      "return amount left for an item object"
      stock = obj.quantity
-     
-     if obj.returned:
-       stock = stock - obj.returned
        
      if obj.sold:
        stock = stock - obj.sold
      
      return stock
-
-  def returns(self, obj):
-    "return amount return for an item object"
-    return obj.returns.count()
        
 
 
@@ -122,7 +115,7 @@ class SaleAdmin(admin.ModelAdmin):
 
   date_hierarchy = 'date'
   
-  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'profit', 'cost_price', 'selling_price', 'date' )
+  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'total_profit', 'cost_price', 'selling_price', 'date' )
   
   list_filter = ('date',)
  

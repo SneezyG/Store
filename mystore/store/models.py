@@ -7,14 +7,6 @@ def path(instance, filename):
   #create a unique path for item mugshot.
   return 'item_{0}/{1}'.format(instance.id, filename)
   
-def castValidator(value):
-   #try to cast CharField to float and throw error on failure
-   try:
-     float(value)
-   except:
-     error = "Only decimal and integer is valid for this field"
-     raise ValidationError(error)
-
 
 
 # Create your models here.
@@ -34,8 +26,8 @@ class Item(models.Model):
    size = models.CharField(max_length=20, null=True, blank=True)
    description = models.TextField(null=True, blank=True)
    quantity = models.IntegerField()
-   cost_price = models.CharField(max_length=20, verbose_name='cost price($)', validators=[castValidator])
-   selling_price = models.CharField(max_length=20, verbose_name='selling price($)', validators=[castValidator])
+   cost_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='cost price($)')
+   selling_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='selling price($)')
    sold = models.IntegerField(null=True, blank=True)
    mugshot = models.ImageField(upload_to=path, null=True, blank=True)
    date = models.DateTimeField(auto_now=True)
@@ -59,14 +51,13 @@ class Sale(models.Model):
   serial_no = models.CharField(max_length=20, verbose_name='barcode')
   name = models.CharField(max_length=20)
   category = models.CharField(max_length=20)
-  sub_catg = models.CharField(max_length=20, null=True,  blank=True)
+  sub_catg = models.CharField(max_length=20)
   sold = models.IntegerField()
-  profit = models.CharField(max_length=20)
-  cost_price = models.CharField(max_length=20)
-  selling_price = models.CharField(max_length=20)
+  total_profit = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="total profit($)")
+  cost_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="cost price($)")
+  selling_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="selling price($)")
   transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
-  day = models.DateField(auto_now_add=True);
-  date = models.DateTimeField(auto_now_add=True)
+  date = models.DateField(auto_now_add=True);
   
   
   def __str__(self):
@@ -84,7 +75,7 @@ class Transaction(models.Model):
   store data of a Transaction which technically involve a group of sales.
   """
   attendant = models.CharField(max_length=20)
-  date = models.DateField(auto_now_add=True)
+  date = models.DateTimeField(auto_now_add=True)
   
   def __str__(self):
     "Returns the transaction tag"
@@ -100,7 +91,7 @@ class Returns(models.Model):
   
   item = models.ForeignKey("Item", on_delete=models.SET_NULL, null=True, blank=True, related_name="returns")
   quantity = models.IntegerField()
-  date = models.DateField(auto_now_add=True)
+  date = models.DateTimeField(auto_now_add=True)
   
   def __str__(self):
     "Returns the returns obj tag"
