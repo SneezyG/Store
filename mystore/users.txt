@@ -4,7 +4,7 @@ User and their password for this application
 There will be 3 type of user for this application.
 1. attendant - process transaction.
 2. supervisor - plus update and returns.
-3. manager - plus report.
+3. manager(superuser) - plus report.
 
 
 supervisor: hshsj7373-£+

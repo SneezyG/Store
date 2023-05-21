@@ -84,7 +84,7 @@ class Transaction(models.Model):
 
 
 
-class Returns(models.Model):
+class Return(models.Model):
   """
   store item return data
   """

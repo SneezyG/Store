@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry
-from .models import Item, Sale, Transaction, Returns
+from .models import Item, Sale, Transaction, Return
 
 
 # admin interface customization
@@ -183,8 +183,8 @@ class TransactionAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(Returns)
-class ReturnsAdmin(admin.ModelAdmin):
+@admin.register(Return)
+class ReturnAdmin(admin.ModelAdmin):
   
   """
     Register the Returns model into the admin.
