@@ -236,7 +236,9 @@ section::-webkit-scrollbar {
   display: inline-block;
   color: white;
   text-decoration: none;
-  padding: 8px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 9px;
   width: 60%;
   background-color: rgb(219, 87, 25);
   border: 1px solid rgb(219, 87, 25);
@@ -246,7 +248,7 @@ section::-webkit-scrollbar {
 
 a#active {
   background-color: #FFF5EE;
-  color: black;
+  color: rgb(179, 73, 24)
 }
 
 #utility {

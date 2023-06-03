@@ -10,7 +10,7 @@ def Test(request):
    return the store-app index page with a link to the login interface.
    """
   
-   return render(request, 'welcome.html')
+   return render(request, 'panel.html')
 
 
 
