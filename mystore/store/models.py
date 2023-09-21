@@ -1,5 +1,7 @@
+
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import AbstractUser
 import uuid
 
 
@@ -10,6 +12,23 @@ def path(instance, filename):
 
 
 # Create your models here.
+
+class User(AbstractUser): 
+  
+  """
+  store a single user data.
+  extend the django abstract-user class.
+  and this model is the new auth_user_model
+  """
+  
+  userType = (
+      ('manager', 'manager'),
+      ('supervisor', 'supervisor'),
+      ('attendant', 'attendant'),
+    )
+  
+  user_type = models.CharField(max_length=12, choices=userType, help_text="This field define the user access level to the store panel.")
+
 
 
 class Item(models.Model):

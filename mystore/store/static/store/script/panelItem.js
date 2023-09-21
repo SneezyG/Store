@@ -326,7 +326,6 @@ function addItem() {
 
 // simulation of data from the server.
 const data = {
-  
   '111': {
     'id': '111',
     'available': 70,
@@ -335,51 +334,6 @@ const data = {
     'size': '200ltrs',
     'price': 200,
     'mugshot': 'glycerin.jpg',
-    'description': 'eden mosturing beauty soap, 250geghrbdbxhduiehdbcbxbjdieidjbdbxjdudiidrjbdbxhxjdiierjnxnxjxieiejndndbchxjurieiej',
+    'description': '',
   },
-  
-  '112': {
-    'id': '112',
-    'available': 15,
-    'name': 'airtel',
-    'category': 'gadget',
-    'size': 'none',
-    'price': 1000,
-    'mugshot': 'mifi.jpg',
-    'description': 'airtle 4g wifi modem, with ethenet usb cable',
-  },
-  
-  '113': {
-    'id': '113',
-    'available': 25,
-    'name': 'jumpo-ori',
-    'category': 'beauty',
-    'size': 'big',
-    'price': 100,
-    'mugshot': 'jumpo_ori.jpg',
-    'description': 'jumpo ori african black body-soap, natural exfoliant, 150g',
-  },
-  
-  '114': {
-    'id': '114',
-    'available': 40,
-    'name': 'st-ives',
-    'category': 'beauty',
-    'size': 'big',
-    'price': 500,
-    'mugshot': 'st_ives.jpg',
-    'description': 'st.ives softening body lotion, coconut & orchid, 500g',
-  },
-  
-  '115': {
-    'id': '115',
-    'available': 50,
-    'name': 'body treat',
-    'category': 'beauty',
-    'size': 'none',
-    'price': 500,
-    'mugshot': 'st_ives.jpg',
-    'description': 'Body treat, clarifying skin beautifying milk, 350g',
-  }
-  
 };

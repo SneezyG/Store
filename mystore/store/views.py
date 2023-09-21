@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.core.exceptions import PermissionDenied
 
 
 
@@ -43,7 +44,11 @@ def Report(request):
    return the store-app report page, Only manager(supervisor) can access this page.
    """
    
-   return render(request, 'report.html')
+   user_type = request.user.user_type
+  
+   if user_type == "manager":
+     return render(request, 'report.html')
+   raise PermissionDenied
 
 
 
@@ -53,14 +58,18 @@ class Update(View):
   
   """
   This return the update page on get request and update the item-table in the store database on post request.
-  This view also check if the user is logged in and have the necessary permission to use this logito
+  This view also check if the user is logged in and have the necessary permission to use this logic
   Only supervisor and manager(superuser) can access this page.
   """
   
   template = 'update.html'
   
   def get(self, request, *args, **kwargs):
-    return render(request, self.template) 
+    user_type = request.user.user_type
+    
+    if user_type == "manager" or user_type == "supervisor":
+      return render(request, self.template) 
+    raise PermissionDenied
     
     
   def post(self, request, *args, **kwargs):
@@ -79,7 +88,11 @@ class Return(View):
   template = 'return.html'
   
   def get(self, request, *args, **kwargs):
-    return render(request, self.template) 
+    user_type = request.user.user_type
+    
+    if user_type == "manager" or user_type == "supervisor":
+      return render(request, self.template)
+    raise PermissionDenied
     
     
   def post(self, request, *args, **kwargs):
@@ -87,11 +100,10 @@ class Return(View):
 
 
 
-def Error(request):
-  template = "404.html"
-  return render(request, template)
-
-
 def Welcome(request):
+  
+   """
+   return the welcome page with a link to the store  panel.
+   """
   template = "welcome.html"
   return render(request, template)

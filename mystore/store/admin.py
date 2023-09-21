@@ -1,8 +1,8 @@
 
-
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry
-from .models import Item, Sale, Transaction, Return
+from .models import User, Item, Sale, Transaction, Return
+from django.contrib.auth.admin import UserAdmin
 
 
 # admin interface customization
@@ -55,7 +55,46 @@ class LogEntryAdmin(admin.ModelAdmin):
     def has_view_permission(self, request, obj=None):
         return request.user.is_superuser
 
+
+
+
+@admin.register(User)
+class UserEntryAdmin(UserAdmin):
+  
+    """
+    Register the User table into the admin.
+    Add some customization.
+    """
     
+    date_hierarchy = 'date_joined'
+    
+    fieldsets = (
+        (None, {'fields': ('username', 'email', 'password', 'user_type', 'groups', 'user_permissions', 'is_staff', 'is_superuser')}),
+        )
+    
+    list_display = ('username', 'email', 'last_login', 'is_active', 'is_staff', 'is_superuser', 'user_type', 'date_joined')
+    
+    list_filter = ('is_staff', 'is_active', 'is_superuser', 'user_type', 'date_joined')
+    
+    preserve_filters = False
+
+    search_fields = ('username',)
+    
+    def has_add_permission(self, request):
+        return request.user.is_superuser
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_view_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+
+  
+   
 
 
 @admin.register(Item)

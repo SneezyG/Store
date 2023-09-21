@@ -29,6 +29,7 @@ SECRET_KEY = os.getenv('secret')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+AUTH_USER_MODEL = "store.User"
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL= "/welcome"
 

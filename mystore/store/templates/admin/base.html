@@ -45,7 +45,7 @@
             {% block userlinks %}
             
            <a href="{% url 'app:panel' %}">{% translate 'Store Panel' %}</a> /                   
-                {% if user.is_active and user.is_staff %}
+                {% if user.is_active and user.is_superuser %}
                     {% url 'django-admindocs-docroot' as docsroot %}
                     {% if docsroot %}
                         <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> /
