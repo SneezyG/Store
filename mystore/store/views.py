@@ -64,12 +64,14 @@ class Update(View):
   
   template = 'update.html'
   
-  def get(self, request, *args, **kwargs):
+  def dispatch(self, request, *args, **kwargs):
     user_type = request.user.user_type
-    
     if user_type == "manager" or user_type == "supervisor":
-      return render(request, self.template) 
+      return super().dispatch(request, *args, **kwargs)
     raise PermissionDenied
+  
+  def get(self, request, *args, **kwargs):
+    return render(request, self.template)
     
     
   def post(self, request, *args, **kwargs):
@@ -87,12 +89,14 @@ class Return(View):
   
   template = 'return.html'
   
-  def get(self, request, *args, **kwargs):
+  def dispatch(self, request, *args, **kwargs):
     user_type = request.user.user_type
-    
     if user_type == "manager" or user_type == "supervisor":
-      return render(request, self.template)
+      return super().dispatch(request, *args, **kwargs)
     raise PermissionDenied
+  
+  def get(self, request, *args, **kwargs):
+    return render(request, self.template)
     
     
   def post(self, request, *args, **kwargs):
@@ -105,5 +109,5 @@ def Welcome(request):
    """
    return the welcome page with a link to the store  panel.
    """
-  template = "welcome.html"
-  return render(request, template)
+   template = "welcome.html"
+   return render(request, template)
