@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views import View
 from django.core.exceptions import PermissionDenied
+from models import Return
+from django.http import JsonResponse
+import json
 
 
 
@@ -96,11 +99,20 @@ class Return(View):
     raise PermissionDenied
   
   def get(self, request, *args, **kwargs):
-    return render(request, self.template)
+    returns = Return.objects.count()
+    return render(request, self.template, {returns: returns,})
     
     
   def post(self, request, *args, **kwargs):
-    pass
+    data = json.loads(request.body.decode('utf-8'))
+    
+    try:
+      item = Item.objects.get(serial_no=data.item_id)
+    except Item.DoesNotExist:
+      return JsonResponse({'error': 'invalid serial number'}, status=400)
+      
+    Return.objects.create()
+    return JsonResponse({'success': 'new return submitted successfully'})
 
 
 

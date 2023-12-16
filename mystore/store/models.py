@@ -77,6 +77,7 @@ class Sale(models.Model):
   selling_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="selling price($)")
   transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
   date = models.DateField(auto_now_add=True);
+  date_test = models.DateField();
   
   
   def __str__(self):
