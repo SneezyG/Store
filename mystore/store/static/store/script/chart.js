@@ -9,10 +9,10 @@ for (let button of chartButtons) {
 
 // initial array for setting graph dimention label
 const base = {
-  'svg': 780,
-  'label1': 200,
-  'label2': 400,
-  'label3': 600
+  'svg': 600,
+  'label1': 150,
+  'label2': 300,
+  'label3': 450
 }
 const month1 = {
   'svg': 1380,
@@ -34,7 +34,7 @@ const month4 = {
 }
 
 // drwa on document.
-Draw("1");
+Draw("week_1");
 
 function Draw(e) {
   for (let svg of svgCharts) {
@@ -43,25 +43,25 @@ function Draw(e) {
   }
   const duration = e.target ? e.target.dataset.week : e;
   switch (duration) {
-    case '1':
+    case 'week_1':
       profits = profitData.slice(0, 7);
-      sales = saleData.slice(0, 7);
+      sales = soldData.slice(0, 7);
       break;
-    case '2':
+    case 'week_2':
       profits = profitData.slice(0, 14);
-      sales = saleData.slice(0, 14);
+      sales = soldData.slice(0, 14);
       break;
-    case '4':
+    case 'week_4':
       profits = profitData.slice(0, 28);
-      sales = saleData.slice(0, 28);
+      sales = soldData.slice(0, 28);
       break;
-    case '8':
+    case 'week_8':
       profits = profitData.slice(0, 56);
-      sales = saleData.slice(0, 56);
+      sales = soldData.slice(0, 56);
       break;
-    case '16':
+    case 'week_16':
       profits = profitData.slice(0, 112);
-      sales = saleData.slice(0, 112);
+      sales = soldData.slice(0, 112);
       break;
   }
 
@@ -112,7 +112,7 @@ function saleChart() {
     .text('Sold Count')
     .attr('id', 'ylabel')
     .attr('x', 20)
-    .attr('y', 15)
+    .attr('y', 30)
     
   // create series of label for the x-axis
   d3.select(svg)
@@ -137,19 +137,19 @@ function saleChart() {
   
   // create chart scale
   const xScale = d3.scaleLinear().domain([1, dayMax]).range([80, span.svg]);
-  const yScale = d3.scaleLinear().domain([0, soldMax]).range([290, 20]);
+  const yScale = d3.scaleLinear().domain([0, soldMax]).range([290, 40]);
   
   
   // draw the x-axis
   const xAxis = d3.axisBottom()
                   .scale(xScale)
-                  .tickSize(270)
+                  .tickSize(250)
                   .tickValues(dayArray);
   d3.select(svg)
     .append('g')
     .attr('id', 'xAxisG')
     .style('color', '#dbd1d1')
-    .attr('transform', 'translate(0, 20)')
+    .attr('transform', 'translate(0, 40)')
     .call(xAxis);
     
    
@@ -205,7 +205,7 @@ function saleChart() {
      svg.appendChild(chart);
      
       points.append('text')
-            .text(d => d.date)
+            .text(d => d.date_string)
             .attr('x', 7)
             .attr('y', -17);
   
@@ -276,7 +276,7 @@ function ProfitChart() {
     .text('Profit($)')
     .attr('id', 'ylabel')
     .attr('x', 20)
-    .attr('y', 15)
+    .attr('y', 30)
     
   // create series of label for the x-axis
   d3.select(svg)
@@ -301,19 +301,19 @@ function ProfitChart() {
   
   // create chart scale
   const xScale = d3.scaleLinear().domain([1, dayMax]).range([80, span.svg]);
-  const yScale = d3.scaleLinear().domain([0, profitMax]).range([290, 20]);
+  const yScale = d3.scaleLinear().domain([0, profitMax]).range([290, 40]);
   
   
   // draw the x-axis
   const xAxis = d3.axisBottom()
                   .scale(xScale)
-                  .tickSize(270)
+                  .tickSize(250)
                   .tickValues(dayArray);
   d3.select(svg)
     .append('g')
     .attr('id', 'xAxisG')
     .style('color', '#dbd1d1')
-    .attr('transform', 'translate(0, 20)')
+    .attr('transform', 'translate(0, 40)')
     .call(xAxis);
     
    
@@ -369,7 +369,7 @@ function ProfitChart() {
      svg.appendChild(chart);
      
       points.append('text')
-            .text(d => d.date)
+            .text(d => d.date_string)
             .attr('x', 7)
             .attr('y', -17);
   

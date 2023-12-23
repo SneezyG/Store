@@ -57,9 +57,10 @@
   
   
  
-  function process() {
+  async function process() {
     // validate the input file and call the upload/process function.
     let fileList = fileElem.files;
+    error.style.visibility = "hidden";
     
     if (fileList.length > 1) {
       error.innerHTML = "error: too many files";
@@ -80,18 +81,48 @@
       else {
        spiner.open = true;
        body.style.overflow = "hidden";
-       setTimeout(() => {
-         spiner.open = false;
-         not_found.showModal();
-         //success.showModal();
-       }, 5000);
+       
+       let form = document.createElement('form')
+       form.append(fileElem)
+       
+       let response = await fetch('/update/', {
+         method: 'POST',
+         headers: {
+           'X-CSRFToken': getCSRFToken()
+         },
+         body: new FormData(form)
+       });
+       
+       if (response.ok) {
+         setTimeout(() => {
+           spiner.open = false;
+           success.showModal();
+         }, 1000);
+       }
+       else {
+         let text;
+         if (response.status == 400) {
+           let responseObj = await response.json();
+           text = responseObj.error;
+         }
+         else {
+           text = "unknown error";
+         }
+         error.innerHTML = text;
+         error.style.visibility = "visible";
+         setTimeout(() => {
+           spiner.open = false;
+           not_found.showModal();
+         }, 1000);
+       }
+       
     }
   } 
     
-    else {
-      error.innerHTML = "error: no file was selected ";
-      error.style.visibility = "visible";
-    }
+  else {
+    error.innerHTML = "error: no file was selected ";
+    error.style.visibility = "visible";
+  }
 }
   
  
@@ -171,3 +202,14 @@
    }
   }
   
+  
+  
+  
+function getCSRFToken() {
+    const csrfCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken='));
+    if (csrfCookie) {
+        return csrfCookie.split('=')[1];
+    }
+    return null;
+ }
+ 

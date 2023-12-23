@@ -1,11 +1,11 @@
 
  // get the dom element this script depend on.
  const style = document.querySelector("#fullScreen");
- const process = document.querySelector('#process');
+ const processBtn = document.querySelector('#process');
  const error = document.querySelector('#info');
  const id = document.querySelector("#id");
  const code = document.querySelector("#code");
- const no_returned = document.querySelector("#return");
+ const returned = document.querySelector("#return");
  //console.log(retun.value);
  const inputs = document.querySelectorAll("input");
  const success = document.querySelector("#success");
@@ -15,11 +15,8 @@
  const spiner = document.querySelector("#spiner");
  const total = document.querySelector("#sale > span");
  
- // call setScreen to enable/disable fullScreen.
- setScreen();
   
- 
- process.addEventListener('click', Process);
+ processBtn.addEventListener('click', Process);
  
  for (let elem of cancelBtns) {
    elem.addEventListener('click', () => {
@@ -29,8 +26,8 @@
  
 
  
- 
  // activate/deactivate fullScreen style.
+ setScreen();
  window.onresize = setScreen;
   
  // enable and disable the fullScreen stylesheet.
@@ -55,44 +52,61 @@
  }
  
  
+ function getCSRFToken() {
+    const csrfCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken='));
+    if (csrfCookie) {
+        return csrfCookie.split('=')[1];
+    }
+    return null;
+ }
+ 
+ 
  // process a returned item request.
- function Process() {
-   let no_returned = Number(no_returned.value)
+ async function Process() {
+   let no_returned = Number(returned.value)
    
    let data = {
      item_id: id.value,
      item_code: code.value,
-     no_returned: no_returned
+     no_returned
    }
+   console.log(data)
    
    if (id.value && no_returned) {
      spiner.open = true;
      body.style.overflow = "hidden";
      
-     let response = await fetch('/report', {
+     let response = await fetch('/return/', {
        method: 'POST',
        headers: {
-         'Content-Type': 'application/json;charset=utf-8'},
+         'Content-Type': 'application/json;charset=utf-8',
+         'X-CSRFToken': getCSRFToken()
+       },
        body: JSON.stringify(data)
      });
      
+     
      if (response.ok) {
-       spiner.open = false;
-       success.showModal();
-       let newTotal = Number(total.innerHTML.trim()) + no_returned;
-       total.innerHTML = newTotal;
+       setTimeout(() => {
+         spiner.open = false;
+         success.showModal();
+         let newTotal = Number(total.innerHTML.trim()) + no_returned;
+         total.innerHTML = newTotal;
+       }, 1000)
      }
      else {
-       spiner.open = false;
-       failure.showModal();
+       setTimeout(() => {
+         spiner.open = false;
+         failure.showModal();
+       }, 1000)
      }
      
    }
-   
    else {
      error.innerHTML = "error: something went wrong, check your input and try again";
      error.style.visibility = "visible";
    }
+   
    
  }
  

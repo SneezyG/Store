@@ -18,6 +18,7 @@ const item = document.querySelector('#item');
 const add = document.querySelector('#add');
 const exit = document.querySelector('#exit');
 const not_found = document.querySelector('#not_found');
+const notFoundBtn = document.querySelector('#not_found button');
 const itemCount = document.querySelector("#itemCount");
 const Tgoods = document.querySelector("#Tgoods");
 const Tprice = document.querySelector("#Tprice");
@@ -50,22 +51,18 @@ input.addEventListener("focus", () => {
   let validate = document.querySelector("#validate");
   validate.style.display = "none";
 });
+
+
+notFoundBtn.addEventListener('click', (e) => {
+  backdropB.style.visibility = "hidden";
+})
   
   
 printButton.addEventListener('click', (e) => {
     e.preventDefault();
     window.print();
-    let scrn = screen.width;
-  
-    let time = (scrn > 800) ? 0 : 1000;
-    // set timeOut to capture the receiptDom.
-    setTimeout(() => {
-       //close dialog and reset state to default.
-       receiptDom.open=false;
-       backdropB.style.visibility = "hidden";
-       sessionStorage.state = JSON.stringify(state);
-       useState();
-    }, time);
+    receiptDom.open=false;
+    backdropB.style.visibility = "hidden";
  });
  
 window.onresize = reRender;
@@ -102,7 +99,8 @@ quantity.addEventListener('input', (e) => {
  const pattern =  /[^0-9]/;
  
  let value = e.target.value;
- if (value.length == 0 || value == 0) {
+ let stock = Number(available.innerHTML);
+ if (value.length == 0 || value == 0 || value > stock) {
    add.style.pointerEvents = "none";
    add.style.opacity = 0.6;
    return null;

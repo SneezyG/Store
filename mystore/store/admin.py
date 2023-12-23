@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry
-from .models import User, Item, Sale, Transaction, Return
+from .models import User, Item, Sale, Transaction, Returns
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -126,7 +126,6 @@ class ItemAdmin(admin.ModelAdmin):
       
   def category_subcategory(self, obj):
      "return the category and sub_category as a string"
-     verbose_name= ' category & subcategory '
      return " %s | %s " % (obj.category, obj.sub_catg)
      
   category_subcategory.short_description = 'category | subcategory'
@@ -152,11 +151,11 @@ class SaleAdmin(admin.ModelAdmin):
     
   """
 
-  date_hierarchy = 'date'
+  date_hierarchy = 'date_test'
   
-  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'total_profit', 'cost_price', 'selling_price', 'date' )
+  list_display = ('serial_no', 'name', 'category_subcategory', 'sold', 'total_profit', 'cost_price', 'selling_price', 'date_test' )
   
-  list_filter = ('date',)
+  list_filter = ('date_test',)
  
   search_fields = ('transaction__id',)
   
@@ -201,7 +200,7 @@ class TransactionAdmin(admin.ModelAdmin):
   
   list_filter = ('date',)
  
-  search_fields = ('serial_no',)
+  search_fields = ('id',)
   
   
   
@@ -222,8 +221,8 @@ class TransactionAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(Return)
-class ReturnAdmin(admin.ModelAdmin):
+@admin.register(Returns)
+class ReturnsAdmin(admin.ModelAdmin):
   
   """
     Register the Returns model into the admin.
@@ -232,22 +231,18 @@ class ReturnAdmin(admin.ModelAdmin):
   
   date_hierarchy = 'date'
 
-  list_display = ('get_name', 'get_size', 'get_color', 'quantity', 'date')
+  list_display = ('item', 'size', 'color', 'quantity', 'date')
   
   list_filter = ('date',)
  
   search_fields = ('item__serial_no', 'item__name')
   
-  
-  def get_name(self, obj):
-     verbose_name= 'Item name'
-     return obj.item.name
      
-  def get_color(self, obj):
+  def color(self, obj):
      verbose_name= 'Item color'
      return obj.item.color
      
-  def get_size(self, obj):
+  def size(self, obj):
      verbose_name= 'Item size'
      return obj.item.size
      

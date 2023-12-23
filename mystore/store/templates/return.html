@@ -4,8 +4,7 @@
    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Store Return Screen</title>
-    
-   <link rel="stylesheet" type="text/css" href="{% static 'store/css/return.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/return.css' %}">
     
   <style id="fullScreen">
     /* 
@@ -49,8 +48,9 @@
       <article>
       <p id="sale">Total no of returned sales: <span>{{ returns }}</span></p>
       <input id="id" name="id" placeholder="Item barcode" autofocus/>
+      <input id="code" name="code" placeholder="Receipt barcode" />
       <span>optional*</span>
-      <input id="code" name="code" placeholder="Receipt barcode" /> <br>
+      <br><br>
       no of return: <input id="return" value=1 type="number" name="return">
       <p><span>Note: </span>receipt barcode is optional.</p>
       </article>
@@ -85,8 +85,8 @@
   <img src="{% static 'store/image/logo.jpg' %}" alt="site logo"/>
   </dialog>
 
-  
-<script src="{% static 'store/script/return.js' %}"></script>
 
+  <script src="{% static 'store/script/return.js' %}"></script>
+  
 </body>
 </html>

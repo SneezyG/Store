@@ -97,16 +97,16 @@
         padding: 0;
         top: 50px;
       }
-
+      
       #left > img {
         margin: 0;
         position: absolute;
-        top: 60px;
+        top: 80px;
         left: 20px;
         width: 40px;
         border-radius: 7px;
       }
-    
+
       #nav {
          width: 21%;
          position: absolute;
@@ -178,7 +178,7 @@
       
       #svg1 {
          padding: 20px 10px 0 20px;
-         height: 350px;
+         height: 370px;
          overflow-x: auto;
          overflow-y: hidden;
       }
@@ -207,7 +207,7 @@
       
       #svg2 {
          padding: 20px 10px 0 20px;
-         height: 350px;
+         height: 370px;
          overflow-x: auto;
          overflow-y: hidden;
       }
@@ -259,7 +259,7 @@
        }
        
       
-      article {
+      .summary {
         background-color: rgb(230, 159, 118);
         width: 70%;
         margin: auto;
@@ -272,17 +272,17 @@
         animation-delay: 0.5;
       }
       
-      article > p {
+      .summary > p {
         text-align: center;
         margin: 13px 5px 9px 5px;
         overflow-wrap: break-word;
-        font-size: 13px;
+        font-size: 15px;
         text-transform: capitalize;
       }
       
-      article > h6 {
+      .summary > h6 {
         text-align: center;
-        font-size: 15px;
+        font-size: 12px;
         margin: 5px;
         opacity: 0.8;
       }
@@ -340,22 +340,18 @@
        width: 80%;
      }
      
-     #left > img {
-       width: 35px;
-     }
-     
-     article {
+     .summary {
        width: 90%;
        padding: 2px;
      }
      
-     article > h6 {
-       font-size: 12px;
+     .summary > h6 {
+       font-size: 10px;
        margin: 7px;
      }
      
-     article > p {
-       font-size: 10px;
+     .summary > p {
+       font-size: 12px;
      }
      
      #chart {

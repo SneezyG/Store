@@ -70,14 +70,13 @@ class Sale(models.Model):
   serial_no = models.CharField(max_length=20, verbose_name='barcode')
   name = models.CharField(max_length=20)
   category = models.CharField(max_length=20)
-  sub_catg = models.CharField(max_length=20)
+  sub_catg = models.CharField(max_length=20, null=True, blank=True, verbose_name="sub-category")
   sold = models.IntegerField()
   total_profit = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="total profit($)")
   cost_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="cost price($)")
   selling_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="selling price($)")
   transaction = models.ForeignKey("Transaction", on_delete=models.SET_NULL, null=True, blank=True, related_name="sales")
-  date = models.DateField(auto_now_add=True);
-  date_test = models.DateField();
+  date_test = models.DateField(auto_now_add=True);
   
   
   def __str__(self):
@@ -104,7 +103,7 @@ class Transaction(models.Model):
 
 
 
-class Return(models.Model):
+class Returns(models.Model):
   """
   store item return data
   """

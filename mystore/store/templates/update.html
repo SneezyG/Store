@@ -40,8 +40,11 @@
       <li>File uploaded will be use to populate Items record.</li>
       <li> You can only upload and process one file at a time.</li>
       <li>Only .xlsx and .csv file format can be process.</li>
-      <li>Your data describing your items can contain a barcode, name, category, sub-category, color, size, description, quantity, cost price and selling price column. And all the column name must be spelled as they appear here.</li>
-      <li>Your data describing your items must contain a barcode, name, category, quantity, cost price and selling price column.</li>
+      <li>Your data describing your items must contain a barcode, name, category, sub-category, color, size, description, quantity, cost-price, selling-price, sold, mugshot and date column. 
+      </li>
+      <li>
+        The barcode column must contain unique data.
+      </li>
       <li>Your barcode, name, category, sub-category, color, size, cost price and selling price data can be atmost 20 characters.</li>
      </ul>
      
@@ -61,6 +64,7 @@
       your files here or 
      <input
      type="file"
+     name="items_file"
      id="fileElem"
      accept=".csv, .xlsx"
      class="visually-hidden" />

@@ -48,7 +48,7 @@ class ItemFactory(factory.django.DjangoModelFactory):
   category = factory.LazyAttribute(lambda obj: get_category(obj.name))
   color = factory.Faker("word", ext_word_list=colors)
   size = factory.Faker("word", ext_word_list=sizes)
-  description = factory.Faker("paragraph")
+  description = factory.Faker("sentence")
   quantity = factory.Faker("random_int", min=10, max=50)
   cost_price = factory.Faker("random_number", digits=3, fix_len=True)
   selling_price = factory.Faker("random_number", digits=4, fix_len=True)

@@ -44,11 +44,11 @@
        <b>SALE REPORT</b>
        </header>
        <div id="span">
-         <span id="first" data-week="1"> 1 week </span>
-         <span data-week="2"> 2 weeks </span>
-         <span data-week="4"> 4 weeks</span>
-         <span data-week="8"> 8 weeks </span>
-         <span data-week="16"> 16 weeks </span>
+         <span id="first" data-week="week_1"> 1 week </span>
+         <span data-week="week_2"> 2 weeks </span>
+         <span data-week="week_4"> 4 weeks</span>
+         <span data-week="week_8"> 8 weeks </span>
+         <span data-week="week_16"> 16 weeks </span>
        </div>
        <hr/>
      </div>
@@ -93,37 +93,42 @@
      
      <section id="right"> 
 
-     <article id="sales" class="growth">
+     <div id="sales" class="growth summary">
        <h6>Total Sale</h6>
        <p>1200ffghhhhh0yyyuuuyy</p>
-     </article>
+     </div>
 
-     <article id="profit" class="growth">
-       <h6> Gross Profit </h6>
+     <div id="profit" class="growth summary">
+       <h6>Gross Profit($) </h6>
        <p> $20000gghhhjjjjhhdhjdj</p>
-     </article>
+     </div>
        
-     <article id="item">
+     <div id="item" class="summary">
        <h6>Most sold item</h6>
        <p>Cocac olagg ghhhbdjdjd</p>
-     </article>
+     </div>
 
-     <article id="category">
+     <div id="category" class="summary">
        <h6>Most sold category</h6>
        <p>Beverageffg ghhhgdhdhdh</p>
-     </article>
+     </div>
 
-     <article id="day">
+     <div id="day" class="summary">
        <h6>Day with most sold</h6>
        <p>Wednesdaygg ghhhdhdjdjd</p>
-     </article>
+     </div>
      
      </section>
    
  
+<script>
+  let profitData = {{ profit_data|safe }};
+  let soldData = {{ sold_data|safe }};
+  let saleSummary = {{ sale_summary|safe }};
+</script>
+
 <script src="{% static 'store/script/report.js' %}"></script>     
 <script src="{% static 'store/script/d3.min.js' %}"></script>
-<script src="{% static 'store/script/data.js' %}"></script>   
 <script src="{% static 'store/script/chart.js' %}"></script>   
 
 
