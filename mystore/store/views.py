@@ -14,18 +14,6 @@ from django.db.models.functions import Cast
 
 
 
-def Test(request):
-  
-   """
-   return the store-app index page with a link to the login interface.
-   """
-  
-   return render(request, 'panel.html')
-
-
-
-
-
 
 
 def Index(request):
@@ -45,7 +33,7 @@ def Index(request):
 def Panel(request):
   
   """
-  Check if user is logged in and then return the panel page. Every user can access this page.
+  Check if user is logged in and then return the panel page. Every user can access this view.
   """
   
   return render(request, 'panel.html')
@@ -103,7 +91,7 @@ def GetItem(request):
 @require_http_methods(["POST",])
 def ProcessTransaction(request):
   """
-  return a transaction_id of sales processing.
+  return a transaction_id after processing sales.
   """
   data = json.loads(request.body.decode('utf-8'))
   
@@ -154,7 +142,7 @@ def ProcessTransaction(request):
 def Report(request):
   
    """
-   return the store-app report page, Only manager(supervisor) can access this page.
+   return the store-app report page, Only manager(supervisor) can access this view.
    """
    
    user_type = request.user.user_type
@@ -233,8 +221,7 @@ class Update(View):
   
   """
   This return the update page on get request and update the item-table in the store database on post request.
-  This view also check if the user is logged in and have the necessary permission to use this logic
-  Only supervisor and manager(superuser) can access this page.
+  Only supervisor and manager(superuser) can access this view.
   """
   
   template = 'update.html'
@@ -293,8 +280,7 @@ class Return(View):
   
   """
   This return the return page on get request and update the returns-table in the store database on post request.
-  This view also check if the user is logged in and have the necessary permission to use this logic.
-  Only supervisor and manager(superuser) can access this page.
+  Only supervisor and manager(superuser) can access this view.
   """
   
   template = 'return.html'

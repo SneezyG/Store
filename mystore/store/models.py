@@ -34,7 +34,7 @@ class User(AbstractUser):
 class Item(models.Model):
   
    """
-   store data of a single item.
+   store items information.
    """
     
    serial_no = models.CharField(max_length=20, unique=True, verbose_name='barcode')
@@ -63,8 +63,7 @@ class Item(models.Model):
 class Sale(models.Model):
   
   """
-   store data of a sale.
-   Every field is required except date which is auto-generated.
+   store sales information.
   """
  
   serial_no = models.CharField(max_length=20, verbose_name='barcode')
@@ -91,7 +90,8 @@ class Sale(models.Model):
 class Transaction(models.Model):
   
   """
-  store data of a Transaction which technically involve a group of sales.
+  store transactions information.
+  A transaction technically involve a group of sales record.
   """
   attendant = models.CharField(max_length=20)
   date = models.DateTimeField(auto_now_add=True)
@@ -105,7 +105,7 @@ class Transaction(models.Model):
 
 class Returns(models.Model):
   """
-  store item return data
+  store item returns information.
   """
   
   item = models.ForeignKey("Item", on_delete=models.SET_NULL, null=True, blank=True, related_name="returns")
