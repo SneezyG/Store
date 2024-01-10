@@ -28,3 +28,46 @@ There will be 3 type of user.
 
 
 
+user stories
+
+SALE ATTENDANT: process transactions.
+login into the application sale-panel page.
+look up item using their barcode and check their availability.
+set item quantity and add item to basket.
+view items basket, total amount, total item.
+process sale for items in basket and general a receipt.
+
+SUPERVISOR: update items model.
+login into the application admin interface.
+click the item model.
+add, delete and modify items
+
+SUPERVISOR: update items record.
+login into the application update page.
+drop a csv or excel file containing new items record into the dropbox.
+click the process button.
+
+SUPERVISOR: update items returns.
+login into the application returns page.
+enter returned item barcode.
+enter the receipt id to verify purchase.
+enter returned amount.
+click process button.
+
+MANAGER: view sale report.
+login into the application report page.
+view report summary.
+view sales and report charts.
+
+MANAGER: update admin models.
+login into the application admin interface.
+select a model.
+add, delete and modify model records.
+
+
+
+
+
+
+
+
