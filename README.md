@@ -1,7 +1,7 @@
 # Store
 A point-of-sale Web application for a bulk store. 
 
-functionality:
+FUNCTIONALITY:
 look up store items.
 update items record with csv and excel files.
 sales report analytics dashboard.
@@ -9,7 +9,7 @@ record sales and transactions.
 record returns items.
 
 
-key-features:
+KEY-FEATURES:
 users authentication and authorisation.
 users management 
 sales analytics dashboard
