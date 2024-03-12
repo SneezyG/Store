@@ -1,15 +1,75 @@
 # Store
-A point-of-sale Web application for a bulk store. 
+A point-of-sale Web application for a bulk store, Seeded the app with some data for testing purposes
 
-FUNCTIONALITY:
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Specification](#specification)
+4. [User](#user)
+5. [User-story](#user-story)
+
+
+
+
+## Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone <repository-url>
+    ```
+
+2. Navigate to the root directory:
+
+    ```bash
+    cd <root-directory>
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+    
+    
+    
+
+## Usage
+
+1. Navigate to the project directory:
+
+    ```bash
+    cd <project-directory>
+    ```
+
+2. Start the development server:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+3. Open your web browser and navigate to [http://localhost:8000](http://localhost:8000) to view the project.
+
+4. Access the Django admin interface at [http://localhost:8000/admin/store](http://localhost:8000/admin/store).
+
+5. Authenticate with any of these user(#user) credentials to play around the application.
+
+
+
+
+
+## Specification
+
+----FUNCTIONALITY----
 look up store items.
 update items record with csv and excel files.
 sales report analytics dashboard.
 record sales and transactions.
 record returns items.
 
-
-KEY-FEATURES:
+----KEY-FEATURES----
 users authentication and authorisation.
 users management 
 sales analytics dashboard
@@ -20,16 +80,27 @@ drag and drop file box for items update.
 
 
 
-There will be 3 type of user.
+
+
+## User
+
+----THERE WILL BE 3 TYPE OF USER----
 1. attendant - process sales and transactions(admin: view items permission).
 2. supervisor - process items update and return(admin: full items permission).
 3. manager(superuser)- view sales report(admin: superuser permission).
 
+----SEEDED THE APP WITH 3 USERS----
+manager: hshs627£-;"+#
+supervisor: hshsj7373-£+
+attendant: wyeha272#£
 
 
 
-user stories
 
+
+## User-story
+
+----USER STORIES----
 SALE ATTENDANT: process transactions.
 login into the application sale-panel page.
 look up item using their barcode and check their availability.
