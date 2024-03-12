@@ -2,6 +2,7 @@
 A point-of-sale Web application for a bulk store, Seeded the app with some data for testing purposes
 
 
+
 ## Table of Contents
 
 1. [Installation](#installation)
@@ -91,7 +92,8 @@ KEY-FEATURES.
 
 
 ## User
-There are three type of users.
+
+There are 3 type of users.
 1. Attendant - process sales and transactions(admin: view items permission).
 2. Supervisor - process items update and returns(admin: full items permission).
 3. Manager(superuser)- view sales report(admin: superuser permission).
