@@ -63,20 +63,20 @@ A point-of-sale Web application for a bulk store, Seeded the app with some data 
 ## Specification
 
 FUNCTIONALITY.
-look up store items.
-update items record with csv and excel files.
-sales report analytics dashboard.
-record sales and transactions.
-record returns items.
+1. look up store items.
+2. update items record with csv and excel files.
+3. sales report analytics dashboard.
+4. record sales and transactions.
+5. record returns items.
 
 KEY-FEATURES.
-users authentication and authorisation.
-users management 
-sales analytics dashboard
-logging system.
-customizable admin interface.
-responsive interface across devices
-drag and drop file box for items update.
+1. users authentication and authorisation.
+2. users management 
+3. sales analytics dashboard
+4. logging system.
+5. customizable admin interface.
+6. responsive interface across devices
+7. drag and drop file box for items update.
 
 
 
@@ -85,13 +85,13 @@ drag and drop file box for items update.
 ## User
 
 1. attendant - process sales and transactions(admin: view items permission).
-2. supervisor - process items update and return(admin: full items permission).
+2. supervisor - process items update and returns(admin: full items permission).
 3. manager(superuser)- view sales report(admin: superuser permission).
 
-SEEDED THE APP WITH 3 USERS.
-manager: (hshs627£-;"+#).
-supervisor: (hshsj7373-£+).
-attendant: (wyeha272#£).
+Seeded the app with 3 users.
+1. manager: (hshs627£-;"+#).
+2. supervisor: (hshsj7373-£+).
+3. attendant: (wyeha272#£).
 
 
 
