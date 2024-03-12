@@ -83,7 +83,7 @@ KEY-FEATURES.
 
 
 ## User
-
+There are three type of users.
 1. attendant - process sales and transactions(admin: view items permission).
 2. supervisor - process items update and returns(admin: full items permission).
 3. manager(superuser)- view sales report(admin: superuser permission).
@@ -100,49 +100,43 @@ Seeded the app with 3 users.
 ## User-story
 
 SALE ATTENDANT: process transactions.
-
-login into the application sale-panel page.
-look up item using their barcode and check their availability.
-set item quantity and add item to basket.
-view items basket, total amount, total item.
-process sale for items in basket and general a receipt.
+1. login into the application sale-panel page.
+2. look up item using their barcode and check their availability.
+3. set item quantity and add item to basket.
+4. view items basket, total amount, total item.
+5. process sale for items in basket and general a receipt.
 
 
 SUPERVISOR: update items model.
-
-login into the application admin interface.
-click the item model.
-add, delete and modify items
+1. login into the application admin interface.
+2. click the item model.
+3. add, delete and modify items
 
 
 SUPERVISOR: update items record.
-
-login into the application update page.
-drop a csv or excel file containing new items record into the dropbox.
-click the process button.
+1. login into the application update page.
+2. drop a csv or excel file containing new items record into the dropbox.
+3. click the process button.
 
 
 SUPERVISOR: update items returns.
-
-login into the application returns page.
-enter returned item barcode.
-enter the receipt id to verify purchase.
-enter returned amount.
-click process button.
+1. login into the application returns page.
+2. enter returned item barcode.
+3. enter the receipt id to verify purchase.
+4. enter returned amount.
+5. click process button.
 
 
 MANAGER: view sale report.
-
-login into the application report page.
-view report summary.
-view sales and report charts.
+1. login into the application report page.
+2. view report summary.
+3. view sales and report charts.
 
 
 MANAGER: update admin models.
-
-login into the application admin interface.
+1. login into the application admin interface.
 select a model.
-add, delete and modify model records.
+2. add, delete and modify model records.
 
 
 
