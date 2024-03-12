@@ -34,6 +34,13 @@ A point-of-sale Web application for a bulk store, Seeded the app with some data 
     pip install -r requirements.txt
     ```
     
+4. Add .env file at the root directory will a secret variable:
+     
+    ```bash
+    secret = "your secret"
+    ```
+    
+    
     
     
 
