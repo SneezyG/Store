@@ -9,6 +9,7 @@ A point-of-sale Web application for a bulk store, Seeded the app with some data 
 3. [Specification](#specification)
 4. [User](#user)
 5. [User-story](#user-story)
+6. [Demo-images](#demo-images)
 
 
 
@@ -18,13 +19,13 @@ A point-of-sale Web application for a bulk store, Seeded the app with some data 
 1. Clone the repository:
 
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/SneezyG/Store
     ```
 
 2. Navigate to the root directory:
 
     ```bash
-    cd <root-directory>
+    cd store
     ```
 
 3. Install dependencies:
@@ -41,13 +42,13 @@ A point-of-sale Web application for a bulk store, Seeded the app with some data 
 1. Navigate to the project directory:
 
     ```bash
-    cd <project-directory>
+    cd mystore
     ```
 
 2. Start the development server:
 
     ```bash
-    python manage.py runserver
+    python3 manage.py runserver
     ```
 
 3. Open your web browser and navigate to [http://localhost:8000](http://localhost:8000) to view the project.
@@ -84,14 +85,14 @@ KEY-FEATURES.
 
 ## User
 There are three type of users.
-1. attendant - process sales and transactions(admin: view items permission).
-2. supervisor - process items update and returns(admin: full items permission).
-3. manager(superuser)- view sales report(admin: superuser permission).
+1. Attendant - process sales and transactions(admin: view items permission).
+2. Supervisor - process items update and returns(admin: full items permission).
+3. Manager(superuser)- view sales report(admin: superuser permission).
 
 Seeded the app with 3 users.
-1. manager: (hshs627£-;"+#).
-2. supervisor: (hshsj7373-£+).
-3. attendant: (wyeha272#£).
+1. manager » username:sneezy, pass:hshs627£-;"+#
+2. supervisor » username:ogunboy, pass:hshsj7373-£+
+3. attendant » username:adeboy, pass:wyeha272#£
 
 
 
@@ -141,6 +142,17 @@ select a model.
 
 
 
+
+
+## Sample-images
+
+![demo-image1](./samples/store1.png)
+![demo-image2](./samples/store2.png)
+![demo-image3](./samples/store3.png)
+![demo-image4](./samples/store4.png)
+![demo-image5](./samples/store5.png)
+![demo-image6](./samples/store6.png)
+![demo-image7](./samples/store7.png)
 
 
 
