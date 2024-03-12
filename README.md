@@ -144,15 +144,15 @@ select a model.
 
 
 
-## Sample-images
+## Demo-images
 
-![demo-image1](./samples/store1.png)
-![demo-image2](./samples/store2.png)
-![demo-image3](./samples/store3.png)
-![demo-image4](./samples/store4.png)
-![demo-image5](./samples/store5.png)
-![demo-image6](./samples/store6.png)
-![demo-image7](./samples/store7.png)
+1. ![demo-image1](./samples/store1.png)
+2. ![demo-image2](./samples/store2.png)
+3. ![demo-image3](./samples/store3.png)
+4. ![demo-image4](./samples/store4.png)
+5. ![demo-image5](./samples/store5.png)
+6. ![demo-image6](./samples/store6.png)
+7. ![demo-image7](./samples/store7.png)
 
 
 
